@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warrior Prep — Friendly Hills Middle School</title>
+<style>
+:root{
+  --red:#C41230;--red-dk:#8B0000;--red-lt:#FDECEA;
+  --gold:#F5B800;--gold-lt:#FFF8E1;--gold-dk:#B8860B;
+  --gray:#F4F4F4;--border:#E0E0E0;--text:#1A1A1A;--muted:#666;
+  --white:#fff;--radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:#fafafa;display:flex;min-height:100vh}
+#sidebar{width:240px;flex-shrink:0;background:var(--red-dk);color:#fff;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-brand{padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,.15)}
+.sidebar-brand .school{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.sidebar-brand .course{font-size:18px;font-weight:700;line-height:1.2;color:#fff}
+.sidebar-brand .grade{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+.sidebar-mascot{text-align:center;padding:12px 0 8px;font-size:36px}
+nav{flex:1;padding:8px 0}
+nav a{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:13px;color:rgba(255,255,255,.8);text-decoration:none;transition:background .15s,color .15s;border-left:3px solid transparent}
+nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav a.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:var(--gold)}
+nav .nav-section{padding:12px 18px 4px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+nav a .nav-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+#main{flex:1;min-width:0;padding:0}
+.page{display:none;padding:32px 36px;max-width:1000px}
+.page.active{display:block}
+.page-hero{background:linear-gradient(135deg,var(--red-dk) 0%,var(--red) 100%);color:#fff;border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;gap:24px}
+.page-hero-icon{font-size:48px;flex-shrink:0}
+.page-hero h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.page-hero p{font-size:14px;opacity:.85;line-height:1.6}
+.page-hero .hero-badge{display:inline-block;background:var(--gold);color:var(--red-dk);font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-top:8px;letter-spacing:.04em}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+.unit-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none;color:inherit;display:block}
+.unit-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.unit-card .uc-icon{font-size:32px;margin-bottom:10px}
+.unit-card .uc-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.unit-card .uc-title{font-size:15px;font-weight:600;margin-bottom:6px}
+.unit-card .uc-count{font-size:12px;color:var(--muted)}
+.lesson-table{width:100%;border-collapse:collapse;font-size:14px}
+.lesson-table th{text-align:left;padding:10px 12px;background:var(--gray);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border)}
+.lesson-table td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.lesson-table tr:last-child td{border-bottom:none}
+.lesson-table tr:hover td{background:var(--gray)}
+.lesson-num{font-weight:600;color:var(--red);white-space:nowrap}
+.lesson-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;margin-right:3px}
+.tag-sim{background:#EDE7F6;color:#4527A0}
+.tag-story{background:#E8F5E9;color:#1B5E20}
+.tag-reading{background:#E3F2FD;color:#0D47A1}
+.tag-video{background:#FFF3E0;color:#E65100}
+.tag-audio{background:#FCE4EC;color:#880E4F}
+.sim-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow)}
+.sim-header-bar{background:var(--red-dk);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px}
+.sim-header-bar .sh-icon{font-size:22px}
+.sim-header-bar .sh-title{font-size:15px;font-weight:600}
+.sim-header-bar .sh-sub{font-size:12px;opacity:.75;margin-top:2px}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat .sv{font-size:28px;font-weight:700;color:var(--red)}
+.stat .sl{font-size:12px;color:var(--muted);margin-top:4px}
+h2.section-h{font-size:18px;font-weight:700;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
+.resource-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.resource-row:last-child{border-bottom:none}
+.resource-icon{font-size:24px;width:36px;text-align:center;flex-shrink:0}
+.resource-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.resource-desc{font-size:13px;color:var(--muted)}
+.resource-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;background:var(--gold-lt);color:var(--gold-dk);margin-left:8px}
+.monday-badge{display:inline-flex;align-items:center;gap:5px;background:#1A376A;color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:99px}
+.friday-badge{display:inline-flex;align-items:center;gap:5px;background:#2E7D32;color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:99px}
+@media(max-width:720px){#sidebar{display:none}.page{padding:20px 16px}.stats-bar{grid-template-columns:repeat(2,1fr)}.page-hero{flex-direction:column;text-align:center;padding:20px}}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="sidebar-brand">
+    <div class="school">Friendly Hills MS</div>
+    <div class="course">Warrior Prep</div>
+    <div class="grade">Grade 8 · Transition</div>
+  </div>
+  <div class="sidebar-mascot">⚔️</div>
+  <nav>
+    <a href="#" class="active" onclick="show('home')" data-page="home"><span class="nav-icon">🏠</span> Home</a>
+    <div class="nav-section">Course Units</div>
+    <a href="#" onclick="show('unit1')" data-page="unit1"><span class="nav-icon">🧠</span> Unit 1 · Executive Function</a>
+    <a href="#" onclick="show('unit2')" data-page="unit2"><span class="nav-icon">💼</span> Unit 2 · Career Pathways</a>
+    <a href="#" onclick="show('unit3')" data-page="unit3"><span class="nav-icon">📚</span> Unit 3 · Academic Prep</a>
+    <a href="#" onclick="show('unit4')" data-page="unit4"><span class="nav-icon">📅</span> Unit 4 · 9th Grade Plan</a>
+    <a href="#" onclick="show('unit5')" data-page="unit5"><span class="nav-icon">🎓</span> Unit 5 · HS Transition</a>
+    <div class="nav-section">Interactive</div>
+    <a href="#" onclick="show('sims')" data-page="sims"><span class="nav-icon">🎮</span> Simulations</a>
+    <div class="nav-section">Weekly Routine</div>
+    <a href="#" onclick="show('monday')" data-page="monday"><span class="nav-icon">📋</span> Monday Check-In</a>
+    <a href="#" onclick="show('friday')" data-page="friday"><span class="nav-icon">📅</span> Friday Planning</a>
+    <div class="nav-section">Resources</div>
+    <a href="#" onclick="show('teacher')" data-page="teacher"><span class="nav-icon">📋</span> Teacher Resources</a>
+  </nav>
+</div>
+
+<div id="main">
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="page-hero">
+    <div class="page-hero-icon">⚔️</div>
+    <div>
+      <h1>Warrior Prep</h1>
+      <p>Executive function, career awareness, academic skills, and high school transition — everything 8th graders need to enter 9th grade ready to succeed.</p>
+      <span class="hero-badge">Grade 8 · 20 Lessons · 5 Units</span>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><div class="sv">20</div><div class="sl">Total lessons</div></div>
+    <div class="stat"><div class="sv">5</div><div class="sl">Course units</div></div>
+    <div class="stat"><div class="sv">5</div><div class="sl">Simulations</div></div>
+    <div class="stat"><div class="sv">80</div><div class="sl">Audio files (EN+ES)</div></div>
+  </div>
+
+  <h2 class="section-h">Weekly routine</h2>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+    <a href="#" onclick="show('monday')" style="flex:1;min-width:200px;text-decoration:none">
+      <div class="card" style="border-left:4px solid #1A376A">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:24px">📋</span><span class="monday-badge">Monday Check-In</span></div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Review missing work, track test make-ups, revisit notes from last week's classes. Start every week strong.</p>
+      </div>
+    </a>
+    <a href="#" onclick="show('friday')" style="flex:1;min-width:200px;text-decoration:none">
+      <div class="card" style="border-left:4px solid #2E7D32">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:24px">📅</span><span class="friday-badge">Friday Planning</span></div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Identify upcoming deadlines and activities, build a week-at-a-glance schedule, and commit to a plan for the weekend.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-h">Course units</h2>
+  <div class="card-grid">
+    <a class="unit-card" href="#" onclick="show('unit1')">
+      <div class="uc-icon">🧠</div><div class="uc-label">Unit 1</div>
+      <div class="uc-title">Executive Functioning</div>
+      <div class="uc-count">4 lessons · Working memory, focus, grit, planning</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('unit2')">
+      <div class="uc-icon">💼</div><div class="uc-label">Unit 2</div>
+      <div class="uc-title">Career Pathways</div>
+      <div class="uc-count">4 lessons · MN clusters, trades, tech, agriculture</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('unit3')">
+      <div class="uc-icon">📚</div><div class="uc-label">Unit 3</div>
+      <div class="uc-title">Academic Preparation</div>
+      <div class="uc-count">4 lessons · Reading, writing, study science, advocacy</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('unit4')">
+      <div class="uc-icon">📅</div><div class="uc-label">Unit 4</div>
+      <div class="uc-title">9th Grade Year Plan</div>
+      <div class="uc-count">4 lessons · HS 101, scheduling, activities, sleep</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('unit5')">
+      <div class="uc-icon">🎓</div><div class="uc-label">Unit 5</div>
+      <div class="uc-title">Transition to High School</div>
+      <div class="uc-count">4 lessons · GPA, 9th grade cliff, course selection, curiosity</div>
+    </a>
+  </div>
+
+  <h2 class="section-h">Interactive simulations</h2>
+  <div class="card-grid">
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-ef').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">🧠</div><div class="uc-title">EF Brain Challenge</div><div class="uc-count">Unit 1 · Test your working memory & focus</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-career').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">💼</div><div class="uc-title">Career Cluster Explorer</div><div class="uc-count">Unit 2 · Match your interests to career fields</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-study').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">📚</div><div class="uc-title">Study Strategy Picker</div><div class="uc-count">Unit 3 · Choose the right strategy for the situation</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-schedule').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">📅</div><div class="uc-title">Weekly Schedule Builder</div><div class="uc-count">Unit 4 · Build a realistic high school week</div>
+    </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-gpa').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">🎓</div><div class="uc-title">GPA Calculator</div><div class="uc-count">Unit 5 · See how grades affect weighted GPA</div>
+    </a>
+  </div>
+</div>
+
+<!-- UNIT 1 -->
+<div id="page-unit1" class="page">
+  <div class="page-hero"><div class="page-hero-icon">🧠</div><div><h1>Unit 1 · Executive Functioning</h1><p>The mental skills behind every good decision — attention, working memory, flexible thinking, and self-control.</p><span class="hero-badge">4 Lessons</span></div></div>
+  <div class="card" style="margin-bottom:16px"><p style="font-size:14px;line-height:1.7;color:var(--muted)">Executive function is the air traffic control system of the brain. Students learn what it is, why it peaks in the mid-20s, and — most importantly — how to build it right now through habits, systems, and practice. Lessons cover prioritization, focus, managing distraction, and developing grit.</p></div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td class="lesson-num">1.1</td><td><strong>What Is Executive Function?</strong></td><td>Prefrontal cortex, working memory, inhibitory control, cognitive flexibility</td><td>Harvard — Brain's Air Traffic Control System (2 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">1.2</td><td><strong>Prioritization & Planning</strong></td><td>Eisenhower Matrix, urgent vs. important, weekly planning</td><td>Sprouts — The Eisenhower Matrix (4 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">1.3</td><td><strong>Focus & Managing Distraction</strong></td><td>Multitasking myth, deep work, phone-free zones, Pomodoro</td><td>National Geographic — Multitasking Is a Myth (3 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">1.4</td><td><strong>Grit & Self-Control</strong></td><td>Angela Duckworth's grit framework, delayed gratification, marshmallow test</td><td>TED — Grit: Power of Passion & Perseverance (6 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- UNIT 2 -->
+<div id="page-unit2" class="page">
+  <div class="page-hero"><div class="page-hero-icon">💼</div><div><h1>Unit 2 · Career Pathways</h1><p>Minnesota's six career clusters, real salaries, day-in-the-life videos, and a Holland Code inventory.</p><span class="hero-badge">4 Lessons</span></div></div>
+  <div class="card" style="margin-bottom:16px"><p style="font-size:14px;line-height:1.7;color:var(--muted)">Students explore what careers exist, what they actually pay, and which ones match their personality — before they choose high school electives. Special attention to skilled trades and agriculture, which are often overlooked but offer strong local job markets in Minnesota.</p></div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td class="lesson-num">2.1</td><td><strong>Minnesota Career Clusters</strong></td><td>MDE's 6 career fields, cluster exploration, local employers</td><td>MDE — Minnesota Career Pathways (4 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">2.2</td><td><strong>Skilled Trades & Healthcare</strong></td><td>Day-in-the-life, Mike Rowe argument, apprenticeships, wages</td><td>CareerOneStop — Skilled Trades & Healthcare (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">2.3</td><td><strong>Tech, Arts & Business</strong></td><td>Median salaries, career ladders, CS pathways, creative economy</td><td>CareerOneStop — Tech, Arts & Business (4 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">2.4</td><td><strong>Agriculture & Natural Resources</strong></td><td>Modern ag careers, Holland Code RIASEC, personality-career fit</td><td>CareerOneStop — Agriculture & Natural Resources (4 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- UNIT 3 -->
+<div id="page-unit3" class="page">
+  <div class="page-hero"><div class="page-hero-icon">📚</div><div><h1>Unit 3 · Academic Preparation</h1><p>The science of learning — reading strategies, writing process, study techniques, and asking for help.</p><span class="hero-badge">4 Lessons</span></div></div>
+  <div class="card" style="margin-bottom:16px"><p style="font-size:14px;line-height:1.7;color:var(--muted)">Students learn how their brain actually learns — retrieval practice, spaced repetition, and interleaving outperform re-reading every time. They also practice the writing process, active annotation, and the skill nobody teaches: how to ask for help effectively.</p></div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td class="lesson-num">3.1</td><td><strong>Active Reading Strategies</strong></td><td>SQ3R, annotation, active vs. passive reading, neuroplasticity</td><td>Thomas Frank — Active Reading Strategies (8 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">3.2</td><td><strong>The Writing Process</strong></td><td>Drafting without getting stuck, revision vs. editing, finding your argument</td><td>Thomas Frank — Write a Great First Draft (7 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">3.3</td><td><strong>Study Science</strong></td><td>Retrieval practice, spaced repetition, interleaving, Feynman technique</td><td>Sprouts — How to Study Effectively (6 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">3.4</td><td><strong>Self-Advocacy & Backward Planning</strong></td><td>How to ask for help, making a "good ask," backward planning from deadlines</td><td>The Art of Improvement — How to Ask for Help (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- UNIT 4 -->
+<div id="page-unit4" class="page">
+  <div class="page-hero"><div class="page-hero-icon">📅</div><div><h1>Unit 4 · 9th Grade Year Plan</h1><p>GPA, scheduling, extracurriculars, and sleep — four things that determine how freshman year goes.</p><span class="hero-badge">4 Lessons</span></div></div>
+  <div class="card" style="margin-bottom:16px"><p style="font-size:14px;line-height:1.7;color:var(--muted)">Students build a concrete picture of what 9th grade will look like — before it starts. Includes Two Rivers High School specifics (Warrior Seminar, course options), how GPA is calculated, the research on extracurricular involvement, and Matt Walker's science of sleep.</p></div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td class="lesson-num">4.1</td><td><strong>High School 101</strong></td><td>How HS is different, GPA basics, Warrior Seminar, first-week tips</td><td>College Board — High School 101 (5 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">4.2</td><td><strong>Building Your Schedule</strong></td><td>Course selection, electives, balancing rigor and free time, alternates</td><td>School Counseling Videos — How to Build a HS Schedule (6 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">4.3</td><td><strong>Extracurriculars & Identity</strong></td><td>Research on involvement, time management as student-athlete, finding your thing</td><td>College Prep Academy — Why Join a Club or Sport (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">4.4</td><td><strong>Sleep as Performance</strong></td><td>Matt Walker's research, memory consolidation, sleep deprivation effects, habits</td><td>TED — Sleep Is Your Superpower (Matt Walker, 5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- UNIT 5 -->
+<div id="page-unit5" class="page">
+  <div class="page-hero"><div class="page-hero-icon">🎓</div><div><h1>Unit 5 · Transition to High School</h1><p>Transcripts, the 9th grade cliff, course registration, and the art of asking better questions.</p><span class="hero-badge">4 Lessons</span></div></div>
+  <div class="card" style="margin-bottom:16px"><p style="font-size:14px;line-height:1.7;color:var(--muted)">The final unit makes the transition concrete. Students understand what a transcript is, what the "9th grade cliff" research says, how to navigate course registration strategically, and how curiosity and great questions are the secret skills that unlock every classroom.</p></div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td class="lesson-num">5.1</td><td><strong>Transcripts & GPA Deep Dive</strong></td><td>Weighted vs. unweighted, grade portal, what colleges see, recovery paths</td><td>Signet Education — GPA Explained (4 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">5.2</td><td><strong>The 9th Grade Cliff</strong></td><td>BARR research, warning signs, protective factors, who to go to for help</td><td>AVID — The 9th Grade Cliff (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">5.3</td><td><strong>Smart Course Selection</strong></td><td>AP vs. regular, alternates strategy, talking to counselors, honors decisions</td><td>College Prep Academy — How to Choose HS Classes (7 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">5.4</td><td><strong>Curiosity & Active Listening</strong></td><td>Asking better questions, active listening, how curiosity shapes relationships</td><td>TED-Ed — How to Ask Better Questions (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MONDAY CHECK-IN -->
+<div id="page-monday" class="page">
+  <div class="page-hero" style="background:linear-gradient(135deg,#0D2B5E 0%,#1A376A 100%)">
+    <div class="page-hero-icon">📋</div>
+    <div><h1>Monday Check-In</h1><p>Start every week by looking back — missing work, test make-ups, notes review, and setting a weekly goal.</p><span class="hero-badge" style="background:#F5B800;color:#0D2B5E">Repeatable · 18 Weeks</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#1A376A">📝 Missing Work Tracker</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">For each class: list any assignment that is missing, its due date, and your plan to complete it. Nothing leaves Monday without a make-up commitment.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#1A376A">📊 Test & Quiz Review</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">List any tests from last week, your score, and what you would study differently. If a make-up is needed, write the date it's scheduled.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#1A376A">📓 Notes Review</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">For each class: most important idea from last week's notes. What are you still confused about? Share one with a partner.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#1A376A">🏆 Weekly Win + Goal</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">Name one win from last week (any size). Set one specific, measurable goal for this week. Write it as an "I will..." statement.</p></div>
+  </div>
+  <div class="card"><p style="font-size:13px;color:var(--muted);line-height:1.7"><strong>Teacher note:</strong> The Monday Check-In workbook pages (18 weeks, print-ready PDF) are available in Teacher Resources. The matching PPTX slide deck guides the class through each section with a navy blue theme and 3-slide sequence: overview → missing work/test tracker → notes review and goal.</p></div>
+</div>
+
+<!-- FRIDAY PLANNING -->
+<div id="page-friday" class="page">
+  <div class="page-hero" style="background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 100%)">
+    <div class="page-hero-icon">📅</div>
+    <div><h1>Friday Planning</h1><p>End every week by looking ahead — deadlines, activities, a full schedule grid, and a commitment to show up ready.</p><span class="hero-badge" style="background:#F5B800;color:#1B5E20">Repeatable · 18 Weeks</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#2E7D32">📌 Upcoming Deadlines</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">List every assignment, test, or project due in the next two weeks — class, task, and due date. Highlight anything due Monday or Tuesday.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#2E7D32">⚽ Activities Tracker</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">Mon–Sun: what do you have in the afternoon? Evening? Sports, jobs, family, appointments. See the full picture before you commit to anything.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#2E7D32">🗓 Week-at-a-Glance Grid</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">Monday–Friday with 3PM–10PM time blocks. Fill in fixed commitments first, then schedule study time around them. No blank evenings.</p></div>
+    <div class="card"><h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#2E7D32">✅ Weekend Commitment</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">Five specific things you commit to doing this weekend. Not vague goals — actual tasks with a day attached. Sign it. Hold yourself to it.</p></div>
+  </div>
+  <div class="card"><p style="font-size:13px;color:var(--muted);line-height:1.7"><strong>Teacher note:</strong> Friday Planning workbook pages (18 weeks, print-ready PDF) available in Teacher Resources. The matching PPTX slides use a forest green theme and guide the class through 3 slides: overview → deadlines/activities → week grid and commitment.</p></div>
+</div>
+
+<!-- SIMULATIONS -->
+<div id="page-sims" class="page">
+  <div class="page-hero"><div class="page-hero-icon">🎮</div><div><h1>Interactive Simulations</h1><p>Five hands-on simulations — one per unit. Project on the board or let students explore on their own device.</p></div></div>
+
+  <div class="sim-card" id="sim-ef">
+    <div class="sim-header-bar"><span class="sh-icon">🧠</span><div><div class="sh-title">EF Brain Challenge</div><div class="sh-sub">Unit 1 · Executive Function — test working memory, inhibitory control, and cognitive flexibility</div></div></div>
+    <div id="ef-mount"></div>
+  </div>
+
+  <div class="sim-card" id="sim-career">
+    <div class="sim-header-bar"><span class="sh-icon">💼</span><div><div class="sh-title">Career Cluster Explorer</div><div class="sh-sub">Unit 2 · Career Pathways — answer interest questions to discover your top career clusters</div></div></div>
+    <div id="career-mount"></div>
+  </div>
+
+  <div class="sim-card" id="sim-study">
+    <div class="sim-header-bar"><span class="sh-icon">📚</span><div><div class="sh-title">Study Strategy Picker</div><div class="sh-sub">Unit 3 · Academic Prep — match the right study technique to the situation</div></div></div>
+    <div id="study-mount"></div>
+  </div>
+
+  <div class="sim-card" id="sim-schedule">
+    <div class="sim-header-bar"><span class="sh-icon">📅</span><div><div class="sh-title">Weekly Schedule Builder</div><div class="sh-sub">Unit 4 · 9th Grade Plan — build a realistic high school week and see where study time fits</div></div></div>
+    <div id="schedule-mount"></div>
+  </div>
+
+  <div class="sim-card" id="sim-gpa">
+    <div class="sim-header-bar"><span class="sh-icon">🎓</span><div><div class="sh-title">GPA Calculator</div><div class="sh-sub">Unit 5 · HS Transition — enter your grades and course types to see weighted vs. unweighted GPA</div></div></div>
+    <div id="gpa-mount"></div>
+  </div>
+</div>
+
+<!-- TEACHER RESOURCES -->
+<div id="page-teacher" class="page">
+  <div class="page-hero"><div class="page-hero-icon">📋</div><div><h1>Teacher Resources</h1><p>Everything you need to run Warrior Prep — slide deck, workbook, weekly templates, audio files, and pacing guide.</p></div></div>
+
+  <h2 class="section-h">Downloadable materials</h2>
+  <div class="card">
+    <div class="resource-row"><div class="resource-icon">📊</div><div><div class="resource-title">Teacher Slide Deck (PPTX) <span class="resource-badge">292 slides</span></div><div class="resource-desc">Full presentation with YouTube video slides (clickable buttons), Cornell notes frames, Monday/Friday routine slides, and discussion prompts for all 20 lessons.</div></div></div>
+    <div class="resource-row"><div class="resource-icon">📄</div><div><div class="resource-title">Student Workbook (PDF) <span class="resource-badge">Print-ready</span></div><div class="resource-desc">Cornell notes, bilingual readings with audio references, discussion stories, exit tickets, vocabulary, and writing frames for all 20 lessons.</div></div></div>
+    <div class="resource-row"><div class="resource-icon">📅</div><div><div class="resource-title">Weekly Templates (PDF) <span class="resource-badge">18 weeks · 37 pages</span></div><div class="resource-desc">Monday Check-In and Friday Planning pages — one pair per week, repeatable all semester. Navy/green color themes match the slide deck.</div></div></div>
+    <div class="resource-row"><div class="resource-icon">📊</div><div><div class="resource-title">Weekly Routine Slide Deck (PPTX) <span class="resource-badge">7 slides</span></div><div class="resource-desc">Standalone deck: 3 Monday Check-In slides (navy) + 3 Friday Planning slides (green) + cover. Use every week, separate from the main deck.</div></div></div>
+    <div class="resource-row"><div class="resource-icon">🎧</div><div><div class="resource-title">Audio Files (M4A) <span class="resource-badge">80 files</span></div><div class="resource-desc">20 stories + 20 readings in English (Samantha) and Spanish (Paulina). Referenced in workbook with file names for easy LMS upload.</div></div></div>
+    <div class="resource-row"><div class="resource-icon">📝</div><div><div class="resource-title">Standards Alignment Guide</div><div class="resource-desc">Maps all 20 lessons to MN Academic Standards, FACS standards, Career & College Readiness, and 21st Century Skills.</div></div></div>
+  </div>
+
+  <h2 class="section-h">Pacing guide</h2>
+  <div class="card">
+    <table class="lesson-table">
+      <thead><tr><th>Unit</th><th>Lessons</th><th>Suggested weeks</th><th>Semester</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Executive Functioning</td><td>1.1–1.4 (4)</td><td>2 weeks</td><td>Fall</td></tr>
+        <tr><td>2 · Career Pathways</td><td>2.1–2.4 (4)</td><td>2 weeks</td><td>Fall</td></tr>
+        <tr><td>3 · Academic Preparation</td><td>3.1–3.4 (4)</td><td>2 weeks</td><td>Fall/Spring</td></tr>
+        <tr><td>4 · 9th Grade Year Plan</td><td>4.1–4.4 (4)</td><td>2 weeks</td><td>Spring</td></tr>
+        <tr><td>5 · Transition to HS</td><td>5.1–5.4 (4)</td><td>2 weeks</td><td>Spring</td></tr>
+        <tr><td colspan="2"><strong>Monday/Friday routine</strong></td><td>Every week</td><td>All semester</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-h">Each lesson includes</h2>
+  <div class="card-grid">
+    <div class="card"><strong>📺 YouTube video slide</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">Clickable "Watch" button in the deck. Every lesson has a primary video + alternate backup. Watch-for prompt guides student attention.</p></div>
+    <div class="card"><strong>🎧 Audio (EN + ES)</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">Story and reading narrated in English and Spanish for ELL support and accessibility. File names referenced in the student workbook.</p></div>
+    <div class="card"><strong>📖 Discussion story</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">Realistic fiction with recurring characters navigating 8th-grade situations. 5 discussion questions per story.</p></div>
+    <div class="card"><strong>📰 Informational reading</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">1–2 page non-fiction with source citation and 5 comprehension questions. Referenced audio file on the reading page.</p></div>
+    <div class="card"><strong>✏️ Cornell notes</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">Pre-printed cue questions in the left column + blank note space. Summary section at bottom of each page.</p></div>
+    <div class="card"><strong>🚪 Exit ticket</strong><p style="font-size:13px;color:var(--muted);margin-top:6px">One targeted question per lesson tied to the main objective. Quick check before dismissal.</p></div>
+  </div>
+</div>
+</div>
+
+<script>
+function show(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===pageId));
+  const t=document.getElementById('page-'+pageId);
+  if(t){t.classList.add('active');window.scrollTo(0,0);}
+  if(pageId==='sims'&&!simsLoaded)loadSims();
+  return false;
+}
+
+let simsLoaded=false;
+function loadSims(){simsLoaded=true;buildEFSim();buildCareerSim();buildStudySim();buildScheduleSim();buildGPASim();}
+
+function mountSim(mountId,html){
+  const mount=document.getElementById(mountId);
+  const iframe=document.createElement('iframe');
+  iframe.style.cssText='width:100%;border:none;min-height:480px;display:block';
+  iframe.srcdoc=`<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a;background:#fff;padding:16px 20px}
+:root{
+--color-text-primary:#1a1a1a;--color-text-secondary:#666;
+--color-background-primary:#fff;--color-background-secondary:#f5f5f5;
+--color-background-success:#eaf3de;--color-background-danger:#fcebeb;--color-background-warning:#faeeda;--color-background-info:#e6f1fb;
+--color-text-success:#173404;--color-text-danger:#791f1f;--color-text-warning:#412402;--color-text-info:#042c53;
+--color-border-tertiary:rgba(0,0,0,.12);--color-border-secondary:rgba(0,0,0,.22);
+--border-radius-md:8px;--border-radius-lg:12px;
+}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:99px;background:#e0e0e0;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#c41230;cursor:pointer}
+select,input[type=text],input[type=number]{padding:7px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1a1a1a;font-family:inherit}
+button{padding:8px 16px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#1a1a1a;cursor:pointer;font-size:13px;font-family:inherit;transition:background .15s}
+button:hover{background:#f5f5f5}
+button.primary{background:#c41230;color:#fff;border-color:#c41230}
+button.primary:hover{background:#8B0000}
+</style>
+</head><body>${html}</body></html>`;
+  iframe.onload=()=>{
+    const resize=()=>{try{iframe.style.height=iframe.contentDocument.body.scrollHeight+32+'px';}catch(e){}};
+    resize();
+    iframe.contentWindow.addEventListener('resize',resize);
+    new MutationObserver(resize).observe(iframe.contentDocument.body,{childList:true,subtree:true,attributes:true});
+  };
+  mount.appendChild(iframe);
+}
+
+// ── EF BRAIN CHALLENGE ──────────────────────────────────────────────
+function buildEFSim(){mountSim('ef-mount',`
+<style>
+.ef-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.ef-tab{padding:8px 16px;border-radius:99px;border:1px solid #e0e0e0;background:#f5f5f5;font-size:13px;cursor:pointer;color:#666;font-weight:500}
+.ef-tab.active{background:#c41230;color:#fff;border-color:#c41230}
+.game-area{background:#f9f9f9;border-radius:10px;border:1px solid #e0e0e0;padding:20px;text-align:center;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.big-display{font-size:48px;font-weight:700;color:#1a1a1a;letter-spacing:4px;min-height:60px;display:flex;align-items:center;justify-content:center}
+.instruction{font-size:14px;color:#666;max-width:400px;line-height:1.6}
+.answer-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.answer-btn{min-width:80px;font-size:16px;font-weight:600;padding:12px 20px;border-radius:10px;border:2px solid #e0e0e0;background:#fff;cursor:pointer;transition:all .15s}
+.answer-btn:hover{border-color:#c41230;background:#fdecea}
+.score-row{display:flex;gap:20px;justify-content:center;font-size:13px;color:#666;margin-bottom:1rem}
+.score-row strong{color:#1a1a1a}
+.result-box{border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;min-height:42px;width:100%;max-width:400px}
+.result-box.ok{background:#eaf3de;color:#173404}
+.result-box.bad{background:#fcebeb;color:#791f1f}
+.result-box.info{background:#e6f1fb;color:#042c53}
+</style>
+<div style="padding-top:4px">
+<div class="ef-tabs">
+  <div class="ef-tab active" onclick="switchGame('memory',this)">🧠 Working Memory</div>
+  <div class="ef-tab" onclick="switchGame('inhibit',this)">🛑 Inhibitory Control</div>
+  <div class="ef-tab" onclick="switchGame('flex',this)">🔄 Cognitive Flexibility</div>
+</div>
+<div class="score-row"><span>Round: <strong id="round-num">1</strong></span><span>Score: <strong id="score-num">0</strong></span><span>Best: <strong id="best-num">0</strong></span></div>
+<div class="game-area" id="game-area"></div>
+<div class="result-box info" id="result-box" style="margin-top:12px;text-align:center">Pick a challenge above and press Start.</div>
+<div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+  <button class="primary" onclick="startGame()">Start / Next round</button>
+  <button onclick="resetGame()">Reset</button>
+</div>
+</div>
+<script>
+let currentGame='memory',score=0,best=0,round=1,waitingAnswer=false,correctAnswer=null,sequence=[],seqPos=0,showPhase=true;
+const COLORS=['🔴','🔵','🟡','🟢','🟣'];
+const STROOP=[{word:'RED',color:'#E24B4A'},{word:'BLUE',color:'#378ADD'},{word:'GREEN',color:'#3B6D11'},{word:'YELLOW',color:'#BA7517'},{word:'PURPLE',color:'#7F77DD'}];
+function switchGame(g,tab){currentGame=g;document.querySelectorAll('.ef-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');resetGame();}
+function resetGame(){score=0;round=1;best=Math.max(best,score);document.getElementById('score-num').textContent=0;document.getElementById('round-num').textContent=1;document.getElementById('best-num').textContent=best;document.getElementById('game-area').innerHTML='<div class="instruction">Press <strong>Start</strong> to begin the challenge.</div>';document.getElementById('result-box').className='result-box info';document.getElementById('result-box').textContent='Pick a challenge above and press Start.';}
+function startGame(){
+  if(currentGame==='memory')startMemory();
+  else if(currentGame==='inhibit')startInhibit();
+  else startFlex();
+}
+function startMemory(){
+  const len=Math.min(3+Math.floor(round/2),8);
+  sequence=[...Array(len)].map(()=>COLORS[Math.floor(Math.random()*5)]);
+  seqPos=0;showPhase=true;waitingAnswer=false;
+  const ga=document.getElementById('game-area');
+  ga.innerHTML='<div class="instruction">Memorize the sequence, then tap it back in order.</div><div class="big-display" id="seq-display">Ready?</div>';
+  let i=0;
+  const show=()=>{if(i<sequence.length){document.getElementById('seq-display').textContent=sequence[i];i++;setTimeout(show,700);}else{document.getElementById('seq-display').textContent='Your turn!';showAnswerBtns();}};
+  setTimeout(show,600);
+}
+function showAnswerBtns(){waitingAnswer=true;const ga=document.getElementById('game-area');const row=document.createElement('div');row.className='answer-row';COLORS.forEach(c=>{const b=document.createElement('button');b.className='answer-btn';b.style.fontSize='28px';b.textContent=c;b.onclick=()=>{if(!waitingAnswer)return;if(sequence[seqPos]===c){seqPos++;document.getElementById('result-box').className='result-box ok';document.getElementById('result-box').textContent='✓ Correct! Keep going…';if(seqPos>=sequence.length){score++;round++;document.getElementById('score-num').textContent=score;document.getElementById('round-num').textContent=round;document.getElementById('result-box').textContent='🎉 Full sequence! Next round adds one more item.';waitingAnswer=false;}}else{document.getElementById('result-box').className='result-box bad';document.getElementById('result-box').textContent='✗ Wrong! The answer was '+sequence[seqPos]+'. Score: '+score+'. Press Start to try again.';waitingAnswer=false;}};row.appendChild(b);});ga.appendChild(row);}
+function startInhibit(){
+  const items=[{word:'ODD',val:3},{word:'EVEN',val:4},{word:'ODD',val:7},{word:'EVEN',val:2},{word:'ODD',val:5}];
+  const item=items[Math.floor(Math.random()*items.length)];
+  const nums=currentGame==='inhibit'?[1,2,3,4,5,6,7,8,9]:[1,2,3,4,5,6,7,8,9];
+  const choices=[...new Set([item.val,...nums.filter(n=>(item.word==='ODD'?n%2===0:n%2!==0)).slice(0,3)])].sort(()=>Math.random()-.5).slice(0,4);
+  if(!choices.includes(item.val))choices[0]=item.val;
+  const shuffled=choices.sort(()=>Math.random()-.5);
+  correctAnswer=item.val;
+  const ga=document.getElementById('game-area');
+  ga.innerHTML='<div class="instruction">Press a number that is <strong>'+item.word+'</strong>.<br><em>(Inhibitory control: resist pressing the first number you see.)</em></div><div class="big-display" style="color:#c41230">'+item.word+'</div><div class="answer-row" id="num-btns"></div>';
+  const row=document.getElementById('num-btns');
+  shuffled.forEach(n=>{const b=document.createElement('button');b.className='answer-btn';b.style.fontSize='20px';b.textContent=n;b.onclick=()=>handleInhibit(n===item.val,item,n);row.appendChild(b);});
+  waitingAnswer=true;
+}
+function handleInhibit(ok,item,chosen){if(!waitingAnswer)return;waitingAnswer=false;if(ok){score++;round++;document.getElementById('score-num').textContent=score;document.getElementById('round-num').textContent=round;document.getElementById('result-box').className='result-box ok';document.getElementById('result-box').textContent='✓ Correct! '+chosen+' is '+item.word+'.';}else{document.getElementById('result-box').className='result-box bad';document.getElementById('result-box').textContent='✗ '+chosen+' is not '+item.word+'. The answer was '+item.val+'. Score: '+score+'.';}setTimeout(startGame,1200);}
+function startFlex(){
+  const rules=[{rule:'Press the LARGER number',get:(a,b)=>a>b?a:b},{rule:'Press the SMALLER number',get:(a,b)=>a<b?a:b},{rule:'Press the EVEN number',get:(a,b)=>a%2===0?a:(b%2===0?b:null)},{rule:'Press the ODD number',get:(a,b)=>a%2!==0?a:(b%2!==0?b:null)}];
+  const r=rules[Math.floor(Math.random()*rules.length)];
+  let a,b,ans;
+  do{a=Math.floor(Math.random()*9)+1;b=Math.floor(Math.random()*9)+1;ans=r.get(a,b);}while(!ans||a===b);
+  correctAnswer=ans;
+  const ga=document.getElementById('game-area');
+  ga.innerHTML='<div class="instruction"><strong>Rule: '+r.rule+'</strong><br><em>(Cognitive flexibility: the rule changes each round.)</em></div><div style="display:flex;gap:32px;justify-content:center;margin:8px 0"><button class="answer-btn" style="font-size:32px;min-width:80px" onclick="handleFlex('+a+'==='+ans+','+ans+','+a+')">'+a+'</button><button class="answer-btn" style="font-size:32px;min-width:80px" onclick="handleFlex('+b+'==='+ans+','+ans+','+b+')">'+b+'</button></div>';
+  waitingAnswer=true;
+}
+function handleFlex(ok,ans,chosen){if(!waitingAnswer)return;waitingAnswer=false;if(ok){score++;round++;document.getElementById('score-num').textContent=score;document.getElementById('round-num').textContent=round;document.getElementById('result-box').className='result-box ok';document.getElementById('result-box').textContent='✓ Correct! The rule changes next round — stay sharp.';}else{document.getElementById('result-box').className='result-box bad';document.getElementById('result-box').textContent='✗ Wrong. The answer was '+ans+'. Score: '+score+'. Watch out — the rule changes!';}setTimeout(startGame,1400);}
+<\/script>`);}
+
+// ── CAREER EXPLORER ─────────────────────────────────────────────────
+function buildCareerSim(){mountSim('career-mount',`
+<style>
+.q-card{background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:1rem}
+.q-text{font-size:15px;font-weight:500;color:#1a1a1a;margin-bottom:14px}
+.q-num{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-weight:600}
+.scale-row{display:flex;align-items:center;gap:8px}
+.scale-label{font-size:12px;color:#999;width:80px}
+.scale-label.right{text-align:right}
+.scale-row input[type=range]{flex:1}
+.cluster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:1rem 0}
+.cluster-card{border-radius:10px;padding:14px;text-align:center}
+.cluster-card .ci{font-size:28px;margin-bottom:6px}
+.cluster-card .cn{font-size:13px;font-weight:600;margin-bottom:4px}
+.cluster-card .cs{font-size:12px}
+.cluster-card .cbar{height:6px;border-radius:99px;margin-top:8px;background:#e0e0e0;overflow:hidden}
+.cluster-card .cfill{height:100%;border-radius:99px;transition:width .4s}
+.result-note{background:#e6f1fb;border-radius:8px;padding:12px 16px;font-size:13px;color:#042c53;margin-top:1rem;line-height:1.6}
+</style>
+<div style="padding-top:4px">
+<div style="font-size:13px;color:#666;margin-bottom:1rem">Rate each statement 1 (not me) to 5 (definitely me) — then see your career cluster matches.</div>
+<div id="questions"></div>
+<button class="primary" onclick="calcClusters()" style="margin-bottom:1rem">See my top clusters →</button>
+<div id="cluster-results" style="display:none">
+  <div style="font-size:15px;font-weight:600;margin-bottom:10px;color:#1a1a1a">Your top career cluster matches:</div>
+  <div class="cluster-grid" id="cluster-grid"></div>
+  <div class="result-note" id="result-note"></div>
+</div>
+</div>
+<script>
+const QS=[
+  {text:'I like building or fixing things with my hands.',clusters:{trades:2,ag:1}},
+  {text:'I enjoy helping people when they are sick, stressed, or struggling.',clusters:{health:2,education:1}},
+  {text:'I like being in charge, organizing teams, or running projects.',clusters:{business:2,gov:1}},
+  {text:'I enjoy being outside and working with plants, animals, or nature.',clusters:{ag:2,env:1}},
+  {text:'I love drawing, music, writing, performing, or designing things.',clusters:{arts:2,comm:1}},
+  {text:'I am good at math, patterns, and solving technical problems.',clusters:{stem:2,it:1}},
+  {text:'I enjoy researching, reading, and learning how things work.',clusters:{stem:1,health:1,ag:1}},
+  {text:'I like talking to people, selling ideas, or persuading others.',clusters:{business:2,comm:1}},
+  {text:'I care about safety, justice, and protecting the community.',clusters:{gov:2,health:1}},
+  {text:'I enjoy working with computers, coding, or technology.',clusters:{it:2,stem:1}},
+];
+const CLUSTERS=[
+  {id:'trades',name:'Skilled Trades',icon:'🔧',color:'#EF9F27',jobs:'Electrician, plumber, welder, carpenter, HVAC tech',score:0},
+  {id:'health',name:'Health & Human Svcs',icon:'🏥',color:'#E24B4A',jobs:'Nurse, physical therapist, social worker, counselor',score:0},
+  {id:'business',name:'Business & Finance',icon:'📈',color:'#378ADD',jobs:'Accountant, manager, entrepreneur, banker',score:0},
+  {id:'ag',name:'Agriculture',icon:'🌾',color:'#3B6D11',jobs:'Agronomist, vet, food scientist, conservation officer',score:0},
+  {id:'arts',name:'Arts & Communication',icon:'🎨',color:'#D4537E',jobs:'Graphic designer, journalist, musician, filmmaker',score:0},
+  {id:'stem',name:'STEM',icon:'🔬',color:'#7F77DD',jobs:'Engineer, scientist, mathematician, data analyst',score:0},
+  {id:'it',name:'IT & Technology',icon:'💻',color:'#185FA5',jobs:'Software developer, cybersecurity, network admin',score:0},
+  {id:'gov',name:'Gov & Public Safety',icon:'⚖️',color:'#5F5E5A',jobs:'Police, firefighter, lawyer, city planner',score:0},
+  {id:'comm',name:'Community & Education',icon:'🏫',color:'#1D9E75',jobs:'Teacher, counselor, nonprofit leader, social worker',score:0},
+  {id:'env',name:'Environment',icon:'🌿',color:'#0F6E56',jobs:'Conservationist, wildlife biologist, park ranger',score:0},
+];
+function buildQs(){const c=document.getElementById('questions');QS.forEach((q,i)=>{const d=document.createElement('div');d.className='q-card';d.innerHTML='<div class="q-num">Statement '+(i+1)+'</div><div class="q-text">'+q.text+'</div><div class="scale-row"><span class="scale-label">Not me (1)</span><input type="range" id="q'+i+'" min="1" max="5" step="1" value="3"><span class="scale-label right">Definitely me (5)</span></div><div style="text-align:center;font-size:13px;color:#666;margin-top:4px" id="qv'+i+'">3</div>';c.appendChild(d);document.getElementById('q'+i).addEventListener('input',e=>{document.getElementById('qv'+i).textContent=e.target.value;});});}
+function calcClusters(){CLUSTERS.forEach(c=>c.score=0);QS.forEach((q,i)=>{const v=parseInt(document.getElementById('q'+i).value);Object.entries(q.clusters).forEach(([id,w])=>{const cl=CLUSTERS.find(c=>c.id===id);if(cl)cl.score+=v*w;});});const sorted=[...CLUSTERS].sort((a,b)=>b.score-a.score);const maxS=sorted[0].score;const grid=document.getElementById('cluster-grid');grid.innerHTML='';sorted.slice(0,6).forEach((cl,i)=>{const pct=Math.round(cl.score/maxS*100);const d=document.createElement('div');d.className='cluster-card';d.style.background=cl.color+'18';d.style.border='1px solid '+cl.color+'44';d.innerHTML='<div class="ci">'+cl.icon+'</div><div class="cn" style="color:'+cl.color.replace(/3[89]/,'0D').replace(/[A-F]/g,c=>c)+'">'+(i===0?'⭐ ':'')+cl.name+'</div><div class="cs" style="color:#666">Match: '+pct+'%</div><div class="cbar"><div class="cfill" style="width:'+pct+'%;background:'+cl.color+'"></div></div>';grid.appendChild(d);});document.getElementById('result-note').innerHTML='<strong>Your top match: '+sorted[0].icon+' '+sorted[0].name+'</strong><br>Example careers: '+sorted[0].jobs+'.<br><br>Your results reflect your current interests — they\'re a starting point, not a label. Explore the career cluster that surprised you most.';document.getElementById('cluster-results').style.display='block';}
+buildQs();
+<\/script>`);}
+
+// ── STUDY STRATEGY PICKER ────────────────────────────────────────────
+function buildStudySim(){mountSim('study-mount',`
+<style>
+.sc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0 1rem}
+.sc-chip{padding:6px 14px;border-radius:99px;border:1px solid #e0e0e0;background:#f5f5f5;font-size:13px;cursor:pointer;font-weight:500;color:#666}
+.sc-chip.active{border:2px solid #c41230;background:#fdecea;color:#8B0000}
+.scenario-card{background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;padding:16px;margin-bottom:1rem}
+.sc-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:5px}
+.sc-text{font-size:14px;color:#1a1a1a;line-height:1.6}
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:1rem}
+.strat-btn{text-align:left;padding:12px;border-radius:10px;border:1px solid #e0e0e0;background:#fff;cursor:pointer;font-size:13px;color:#1a1a1a;transition:all .15s;line-height:1.5}
+.strat-btn:hover{border-color:#c41230;background:#fdecea}
+.strat-btn.chosen-ok{background:#eaf3de;border-color:#3B6D11;color:#173404}
+.strat-btn.chosen-bad{background:#fcebeb;border-color:#E24B4A;color:#501313}
+.strat-btn:disabled{cursor:default;opacity:.7}
+.feedback{border-radius:8px;padding:12px 14px;font-size:13px;margin-bottom:1rem;line-height:1.6}
+.score-row{font-size:13px;color:#999;margin-bottom:.75rem}
+</style>
+<div style="padding-top:4px">
+<div class="sc-chips" id="sc-chips"></div>
+<div class="score-row" id="score-row">Pick a scenario above to begin.</div>
+<div class="scenario-card" id="scenario-card"><div class="sc-label">Scenario</div><div class="sc-text">Select a scenario above.</div></div>
+<div id="q-text" style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:8px"></div>
+<div class="strategy-grid" id="strat-grid"></div>
+<div class="feedback" id="feedback" style="display:none"></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button id="next-btn" style="display:none;font-size:13px" onclick="nextQ()">Next question →</button>
+  <button id="restart-btn" style="display:none;font-size:13px" onclick="loadSc(curSc.id)">Try again</button>
+</div>
+</div>
+<script>
+const STRATEGIES=[
+  {id:'retrieval',name:'Retrieval practice',desc:'Quiz yourself from memory — no peeking',icon:'🧠'},
+  {id:'spacing',name:'Spaced repetition',desc:'Study a little each day over many days',icon:'📅'},
+  {id:'interleave',name:'Interleaving',desc:'Mix different topics in one study session',icon:'🔀'},
+  {id:'feynman',name:'Feynman technique',desc:'Explain the concept out loud in simple words',icon:'🗣'},
+  {id:'reread',name:'Re-reading notes',desc:'Read your notes again and highlight',icon:'📖'},
+  {id:'practice',name:'Practice problems',desc:'Do many similar problems until they feel automatic',icon:'✏️'},
+  {id:'mindmap',name:'Mind mapping',desc:'Draw connections between ideas visually',icon:'🗺'},
+  {id:'group',name:'Study group',desc:'Quiz each other and teach the material',icon:'👥'},
+];
+const SCENARIOS=[
+  {id:'s1',label:'Big test in 5 days',sit:'You have a history test on chapters 4–7 in 5 days. You have decent notes but have not studied yet.',qs:[
+    {q:'What is the BEST strategy to start with tonight?',best:'spacing',ok:['spacing','retrieval'],explain:'Spacing out review over 5 days is the most powerful approach. Start tonight — even 20 minutes counts.'},
+    {q:'On day 3, you realize you keep forgetting the same two events. What should you do?',best:'retrieval',ok:['retrieval','feynman'],explain:'Retrieval practice — closing your notes and recalling those events — is 2× more effective than re-reading them.'},
+    {q:'The night before, you have 30 minutes. What is the most effective use of time?',best:'retrieval',ok:['retrieval','practice'],explain:'One final retrieval pass. Do NOT start a new strategy or cram new material — consolidate what you know.'},
+  ]},
+  {id:'s2',label:'Hard math concept',sit:'You understand each step when the teacher shows it, but when you try problems alone, you get stuck immediately.',qs:[
+    {q:'What is the best way to practice this kind of math?',best:'practice',ok:['practice','retrieval'],explain:'For procedural skills like math, practice problems build automaticity. Re-reading worked examples is passive and does not build fluency.'},
+    {q:'You keep getting the same type of problem wrong. What should you try?',best:'feynman',ok:['feynman','group'],explain:'The Feynman technique — explaining your process out loud step by step — surfaces exactly where your understanding breaks down.'},
+    {q:'You have a quiz on this AND two other topics tomorrow. How should you study?',best:'interleave',ok:['interleave','practice'],explain:'Interleaving — mixing all three topics — is harder but produces stronger long-term memory than blocking (doing all of one, then all of another).'},
+  ]},
+  {id:'s3',label:'Reading comprehension',sit:'You read the chapter but an hour later you can barely remember what it said.',qs:[
+    {q:'What should you do WHILE reading to actually retain it?',best:'retrieval',ok:['retrieval','feynman'],explain:'Pause every section and recall — close the book and write what you remember. This beats highlighting by a huge margin.'},
+    {q:'After reading, what is the best way to check your understanding?',best:'retrieval',ok:['retrieval','group'],explain:'Quiz yourself on the main ideas. Can you answer the section headers as questions from memory?'},
+    {q:'You have this same kind of reading assignment every week. What habit should you build?',best:'spacing',ok:['spacing','retrieval'],explain:'Reviewing your notes from previous chapters regularly (spacing) keeps them in long-term memory so each new chapter builds on solid ground.'},
+  ]},
+];
+let curSc=null,curQ=0,score=0,answered=false;
+function buildChips(){const w=document.getElementById('sc-chips');SCENARIOS.forEach(s=>{const c=document.createElement('div');c.className='sc-chip';c.id='chip-'+s.id;c.textContent=s.label;c.onclick=()=>loadSc(s.id);w.appendChild(c);});}
+function loadSc(id){curSc=SCENARIOS.find(s=>s.id===id);curQ=0;score=0;answered=false;document.querySelectorAll('.sc-chip').forEach(c=>c.classList.remove('active'));document.getElementById('chip-'+id).classList.add('active');renderQ();}
+function renderQ(){if(!curSc)return;answered=false;const q=curSc.qs[curQ];document.getElementById('scenario-card').innerHTML='<div class="sc-label">Scenario</div><div class="sc-text">'+curSc.sit+'</div>';document.getElementById('score-row').textContent='Question '+(curQ+1)+' of '+curSc.qs.length+' · Score: '+score+'/'+curQ;document.getElementById('q-text').textContent=q.q;const grid=document.getElementById('strat-grid');grid.innerHTML='';STRATEGIES.forEach(s=>{const b=document.createElement('button');b.className='strat-btn';b.innerHTML='<div style="font-size:20px;margin-bottom:4px">'+s.icon+'</div><strong>'+s.name+'</strong><br><span style="font-size:12px;color:#666">'+s.desc+'</span>';b.onclick=()=>handlePick(s.id,b);grid.appendChild(b);});document.getElementById('feedback').style.display='none';document.getElementById('next-btn').style.display='none';document.getElementById('restart-btn').style.display='none';}
+function handlePick(id,btn){if(answered)return;answered=true;const q=curSc.qs[curQ];const ok=q.ok.includes(id);const best=id===q.best;if(ok)score++;document.querySelectorAll('.strat-btn').forEach(b=>b.disabled=true);btn.classList.add(ok?'chosen-ok':'chosen-bad');const best_b=[...document.querySelectorAll('.strat-btn')].find(b=>b.querySelector('strong')&&b.querySelector('strong').textContent===STRATEGIES.find(s=>s.id===q.best).name);if(best_b&&!ok)best_b.classList.add('chosen-ok');const fb=document.getElementById('feedback');fb.style.display='block';fb.style.background=ok?'#eaf3de':'#fcebeb';fb.style.color=ok?'#173404':'#501313';fb.innerHTML=(ok?'<strong>Good choice!</strong> ':'<strong>Not the best fit here.</strong> ')+q.explain;document.getElementById('score-row').textContent='Question '+(curQ+1)+' of '+curSc.qs.length+' · Score: '+score+'/'+(curQ+1);if(curQ+1<curSc.qs.length)document.getElementById('next-btn').style.display='inline-block';else{fb.innerHTML+='<br><br><strong>Done! '+score+'/'+curSc.qs.length+' — '+(score===curSc.qs.length?'Perfect — you know your study science.':score>=2?'Good. Review the strategy you missed.':'Study strategies take practice too. Try again.')+'</strong>';document.getElementById('restart-btn').style.display='inline-block';}}
+function nextQ(){curQ++;renderQ();}
+buildChips();
+<\/script>`);}
+
+// ── SCHEDULE BUILDER ────────────────────────────────────────────────
+function buildScheduleSim(){mountSim('schedule-mount',`
+<style>
+.sched-grid{display:grid;grid-template-columns:80px repeat(5,1fr);gap:4px;margin:1rem 0;font-size:12px}
+.sched-grid .sh{background:#8B0000;color:#fff;text-align:center;padding:6px 4px;border-radius:6px;font-weight:600}
+.sched-grid .time-label{color:#999;text-align:right;padding:4px 6px 4px 0;display:flex;align-items:center;justify-content:flex-end;font-size:11px}
+.sched-cell{border:1.5px dashed #ddd;border-radius:6px;min-height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center;padding:2px;transition:all .15s;position:relative}
+.sched-cell:hover{border-color:#c41230}
+.sched-cell.filled{border-style:solid;border-width:1px}
+.activity-palette{display:flex;flex-wrap:wrap;gap:6px;margin:.75rem 0 1rem}
+.act-chip{padding:5px 10px;border-radius:6px;border:1px solid transparent;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.act-chip.selected{box-shadow:0 0 0 2px #1a1a1a}
+.summary-bar{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:#666;margin-bottom:1rem}
+.summary-bar strong{color:#1a1a1a}
+.tip-box{background:#f5f5f5;border-radius:8px;padding:10px 14px;font-size:13px;color:#666;min-height:38px;margin-bottom:.75rem}
+</style>
+<div style="padding-top:4px">
+<div style="font-size:13px;color:#666;margin-bottom:6px">Click an activity, then click a time slot to fill your week. Build a realistic high school week.</div>
+<div class="activity-palette" id="act-palette"></div>
+<div class="sched-grid" id="sched-grid"></div>
+<div class="summary-bar" id="summary-bar"></div>
+<div class="tip-box" id="tip-box">Select an activity above, then click any time slot.</div>
+<button onclick="clearSched()" style="font-size:13px">Clear schedule</button>
+</div>
+<script>
+const DAYS=['Mon','Tue','Wed','Thu','Fri'];
+const TIMES=['3 PM','4 PM','5 PM','6 PM','7 PM','8 PM','9 PM'];
+const ACTS=[
+  {id:'school',label:'School / class',color:'#8B0000',bg:'#fdecea',tip:'Core school hours are fixed — build everything else around them.'},
+  {id:'sport',label:'Sport / activity',color:'#1A376A',bg:'#e8edf8',tip:'Extracurriculars are great but take 2–3 hrs/day including travel.'},
+  {id:'homework',label:'Homework / study',color:'#2E7D32',bg:'#eaf3de',tip:'High school typically needs 1–2 hrs of homework per night. Block it in!'},
+  {id:'job',label:'Part-time job',color:'#B8860B',bg:'#fff8e1',tip:'A job adds income but removes study time. 10–15 hrs/week is a common max for student-athletes.'},
+  {id:'family',label:'Family / chores',color:'#5F5E5A',bg:'#f4f4f4',tip:'Family time and responsibilities are real commitments — block them in honestly.'},
+  {id:'free',label:'Free time / sleep prep',color:'#7F77DD',bg:'#edeefe',tip:'Free time is not wasted — it is recovery. Teens need 8–10 hrs of sleep, so a 10 PM wind-down is healthy.'},
+];
+let selAct=null;const schedule={};
+function buildPalette(){const p=document.getElementById('act-palette');ACTS.forEach(a=>{const c=document.createElement('div');c.className='act-chip';c.id='chip-'+a.id;c.style.background=a.bg;c.style.borderColor=a.color;c.style.color=a.color;c.textContent=a.label;c.onclick=()=>{selAct=selAct===a.id?null:a.id;document.querySelectorAll('.act-chip').forEach(x=>x.classList.remove('selected'));if(selAct){c.classList.add('selected');document.getElementById('tip-box').textContent=a.tip;}else document.getElementById('tip-box').textContent='Select an activity above, then click any time slot.';};p.appendChild(c);});}
+function buildGrid(){const g=document.getElementById('sched-grid');g.innerHTML='';const corner=document.createElement('div');g.appendChild(corner);DAYS.forEach(d=>{const h=document.createElement('div');h.className='sh';h.textContent=d;g.appendChild(h);});TIMES.forEach(t=>{const tl=document.createElement('div');tl.className='time-label';tl.textContent=t;g.appendChild(tl);DAYS.forEach(d=>{const key=d+t;const cell=document.createElement('div');cell.className='sched-cell'+(schedule[key]?'filled':'');const act=schedule[key]?ACTS.find(a=>a.id===schedule[key]):null;if(act){cell.style.background=act.bg;cell.style.borderColor=act.color;cell.style.color=act.color;cell.textContent=act.label;}cell.onclick=()=>{if(schedule[key]){delete schedule[key];}else if(selAct){schedule[key]=selAct;}buildGrid();updateSummary();};g.appendChild(cell);});});}
+function updateSummary(){const counts={};ACTS.forEach(a=>counts[a.id]=0);Object.values(schedule).forEach(id=>{if(counts[id]!==undefined)counts[id]++;});const el=document.getElementById('summary-bar');el.innerHTML='';ACTS.forEach(a=>{if(counts[a.id]>0)el.innerHTML+='<span style="color:'+a.color+'"><strong>'+counts[a.id]+'h</strong> '+a.label+'</span>';});const study=counts['homework']||0;const free=counts['free']||0;const tip=document.getElementById('tip-box');if(study===0&&Object.keys(schedule).length>3)tip.textContent='⚠️ No study/homework time blocked yet — high school typically needs 1–2 hours per school night.';else if(study>=4)tip.textContent='✓ Good — you have '+study+' hours of study time blocked this week.';else tip.textContent='You have '+study+' hour(s) of study time. High school homework typically takes 5–10 hours per week total.';}
+function clearSched(){for(const k in schedule)delete schedule[k];buildGrid();updateSummary();}
+buildPalette();buildGrid();
+<\/script>`);}
+
+// ── GPA CALCULATOR ──────────────────────────────────────────────────
+function buildGPASim(){mountSim('gpa-mount',`
+<style>
+.course-row{display:grid;grid-template-columns:1fr 140px 100px 80px;gap:8px;align-items:center;margin-bottom:8px;font-size:13px}
+.course-row.header{font-weight:600;color:#666;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.course-row input[type=text]{font-size:13px}
+.gpa-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1.5rem 0}
+.gpa-card{background:#f5f5f5;border-radius:10px;padding:16px;text-align:center}
+.gpa-card .gv{font-size:32px;font-weight:700}
+.gpa-card .gl{font-size:12px;color:#666;margin-top:4px}
+.gpa-explain{background:#e6f1fb;border-radius:8px;padding:12px 16px;font-size:13px;color:#042c53;line-height:1.6;margin-bottom:1rem}
+.grade-select{padding:6px 8px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1a1a1a;font-family:inherit;width:100%}
+.type-select{padding:6px 8px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1a1a1a;font-family:inherit;width:100%}
+</style>
+<div style="padding-top:4px">
+<div style="font-size:13px;color:#666;margin-bottom:1rem">Enter your courses, grades, and course type to see your weighted and unweighted GPA.</div>
+<div class="course-row header"><div>Course name</div><div>Grade</div><div>Type</div><div></div></div>
+<div id="course-list"></div>
+<button onclick="addCourse()" style="font-size:13px;margin-bottom:1rem">+ Add course</button>
+<div class="gpa-summary">
+  <div class="gpa-card"><div class="gv" id="unwt-gpa" style="color:#c41230">—</div><div class="gl">Unweighted GPA<br>(4.0 scale)</div></div>
+  <div class="gpa-card"><div class="gv" id="wt-gpa" style="color:#1A376A">—</div><div class="gl">Weighted GPA<br>(honors/AP boost)</div></div>
+  <div class="gpa-card"><div class="gv" id="course-count" style="color:#2E7D32">0</div><div class="gl">Courses entered</div></div>
+</div>
+<div class="gpa-explain" id="gpa-explain">Enter at least one course with a grade to see your GPA. Weighted GPA adds 0.5 for Honors and 1.0 for AP/IB courses.</div>
+</div>
+<script>
+const GRADES=[{l:'A',u:4.0},{l:'A-',u:3.7},{l:'B+',u:3.3},{l:'B',u:3.0},{l:'B-',u:2.7},{l:'C+',u:2.3},{l:'C',u:2.0},{l:'C-',u:1.7},{l:'D+',u:1.3},{l:'D',u:1.0},{l:'F',u:0.0}];
+const TYPES=[{l:'Regular',boost:0},{l:'Honors',boost:0.5},{l:'AP / IB',boost:1.0}];
+let courses=[{name:'English 9',grade:'B+',type:'Regular'},{name:'Algebra 1',grade:'A',type:'Regular'},{name:'Biology',grade:'B',type:'Regular'},{name:'World History',grade:'A-',type:'Honors'},{name:'Spanish 1',grade:'B+',type:'Regular'}];
+function buildList(){const c=document.getElementById('course-list');c.innerHTML='';courses.forEach((cr,i)=>{const row=document.createElement('div');row.className='course-row';row.innerHTML='<input type="text" value="'+cr.name+'" oninput="courses['+i+'].name=this.value" style="font-size:13px"><select class="grade-select" onchange="courses['+i+'].grade=this.value;calcGPA()">'+GRADES.map(g=>'<option value="'+g.l+'"'+(g.l===cr.grade?' selected':'')+'>'+g.l+'</option>').join('')+'</select><select class="type-select" onchange="courses['+i+'].type=this.value;calcGPA()">'+TYPES.map(t=>'<option value="'+t.l+'"'+(t.l===cr.type?' selected':'')+'>'+t.l+'</option>').join('')+'</select><button onclick="removeCourse('+i+')" style="font-size:12px;padding:5px 8px;color:#c41230;border-color:#c41230">✕</button>';c.appendChild(row);});calcGPA();}
+function addCourse(){courses.push({name:'New course',grade:'B',type:'Regular'});buildList();}
+function removeCourse(i){courses.splice(i,1);buildList();}
+function calcGPA(){if(!courses.length){document.getElementById('unwt-gpa').textContent='—';document.getElementById('wt-gpa').textContent='—';document.getElementById('course-count').textContent=0;return;}let uSum=0,wSum=0;courses.forEach(cr=>{const g=GRADES.find(x=>x.l===cr.grade)||GRADES[0];const t=TYPES.find(x=>x.l===cr.type)||TYPES[0];uSum+=g.u;wSum+=g.u+t.boost;});const u=uSum/courses.length,w=wSum/courses.length;document.getElementById('unwt-gpa').textContent=u.toFixed(2);document.getElementById('wt-gpa').textContent=w.toFixed(2);document.getElementById('course-count').textContent=courses.length;const diff=w-u;const explain=document.getElementById('gpa-explain');if(diff===0)explain.textContent='Your unweighted and weighted GPA are the same — you have no Honors or AP courses. Weighted GPA could increase your GPA by up to '+((courses.filter(c=>c.type!=='Regular').length===0)?'0.5–1.0 if you add Honors or AP classes.':'N/A.');else explain.innerHTML='Your weighted GPA is <strong>'+diff.toFixed(2)+'</strong> points higher than unweighted — that boost comes from your Honors/AP courses. Colleges often recalculate GPA themselves, but weighted GPA shows course rigor.';}
+buildList();
+<\/script>`);}
+</script>
+</body>
+</html>
