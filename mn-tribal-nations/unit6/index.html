@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 6: Treaties &amp; Place Names — MN Tribal Nations Grade 3</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lesson-hero { background: linear-gradient(135deg, #6B4226, #3A1800); }
+    /* Place names map */
+    #placeCanvas {
+      display: block;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .place-info-box {
+      background: #fff;
+      border: 2px solid var(--earth);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 14px auto 0;
+      max-width: 640px;
+      display: none;
+    }
+    .place-info-box h4 { color: var(--earth); margin-bottom: 6px; }
+    .place-info-box .pin-dakota { color: var(--red); font-weight: bold; font-size: 1.05rem; }
+    .place-info-box .pin-ojibwe { color: var(--green); font-weight: bold; font-size: 1.05rem; }
+    .place-info-box p { font-size: 0.9rem; color: var(--text-soft); margin-top: 6px; }
+    /* Treaty cards */
+    .treaty-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; padding: 24px; }
+    .treaty-card {
+      background: var(--cream);
+      border: 2px solid var(--earth);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .treaty-card .tc-year { font-size: 1.4rem; font-weight: bold; color: var(--earth); }
+    .treaty-card h4 { font-size: 0.95rem; color: var(--text); margin: 4px 0 8px; }
+    .treaty-card p { font-size: 0.82rem; color: var(--text-soft); }
+    /* Student activity */
+    .student-activity {
+      background: var(--gold-pale);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin-bottom: 36px;
+    }
+    .student-activity h3 { color: var(--earth); font-size: 1.1rem; margin-bottom: 10px; }
+    .student-activity ol { padding-left: 20px; }
+    .student-activity li { font-size: 0.95rem; color: var(--text-soft); margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">🌾 MN Tribal Nations — Grade 3</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../unit1/index.html">Unit 1</a>
+      <a href="../unit2/index.html">Unit 2</a>
+      <a href="../unit3/index.html">Unit 3</a>
+      <a href="../unit4/index.html">Unit 4</a>
+      <a href="../unit5/index.html">Unit 5</a>
+      <a href="../unit6/index.html" class="active">Unit 6</a>
+    </div>
+  </div>
+</nav>
+
+<div class="lesson-hero">
+  <h1>🗺️ Treaties &amp; Place Names</h1>
+  <p class="lesson-subtitle">The Names on the Land Tell Us Who Has Always Been Here</p>
+  <div class="lesson-meta">
+    <span class="tag tag-ss">Social Studies</span>
+    <span class="tag tag-ela">ELA</span>
+  </div>
+</div>
+
+<div class="lesson-body">
+
+  <div class="community-note" style="margin-bottom:32px">
+    <strong>⚠ Before You Teach This Unit:</strong> Place name content draws from <a href="https://www.nps.gov/grpo/learn/historyculture/north-shore-place-names.htm" target="_blank">Grand Portage Band — Rivers of the North Shore</a> and <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Ojibwemowin Roads &amp; Buildings</a>, both linked through <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>. Dakota place names from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> and the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">Lower Sioux Caŋṡayapi curriculum</a>. Treaty content is age-appropriate and does not include details of historical trauma — preview with your community contacts.
+  </div>
+
+  <!-- STORY -->
+  <div class="story-reader" id="storyReader">
+    <div class="story-header">
+      <span class="story-icon">📖</span>
+      <div>
+        <h2>Names Remember</h2>
+        <p>A story with Miigizi and Winona</p>
+      </div>
+    </div>
+    <div class="story-pages">
+      <div class="story-page active">
+        <p>Miigizi's class had a project: find the original name of a place near your home.</p>
+        <p>He typed his street address into a search and found something surprising. The neighborhood he lived in — just south of downtown Minneapolis — sat on land near <span class="ojibwe-word" data-tip="Bde Maka Ska (bdeh mah-KAH skah) — White Earth Lake, the Dakota name for what is now called Lake Calhoun in Minneapolis. In 2018, the lake was officially renamed Bde Maka Ska. A small but meaningful example of place name restoration. From MDE IEFA and Dakhota.org resources.">Bde Maka Ska</span>.</p>
+        <p>"That's the Dakota name," Winona told him the next day at school. "My dad told me. It means White Earth Lake. They changed it back a few years ago — the city voted to use the original name."</p>
+        <p>Miigizi felt something warm about that. "So the name was there this whole time. We just stopped using it for a while."</p>
+        <p>"Names remember," Winona said. "Even when people forget."</p>
+      </div>
+      <div class="story-page">
+        <p>In social studies, they learned about treaties. A treaty is a formal agreement between two nations — like a country-to-country promise.</p>
+        <p>"The United States and the tribal nations signed treaties," their teacher said. "Tribal nations agreed to share land. In return, the US government promised certain rights — like the right to fish, hunt, and gather in their traditional territories, forever."</p>
+        <p>"Did they keep the promises?" Miigizi asked.</p>
+        <p>His teacher paused. "Not always. That's a hard and true thing. But tribal nations have fought in courts to protect their treaty rights — and they've won important cases."</p>
+        <p>"So the promises are still real?" Winona asked.</p>
+        <p>"Yes," her teacher said. "Treaties are still the law."</p>
+      </div>
+      <div class="story-page">
+        <p>For his project, Miigizi found the Ojibwe name for a lake near his grandparents' home up north.</p>
+        <p>The lake was called Leech Lake on maps. But its Ojibwe name was <span class="ojibwe-word" data-tip="Miskwaaziibiing (mis-KWAH-zee-beeng) — the Ojibwe name for the area around what is now called Leech Lake, meaning 'place of red pike.' The Leech Lake Band of Ojibwe is one of Minnesota's seven Anishinaabe bands. From Fond du Lac Ojibwemowin Roads and Buildings resource via MDE IEFA.">Miskwaaziibiing</span> — place of red pike.</p>
+        <p>"That's a better name," he said. "It tells you something about the place."</p>
+        <p>He looked up more names. <span class="ojibwe-word" data-tip="Gaa-miskwaawaakokaag (gah-mis-kwah-WAH-koh-kahg) — the Ojibwe name for what is now called Red Lake (Red Lake Band's homeland). From Fond du Lac Ojibwemowin Roads and Buildings, via MDE IEFA.">Gaa-miskwaawaakokaag</span> — Red Lake. <span class="ojibwe-word" data-tip="Gaa-wiindamaagozid (gah-ween-dah-MAH-goh-zid) — the Ojibwe name for the area of Fond du Lac. From Fond du Lac Ojibwemowin Roads and Buildings resource, linked through MDE IEFA.">Gaa-wiindamaagozid</span> — Fond du Lac. Each name was a description. Each one carried knowledge of the land.</p>
+      </div>
+      <div class="story-page">
+        <p>Winona's project focused on a place near Shakopee.</p>
+        <p>She found that the Minnesota River had been called <span class="dakota-word" data-tip="Mní Sóta Wakpá (mnee-SOH-tah wahk-PAH) — the Dakota name for the Minnesota River, meaning 'sky-tinted water river.' This is where the state name 'Minnesota' comes from. From Dakhota.org and MDE IEFA Lower Sioux Caŋṡayapi curriculum.">Mní Sóta Wakpá</span> — sky-tinted water river — long before anyone called it the Minnesota River.</p>
+        <p>"Minnesota comes from our word," she wrote in her report. "This state was named after something Dakota people noticed about the water. We named it first."</p>
+        <p>At the end of the project, the class made a map — their town, with both names for every place they could find. Old name and new name, together.</p>
+        <p>It felt like meeting the land for the first time. Even though they'd lived here all along.</p>
+      </div>
+    </div>
+    <div class="story-nav">
+      <button class="prev-btn" disabled>← Previous</button>
+      <span class="story-progress">Page 1 of 4</span>
+      <button class="next-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="source-citation">
+    <strong>📚 Story Sources</strong>
+    Ojibwe place names from <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Ojibwemowin Roads &amp; Buildings</a> and <a href="https://www.nps.gov/grpo/learn/historyculture/north-shore-place-names.htm" target="_blank">Grand Portage Band — Rivers of the North Shore</a>, both via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>. Dakota place names from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> and <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">Lower Sioux Caŋṡayapi curriculum</a>. Bde Maka Ska name restoration is documented public record (2018 Hennepin County Board vote).
+  </div>
+
+  <!-- PLACE NAMES MAP -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--earth), #3A1800);">
+      <span class="sec-icon">📍</span>
+      <div>
+        <h2>Minnesota Place Names Map</h2>
+        <p>Tap a location to see its original Dakota or Ojibwe name &nbsp;·&nbsp; Sources: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE IEFA</a>, <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a>, <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank" style="color:#fff">Fond du Lac Band</a></p>
+      </div>
+    </div>
+    <div class="sim-canvas-wrap">
+      <p class="sim-intro">Every place in Minnesota has an original name — in Ojibwe, Dakota, or both. Tap the dots to discover what these places were called first.</p>
+      <canvas id="placeCanvas" width="680" height="460"></canvas>
+      <div class="place-info-box" id="placeInfo">
+        <h4 id="placeTitle"></h4>
+        <div id="placeOriginal"></div>
+        <p id="placeDesc"></p>
+      </div>
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Map Sources</strong>
+      <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Ojibwemowin Roads &amp; Buildings</a> (via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>) &nbsp;·&nbsp;
+      <a href="https://www.nps.gov/grpo/learn/historyculture/north-shore-place-names.htm" target="_blank">Grand Portage Band — Rivers of the North Shore</a> (via MDE IEFA) &nbsp;·&nbsp;
+      <a href="https://dakhota.org/" target="_blank">Dakhota.org Dakota language resources</a>
+    </div>
+  </div>
+
+  <!-- TREATIES -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--blue), #0D3A6E);">
+      <span class="sec-icon">📜</span>
+      <div>
+        <h2>What Is a Treaty?</h2>
+        <p>Promises between nations — and why they still matter today &nbsp;·&nbsp; Source: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE IEFA</a></p>
+      </div>
+    </div>
+    <div style="padding: 24px 24px 12px;">
+      <p style="font-size:0.95rem; color:var(--text-soft); margin-bottom:20px">A <strong>treaty</strong> is an official agreement between two or more nations — like a country-to-country contract. Tribal nations in Minnesota signed several important treaties with the US government. These treaties are still legal documents today.</p>
+    </div>
+    <div class="treaty-cards">
+      <div class="treaty-card">
+        <div class="tc-year">1837</div>
+        <h4>Treaty of St. Peters</h4>
+        <p>Anishinaabe nations ceded (shared) land but kept the right to hunt, fish, and gather in the ceded territory "during the pleasure of the President." Tribal nations fought to keep these rights — and won key court cases confirming them.</p>
+      </div>
+      <div class="treaty-card">
+        <div class="tc-year">1851</div>
+        <h4>Treaties of Traverse des Sioux &amp; Mendota</h4>
+        <p>Dakota nations signed treaties giving up large amounts of land. The promises made in return were often broken. But the treaties also confirmed Dakota presence and rights in Minnesota.</p>
+      </div>
+      <div class="treaty-card">
+        <div class="tc-year">1854–1867</div>
+        <h4>Later Treaties</h4>
+        <p>Additional treaties established reservation boundaries for Ojibwe bands in Minnesota, including Fond du Lac, Grand Portage, Mille Lacs, and others. Tribal nations continued to assert and defend their treaty rights in courts.</p>
+      </div>
+      <div class="treaty-card">
+        <div class="tc-year">Today</div>
+        <h4>Treaties Are Still Law</h4>
+        <p>The US Constitution says treaties are "the supreme law of the land." Minnesota tribal nations continue to exercise treaty rights — including rights to fish, hunt, and gather — protected by these agreements. <strong>Treaties are present, not past.</strong></p>
+      </div>
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Treaty Sources</strong>
+      <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA — Tribal Relations Training IEFA Presentation (2024)</a> and <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">Lower Sioux Caŋṡayapi: Ehaŋna k'a Dehan curriculum</a>. Teachers: the Caŋṡayapi PDF available on the MDE IEFA page contains detailed, community-authored historical content appropriate for deeper teacher background reading.
+    </div>
+  </div>
+
+  <!-- STUDENT ACTIVITY -->
+  <div class="student-activity">
+    <h3>🗺️ Student Activity: Map Your Neighborhood</h3>
+    <ol>
+      <li>Write down the names of three places near your school or home — a lake, a river, a park, or a street.</li>
+      <li>Use the <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Roads &amp; Buildings resource</a> and <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> to look up whether any have Ojibwe or Dakota names.</li>
+      <li>Draw a small map showing your place — write both names if you find one. If you can't find the original name, write a question mark and make a note to investigate more.</li>
+      <li>Share with the class: what surprised you? What does the original name tell you about what the place used to be like?</li>
+    </ol>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:12px">Sources for research: <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Ojibwemowin Roads &amp; Buildings</a> · <a href="https://www.nps.gov/grpo/learn/historyculture/north-shore-place-names.htm" target="_blank">Grand Portage Band — North Shore Place Names</a> · <a href="https://dakhota.org/" target="_blank">Dakhota.org Dakota Language Calendar 2026</a></p>
+  </div>
+
+  <!-- THEN & NOW -->
+  <h2 style="color:var(--earth); font-size:1.25rem; margin-bottom:16px">Then &amp; Now: Place Names &amp; Promises</h2>
+  <div class="then-now">
+    <div class="then-box">
+      <h3>📍 Then — Names That Described the Land</h3>
+      <p>Dakota and Ojibwe place names describe what the land looks, sounds, and feels like — the quality of the water, the animals present, the shape of the shore. They encode ecological knowledge in language.</p>
+      <p style="margin-top:10px">When these names were replaced with English names, that knowledge was hidden — but not destroyed. The original names were preserved in communities, in documents, and in memory.</p>
+    </div>
+    <div class="now-box">
+      <h3>🗺️ Now — Names Coming Back</h3>
+      <p>In 2018, Minneapolis officially restored the name <strong>Bde Maka Ska</strong> (White Earth Lake) to what had been called Lake Calhoun. This is one example of place name restoration happening across Minnesota and the country.</p>
+      <p style="margin-top:10px">The Fond du Lac Band has documented Ojibwe names for roads, buildings, and waterways — kept alive for students and communities. That work is linked from <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>.</p>
+    </div>
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="discussion-prompts">
+    <h3>💬 Discussion Questions</h3>
+    <ol>
+      <li>Winona says "names remember, even when people forget." What do you think place names can remember that history books might miss?</li>
+      <li>A treaty is a promise between nations. What makes a promise official? What should happen when a promise is broken?</li>
+      <li>If you could restore one place name near your school to its original language, which would you choose? What would the new/old name tell people?</li>
+      <li>Miigizi's class made a map with two names for every place. Why might it be valuable to show both names?</li>
+    </ol>
+  </div>
+
+  <!-- CONNECTED GAMES -->
+  <div class="connected-games">
+    <h3>🎮 Use These Games From Your Collection With This Unit</h3>
+    <div class="game-chips">
+      <span class="game-chip">🏠 Giiwen — "going home" — place and belonging</span>
+      <span class="game-chip">🃏 Ojibwe Language Deck — place name words</span>
+      <span class="game-chip">🃏 Dakota Language Deck — place name words</span>
+      <span class="game-chip">🎲 Wóeye Káǧapi Story Dice — describe a place in Dakota</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:14px">Games from <a href="https://www.nashke.com/" target="_blank">Nashke.com</a> and <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>. Giiwen (going home) pairs especially well with this unit's theme of land, belonging, and identity.</p>
+  </div>
+
+  <!-- STANDARDS -->
+  <div class="standards-accordion">
+    <button class="standards-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.querySelector('.arrow').textContent = this.nextElementSibling.classList.contains('open') ? '▲' : '▼'">
+      📋 Minnesota Standards Addressed in This Unit <span class="arrow">▼</span>
+    </button>
+    <div class="standards-body">
+      <ul>
+        <li><strong>MN Statute 120B.021, Subd. 5</strong> — Required instruction on history, government, and culture of MN tribal nations, including treaty rights. (<a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>)</li>
+        <li><strong>Social Studies 3.4.1.1</strong> — Identify the major American Indian nations of MN and describe their relationship to the land and water.</li>
+        <li><strong>Social Studies 3.4.1.3</strong> — Describe how agreements and laws have shaped the relationship between tribal nations and the US government.</li>
+        <li><strong>ELA 3.RI.3</strong> — Describe the relationship between historical events, using language that pertains to cause/effect and sequence.</li>
+        <li><strong>ELA 3.W.2</strong> — Write informative/explanatory texts to examine a topic (neighborhood map project).</li>
+        <li><strong>Geography 3.1.1</strong> — Students use maps and geographic tools to answer questions about places and regions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="source-banner" style="max-width:100%; margin: 24px 0 36px">
+    <div class="source-banner-inner">
+      <h3>📚 Go Deeper — Learn From the Source</h3>
+      <div class="source-list">
+        <a class="source-pill" href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank"><span>🏫</span> MDE IEFA — All Resources</a>
+        <a class="source-pill" href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank"><span>📍</span> Fond du Lac Roads &amp; Buildings</a>
+        <a class="source-pill" href="https://www.nps.gov/grpo/learn/historyculture/north-shore-place-names.htm" target="_blank"><span>🗺️</span> Grand Portage Place Names</a>
+        <a class="source-pill" href="https://dakhota.org/" target="_blank"><span>🌻</span> Dakhota.org</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px">
+    <a href="../unit5/index.html" class="print-btn" style="margin-right:12px">← Unit 5: Language Keepers</a>
+    <a href="../index.html" class="print-btn">🏠 Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  <p>Unit 6: Treaties &amp; Place Names &nbsp;·&nbsp; Minnesota Tribal Nations — Grade 3</p>
+  <p class="footer-protocol">Sources: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp; <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Band</a> &nbsp;·&nbsp; <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> &nbsp;·&nbsp; <a href="https://www.nashke.com/" target="_blank">Nashke</a></p>
+</footer>
+<script src="../js/main.js"></script>
+<script src="place_map.js"></script>
+<script>initStoryReader('storyReader');</script>
+</body>
+</html>

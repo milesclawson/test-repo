@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 4: Seasonal Life — MN Tribal Nations Grade 3</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lesson-hero { background: linear-gradient(135deg, #5A9E5A, #2D6A2D); }
+    /* Seasons wheel */
+    #seasonCanvas {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .season-info {
+      background: #fff;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      padding: 20px 24px;
+      margin: 16px auto 0;
+      max-width: 500px;
+    }
+    .season-info h4 { font-size: 1.1rem; margin-bottom: 6px; }
+    .season-info .moon-name { font-size: 0.88rem; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .season-info ul { padding-left: 20px; }
+    .season-info li { font-size: 0.92rem; color: var(--text-soft); margin-bottom: 6px; }
+    .season-info .lang-word { font-weight: bold; }
+    /* Songs */
+    .song-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; padding: 24px; }
+    .song-card {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 2px solid var(--green);
+      padding: 16px;
+      text-align: center;
+    }
+    .song-card .song-icon { font-size: 2rem; margin-bottom: 6px; }
+    .song-card h4 { color: var(--green); font-size: 0.95rem; margin-bottom: 4px; }
+    .song-card p { font-size: 0.8rem; color: var(--text-soft); }
+    /* FDL activities */
+    .activity-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 20px 24px 24px;
+    }
+    .activity-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-pale);
+      border: 1.5px solid var(--green);
+      border-radius: 30px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-family: Arial, sans-serif;
+      color: var(--green);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">🌾 MN Tribal Nations — Grade 3</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../unit1/index.html">Unit 1</a>
+      <a href="../unit2/index.html">Unit 2</a>
+      <a href="../unit3/index.html">Unit 3</a>
+      <a href="../unit4/index.html" class="active">Unit 4</a>
+      <a href="../unit5/index.html">Unit 5</a>
+      <a href="../unit6/index.html">Unit 6</a>
+    </div>
+  </div>
+</nav>
+
+<div class="lesson-hero">
+  <h1>🍂 Seasonal Life &amp; Land Stewardship</h1>
+  <p class="lesson-subtitle">Following the Seasons With Anishinaabe and Dakota Knowledge</p>
+  <div class="lesson-meta">
+    <span class="tag tag-sci">Science</span>
+    <span class="tag tag-art">Arts</span>
+    <span class="tag tag-ela">ELA</span>
+  </div>
+</div>
+
+<div class="lesson-body">
+
+  <div class="community-note" style="margin-bottom:32px">
+    <strong>⚠ Before You Teach This Unit:</strong> Preview with your Native community contacts. Ojibwe moon names and seasonal knowledge draw from <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade resources</a> and Fond du Lac Ojibwemowin materials linked through <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>. Songs are from the Baswewe songbook (Nay-ah-shing Schools) at <a href="https://www.miinojibwe.org/songs/" target="_blank">miinojibwe.org/songs</a>.
+  </div>
+
+  <!-- STORY -->
+  <div class="story-reader" id="storyReader">
+    <div class="story-header">
+      <span class="story-icon">📖</span>
+      <div>
+        <h2>The Year Miigizi Paid Attention</h2>
+        <p>A story with Miigizi and Winona &nbsp;·&nbsp; Tap <span style="color:#7eff7e">green</span> or <span style="color:#ffb3b3">red</span> words to learn more</p>
+      </div>
+    </div>
+    <div class="story-pages">
+      <div class="story-page active">
+        <p>Miigizi's Nokomis had a rule: no phones outside from <span class="ojibwe-word" data-tip="Ziigwan (ZEE-gwun) — spring in Ojibwemowin. The season when the earth wakes up. Also the time for maple sugaring (iskigamizige). From MIIN Ojibwe language resources at miinojibwe.org.">ziigwan</span> to <span class="ojibwe-word" data-tip="Dagwaagin (dug-WAH-gin) — fall/autumn in Ojibwemowin. The harvest season — wild rice, berries, preparing for winter. From MIIN 3rd grade resources.">dagwaagin</span>.</p>
+        <p>"You have to pay attention to the world," she said. "The land is always teaching. But only if you're quiet enough to listen."</p>
+        <p>Miigizi thought that sounded boring. But he put his phone away.</p>
+        <p>The first thing he noticed was the smell — warm earth and something green and alive. Spring was here. And something was waking up.</p>
+      </div>
+      <div class="story-page">
+        <p>In <span class="ojibwe-word" data-tip="Ziigwan (ZEE-gwun) — spring. During early spring comes the maple sugaring season — Iskigamizige-giizis, the Maple Sugar Moon. Fond du Lac Band's Ojibwemowin learning materials include See and Say videos about maple sugaring. Linked from MDE IEFA.">ziigwan</span>, Nokomis tapped the maple tree in the yard. Sap ran out into a bucket — clear and barely sweet.</p>
+        <p>"We boil it down," she said. "Forty gallons of sap makes one gallon of syrup. The tree gives us a gift. We take care of the tree."</p>
+        <p>Miigizi tasted some. It was light and good.</p>
+        <p>"The Fond du Lac Band has videos of elders doing this," his Nokomis said. "With Ojibwe words. You should watch them."</p>
+        <p>He did. He watched them that night, his Nokomis sitting beside him, correcting his pronunciation, laughing at his mistakes — in a kind way.</p>
+      </div>
+      <div class="story-page">
+        <p>By <span class="ojibwe-word" data-tip="Niibino-giizis (nee-BIH-noh-gee-zis) — Blueberry Moon, one of the summer months. Anishinaabe people tracked time by moons, not months. Each moon is named for what is happening in the natural world. From MIIN Ojibwe resources.">niibino-giizis</span> — the summer moon — Winona and her dad were monitoring a creek near their house.</p>
+        <p>"The tribe's environmental team comes here," her dad said. "They test the water. They count the fish. They make sure the watershed is healthy."</p>
+        <p>"Like scientists?" Winona asked.</p>
+        <p>"Like scientists and like stewards," he said. <span class="dakota-word" data-tip="Makoce (mah-KOH-chay) — land, earth, homeland in Dakota. For Dakota people, caring for the land is not separate from caring for the people. They are the same thing. From Dakhota.org language materials.">Makoce</span> — the land — needed to be cared for. Not just used.</p>
+      </div>
+      <div class="story-page">
+        <p>When <span class="ojibwe-word" data-tip="Manoominike-giizis (muh-NOH-mih-nee-kay-gee-zis) — the Wild Rice Harvesting Moon. August into September. This is the moon for harvesting manoomin. From MIIN 3rd Grade resources and the Baswewe songbook (Nay-ah-shing Schools).">manoominike-giizis</span> rose, Miigizi went north to harvest rice again. He was getting good with the knocking sticks. He left some behind, like always.</p>
+        <p>In <span class="ojibwe-word" data-tip="Biboon (BIH-boon) — winter in Ojibwemowin. The season of storytelling, games, and rest. Traditionally, many stories could only be told in winter. From MIIN Ojibwe language resources.">biboon</span>, the family played games inside — the Moccasin Game, the Bowl Game. Nokomis told stories. The land rested. The family rested.</p>
+        <p>"The land teaches you to rest too," Nokomis said. "That is also traditional knowledge."</p>
+        <p>Miigizi looked at his phone — then put it down. He was listening.</p>
+      </div>
+    </div>
+    <div class="story-nav">
+      <button class="prev-btn" disabled>← Previous</button>
+      <span class="story-progress">Page 1 of 4</span>
+      <button class="next-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="source-citation">
+    <strong>📚 Story Sources</strong>
+    Ojibwe moon names and seasonal practices from <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade Ojibwe Resources</a> (Bdote and Niigaane science curricula). Maple sugaring references from <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">Fond du Lac Ojibwemowin See &amp; Say Immersion Videos</a> (via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>). Dakota land stewardship from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>.
+  </div>
+
+  <!-- SEASONS WHEEL -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--green-light), var(--green));">
+      <span class="sec-icon">🌀</span>
+      <div>
+        <h2>Ojibwe Seasons Wheel</h2>
+        <p>Tap each season to explore its activities, foods, and moon name &nbsp;·&nbsp; Source: <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank" style="color:#fff">MIIN 3rd Grade Resources</a></p>
+      </div>
+    </div>
+    <div class="sim-canvas-wrap">
+      <p class="sim-intro">The Anishinaabe people organize the year by moons — each moon named for what is happening in the natural world. Tap a season to learn what happens in that time.</p>
+      <canvas id="seasonCanvas" width="500" height="500"></canvas>
+      <div class="season-info" id="seasonInfo" style="display:none"></div>
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Seasons Sources</strong>
+      Moon names and seasonal activities from <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade Ojibwe Resources</a> including Misaabekong Vocabulary Help and Bdote science curriculum. Supplemented by <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">Fond du Lac Band Ojibwemowin Phrases of the Day</a> (via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>).
+    </div>
+  </div>
+
+  <!-- FDL RESOURCES -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--blue), #0D3A6E);">
+      <span class="sec-icon">🎬</span>
+      <div>
+        <h2>Fond du Lac Learning Resources</h2>
+        <p>Videos, coloring books &amp; activities — all from the Fond du Lac Band &nbsp;·&nbsp; Via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE IEFA</a></p>
+      </div>
+    </div>
+    <div class="activity-row">
+      <a class="activity-chip" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener">🎬 See &amp; Say Immersion Videos</a>
+      <a class="activity-chip" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener">📚 Elder Audio Lessons</a>
+      <a class="activity-chip" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener">🎨 7 Cultural Coloring Books</a>
+      <a class="activity-chip" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener">📅 Ojibwemowin Phrases of the Day</a>
+      <a class="activity-chip" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener">🎮 Ojibwe GOAT Gaganoonidiwin Game</a>
+      <a class="activity-chip" href="https://cgee-hamline.org/MMGWeb/FDL2/" target="_blank" rel="noopener">🖼️ Fond du Lac Multimedia Gallery</a>
+    </div>
+    <p style="padding: 0 24px 20px; font-size:0.85rem; color:var(--text-soft)">
+      The Fond du Lac Band's coloring books cover: gardening, cooking with grandma, beadwork, birds — perfect for Art integration with this unit. All free from <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">fdlband.org</a>, linked through <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>.
+    </p>
+  </div>
+
+  <!-- SONGS -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--gold), var(--earth));">
+      <span class="sec-icon">🎵</span>
+      <div>
+        <h2>Songs From the Baswewe Songbook</h2>
+        <p>26 Ojibwe songs from Nay-ah-shing Schools &nbsp;·&nbsp; Source: <a href="https://www.miinojibwe.org/songs/" target="_blank" style="color:#fff">MIIN Songs — miinojibwe.org/songs</a></p>
+      </div>
+    </div>
+    <div class="song-cards">
+      <div class="song-card">
+        <div class="song-icon">🌅</div>
+        <h4>Iskigamizige (Track 14)</h4>
+        <p>Maple sugaring — perfect pairing with spring season. From Baswewe, Nay-ah-shing Schools.</p>
+      </div>
+      <div class="song-card">
+        <div class="song-icon">🐰</div>
+        <h4>Van Waabooz (Track 16)</h4>
+        <p>"Van Rabbit" — a playful animal song for younger learners. Great classroom warm-up.</p>
+      </div>
+      <div class="song-card">
+        <div class="song-icon">🐔</div>
+        <h4>Baaka'aakwenh (Track 10)</h4>
+        <p>Chicken — animal vocabulary song. Pairs with the Bineshiiyag bird card games.</p>
+      </div>
+      <div class="song-card">
+        <div class="song-icon">👋</div>
+        <h4>Boozhoo (Track 25)</h4>
+        <p>"Hello" — the essential Ojibwe greeting song. Great for opening every class.</p>
+      </div>
+      <div class="song-card">
+        <div class="song-icon">🏃</div>
+        <h4>Bimibatoon (Track 22)</h4>
+        <p>"Run!" — an action song great for movement breaks with Ojibwe vocabulary.</p>
+      </div>
+      <div class="song-card">
+        <div class="song-icon">🏠</div>
+        <h4>Waakaa'iganing Imaa Indaa (Track 9)</h4>
+        <p>"I live in a house there" — community and home vocabulary.</p>
+      </div>
+    </div>
+    <p style="padding: 0 24px 20px; font-size:0.82rem; color:var(--text-soft); font-family:Arial,sans-serif">
+      Download the full Baswewe PDF songbook from <a href="https://www.miinojibwe.org/songs/" target="_blank">MIIN Songs page</a>. All 26 tracks available. Songbook ©1998 Nay-ah-shing Schools.
+    </p>
+  </div>
+
+  <!-- THEN & NOW -->
+  <h2 style="color:var(--green); font-size:1.25rem; margin-bottom:16px">Then &amp; Now: Traditional Ecological Knowledge</h2>
+  <div class="then-now">
+    <div class="then-box">
+      <h3>🌱 Then — Thousands of Years of Stewardship</h3>
+      <p>Anishinaabe and Dakota peoples developed deep ecological knowledge over thousands of years — when to harvest, how much to take, how to care for the land so it gives again next year.</p>
+      <p style="margin-top:10px">This wasn't just survival — it was a relationship. The land, water, plants, and animals were relatives, not resources.</p>
+    </div>
+    <div class="now-box">
+      <h3>🔬 Now — Science and Traditional Knowledge Together</h3>
+      <p>Today, the Fond du Lac Band combines traditional ecological knowledge with western science. Their environmental department monitors water quality, manages forests, and protects wild rice — using both approaches together.</p>
+      <p style="margin-top:10px">This "two-eyed seeing" approach is used by tribal environmental departments across Minnesota.</p>
+    </div>
+  </div>
+  <div class="source-citation">
+    <strong>📚 Sources</strong>
+    <a href="https://cgee-hamline.org/MMGWeb/FDL2/" target="_blank">Fond du Lac Multimedia Gallery (Hamline University)</a> via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp;
+    <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade — Bdote and Niigaane science curricula</a>
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="discussion-prompts">
+    <h3>💬 Discussion Questions</h3>
+    <ol>
+      <li>Miigizi's Nokomis says the land is "always teaching." What does she mean? What might the land teach that a book can't?</li>
+      <li>Anishinaabe people name their months by what is happening in nature — the Wild Rice Moon, the Blueberry Moon. What would you name the moon for the time of year we're in right now?</li>
+      <li>Winona's dad says the tribe's environmental team are "scientists and stewards." What is the difference? Can you be both at once?</li>
+      <li>The story says "the land teaches you to rest too." Why might rest be important — for people and for the land?</li>
+    </ol>
+  </div>
+
+  <!-- ART ACTIVITY -->
+  <div class="art-activity">
+    <h3>🎨 Art Activity: Seasonal Journal Pages</h3>
+    <p>Using the <strong>Fond du Lac coloring book pages</strong> (free at <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">fdlband.org</a>) as visual inspiration, students create a 4-panel seasonal journal showing what Miigizi or Winona might do in each season. Each panel includes the Ojibwe or Dakota word for that season.</p>
+    <p><strong>Seasons to include:</strong> Ziigwan (spring) · Niibin (summer) · Dagwaagin (fall) · Biboon (winter)</p>
+    <p style="font-size:0.85rem; color:var(--text-soft)">Coloring books available free via <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">Fond du Lac Band Ojibwemowin Learning Materials</a>, linked through <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>.</p>
+  </div>
+
+  <!-- CONNECTED GAMES -->
+  <div class="connected-games">
+    <h3>🎮 Use These Games From Your Collection With This Unit</h3>
+    <div class="game-chips">
+      <span class="game-chip">🦉 Bineshiiyag Owl Card Game — bird vocabulary</span>
+      <span class="game-chip">🕊️ Bineshiiyag Seagull Card Game — bird vocabulary</span>
+      <span class="game-chip">🐦 Zitkápidaŋ Bird Card Game (Dakota)</span>
+      <span class="game-chip">👟 Makizinataagewin: The Moccasin Game — winter game</span>
+      <span class="game-chip">🐍 Ginebig: The Snake Game — strategy</span>
+      <span class="game-chip">🧩 Bineshiiyag Puzzles — Owl &amp; Seagull</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:14px">Games from <a href="https://www.nashke.com/" target="_blank">Nashke.com</a>. The Moccasin Game and Snake Game are traditionally winter games — perfect for the biboon season in this unit.</p>
+  </div>
+
+  <div class="source-banner" style="max-width:100%; margin: 0 0 36px">
+    <div class="source-banner-inner">
+      <h3>📚 Go Deeper — Learn From the Source</h3>
+      <div class="source-list">
+        <a class="source-pill" href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank" rel="noopener"><span>🌿</span> MIIN 3rd Grade Resources</a>
+        <a class="source-pill" href="https://www.miinojibwe.org/songs/" target="_blank" rel="noopener"><span>🎵</span> MIIN Baswewe Songbook</a>
+        <a class="source-pill" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank" rel="noopener"><span>📘</span> Fond du Lac Learning Materials</a>
+        <a class="source-pill" href="https://cgee-hamline.org/MMGWeb/FDL2/" target="_blank" rel="noopener"><span>🖼️</span> Fond du Lac Multimedia Gallery</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px">
+    <a href="../unit3/index.html" class="print-btn" style="margin-right:12px">← Unit 3: Sovereignty</a>
+    <a href="../unit5/index.html" class="print-btn">Unit 5: Language Keepers →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Unit 4: Seasonal Life &amp; Land Stewardship &nbsp;·&nbsp; Minnesota Tribal Nations — Grade 3</p>
+  <p class="footer-protocol">Sources: <a href="https://www.miinojibwe.org/" target="_blank">MIIN</a> &nbsp;·&nbsp; <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">Fond du Lac Band</a> &nbsp;·&nbsp; <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp; <a href="https://www.nashke.com/" target="_blank">Nashke</a></p>
+</footer>
+<script src="../js/main.js"></script>
+<script src="seasons.js"></script>
+<script>initStoryReader('storyReader');</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5: Language Keepers — MN Tribal Nations Grade 3</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lesson-hero { background: linear-gradient(135deg, #D4820A, #6B4226); }
+    /* Language practice game */
+    .lang-game-area { padding: 24px; }
+    .lang-prompt {
+      background: var(--gold-pale);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 20px 24px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .lang-prompt .prompt-label { font-size: 0.82rem; color: var(--earth); font-family: Arial, sans-serif; margin-bottom: 6px; }
+    .lang-prompt .prompt-word { font-size: 2rem; font-weight: bold; color: var(--earth); }
+    .lang-prompt .prompt-type { font-size: 0.85rem; color: var(--text-soft); margin-top: 4px; font-family: Arial, sans-serif; }
+    .lang-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .lang-choice {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .lang-choice:hover { border-color: var(--gold); background: var(--gold-pale); }
+    .lang-choice.correct { border-color: var(--green); background: var(--green-pale); color: var(--green); }
+    .lang-choice.wrong   { border-color: var(--red);   background: var(--red-pale);   color: var(--red); }
+    .lang-feedback { text-align: center; font-size: 1rem; min-height: 32px; color: var(--text-soft); font-family: Arial, sans-serif; }
+    .lang-score { text-align: center; font-family: Arial, sans-serif; font-size: 0.92rem; color: var(--text-soft); }
+    /* Songs display */
+    .song-block {
+      background: var(--gold-pale);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .song-block h4 { color: var(--earth); font-size: 1.05rem; margin-bottom: 10px; }
+    .song-block .lyrics { font-style: italic; color: var(--text-soft); font-size: 0.95rem; line-height: 1.9; }
+    .song-block .translation { font-size: 0.85rem; color: var(--text-soft); margin-top: 8px; font-family: Arial, sans-serif; }
+    /* Revitalization */
+    .revital-card {
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+    .revital-card h4 { color: var(--earth); font-size: 1rem; margin-bottom: 8px; }
+    .revital-card p { font-size: 0.92rem; color: var(--text-soft); }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">🌾 MN Tribal Nations — Grade 3</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../unit1/index.html">Unit 1</a>
+      <a href="../unit2/index.html">Unit 2</a>
+      <a href="../unit3/index.html">Unit 3</a>
+      <a href="../unit4/index.html">Unit 4</a>
+      <a href="../unit5/index.html" class="active">Unit 5</a>
+      <a href="../unit6/index.html">Unit 6</a>
+    </div>
+  </div>
+</nav>
+
+<div class="lesson-hero">
+  <h1>🗣️ Language Keepers</h1>
+  <p class="lesson-subtitle">Ojibwemowin &amp; Dakota Iapi — Languages That Carry Culture</p>
+  <div class="lesson-meta">
+    <span class="tag tag-ela">ELA</span>
+    <span class="tag tag-art">Arts</span>
+    <span class="tag tag-ss">Social Studies</span>
+  </div>
+</div>
+
+<div class="lesson-body">
+
+  <div class="community-note" style="margin-bottom:32px">
+    <strong>⚠ Before You Teach This Unit:</strong> All Ojibwe vocabulary is sourced from <a href="https://www.miinojibwe.org/" target="_blank">MIIN (miinojibwe.org)</a>. All Dakota vocabulary is from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>. Songs are from the Baswewe Songbook (Nay-ah-shing Schools) at <a href="https://www.miinojibwe.org/songs/" target="_blank">miinojibwe.org/songs</a>. Verify pronunciations with your community contacts before teaching.
+  </div>
+
+  <!-- STORY -->
+  <div class="story-reader" id="storyReader">
+    <div class="story-header">
+      <span class="story-icon">📖</span>
+      <div>
+        <h2>The Words That Were Almost Lost</h2>
+        <p>A story with Miigizi and Winona</p>
+      </div>
+    </div>
+    <div class="story-pages">
+      <div class="story-page active">
+        <p>Miigizi's Nokomis didn't speak much Ojibwe. She knew some words — <span class="ojibwe-word" data-tip="Miigwech (mee-GWETCH) — thank you. From MIIN Ojibwe language resources at miinojibwe.org.">miigwech</span>, <span class="ojibwe-word" data-tip="Boozhoo (boo-ZHOO) — hello, greetings. The standard Ojibwe greeting. From MIIN Baswewe Songbook, Track 25.">boozhoo</span>, <span class="ojibwe-word" data-tip="Aaniish (AH-neesh) — 'How are you?' or 'What's up?' From MIIN Ojibwe language resources.">aaniish</span>. But she had not grown up speaking it fully.</p>
+        <p>"Why not?" Miigizi asked one evening.</p>
+        <p>His Nokomis was quiet for a moment. "When I was young," she said, "there were schools that punished children for speaking their language. Our words were taken from us."</p>
+        <p>Miigizi felt something heavy in his chest. "That doesn't seem right."</p>
+        <p>"It wasn't," she said. "But here's what matters now: people are bringing it back. That's what MIIN does. That's what your cousin at language camp is doing. That's what you are doing — right now — when you say <em>boozhoo</em> instead of just hello."</p>
+      </div>
+      <div class="story-page">
+        <p>Winona had a different experience. Her dad had grown up hearing <span class="dakota-word" data-tip="Dakota Iapi (dah-KOH-tah ee-AH-pee) — the Dakota language. 'Iapi' means language or way of speaking. From Dakhota.org — Dakhóta Iá Wóhdaka Po! curriculum.">Dakota Iapi</span> at home. Not perfectly — but enough that words appeared naturally in his sentences.</p>
+        <p>"<span class="dakota-word" data-tip="Čhaŋtéčhiŋza (chahn-TAY-cheen-zah) — brave, strong-hearted. A Dakota word of encouragement. From Dakhota.org language materials.">Čhaŋtéčhiŋza</span>, Winona," he would say when she tried something hard. Strong-hearted.</p>
+        <p>At school, she was starting a language unit with her class. They were learning to say hello in five languages. She added a sixth: "<span class="dakota-word" data-tip="Haŋ (han) — yes, hello (informal) in Dakota. A friendly greeting. From Dakhota.org.">Haŋ</span>."</p>
+        <p>Her teacher asked what it meant. Winona smiled. "It's Dakota. My language."</p>
+      </div>
+      <div class="story-page">
+        <p>Miigizi signed up for the MIIN after-school language program. The first day, he felt nervous. Would he be bad at it? Would the other kids already know more than him?</p>
+        <p>The teacher — a young woman from Mille Lacs — started with a song. Everyone sang together, even the kids who didn't know all the words.</p>
+        <p>"<span class="ojibwe-word" data-tip="Awenen giin? (AH-way-nin geen) — 'Who are you?' A common introductory question in Ojibwe. From MIIN Baswewe Songbook, Track 4 — 'Awenen Giin.'">Awenen giin?</span>" the teacher sang. Who are you?</p>
+        <p>"<span class="ojibwe-word" data-tip="Awenen niin — 'I am...' (answer to 'who are you?') From MIIN Baswewe Songbook, Track 21 — 'Awenen Niin.'">Awenen niin</span>," the class sang back. I am...</p>
+        <p>And then each person said their name. Miigizi said his. It sounded right in Ojibwemowin. It had always been an Ojibwe word — he just hadn't known it until now.</p>
+      </div>
+      <div class="story-page">
+        <p>After class, Miigizi texted Winona: <em>"I learned my name means Eagle. I already knew that. But hearing it in Ojibwe is different."</em></p>
+        <p>Winona texted back: <em>"I know. Some things only work in the right language."</em></p>
+        <p>She was practicing too — using the Dakhota.org website, the Story Dice game her dad had bought, the Dakota language cards. Each word felt like finding something that had always belonged to her.</p>
+        <p>Languages don't die easily, Miigizi was learning. And they don't come back easily either. But they do come back — when people like his Nokomis tell the truth, and people like him decide to listen.</p>
+      </div>
+    </div>
+    <div class="story-nav">
+      <button class="prev-btn" disabled>← Previous</button>
+      <span class="story-progress">Page 1 of 4</span>
+      <button class="next-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="source-citation">
+    <strong>📚 Story Sources</strong>
+    Ojibwe words and greetings from <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade Resources</a> and <a href="https://www.miinojibwe.org/songs/" target="_blank">Baswewe Songbook (Nay-ah-shing Schools)</a>. Dakota vocabulary from <a href="https://dakhota.org/" target="_blank">Dakhota.org — Dakhóta Iá Wóhdaka Po! Level 1 textbook</a>. The story of language suppression is historical fact — referenced in <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA materials</a>. The story of revitalization is also true and ongoing.
+  </div>
+
+  <!-- LANGUAGE GAME -->
+  <div class="game-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--gold), var(--earth));">
+      <span class="sec-icon">🎯</span>
+      <div>
+        <h2>Language Quiz Game</h2>
+        <p>Match the word to its meaning &nbsp;·&nbsp; Ojibwe from <a href="https://www.miinojibwe.org/" target="_blank" style="color:#fff">MIIN</a> &nbsp;·&nbsp; Dakota from <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a></p>
+      </div>
+    </div>
+    <div class="lang-game-area" id="langGame">
+      <div class="lang-prompt">
+        <div class="lang-prompt-label prompt-label">What does this word mean?</div>
+        <div class="lang-prompt-word prompt-word" id="lgWord">—</div>
+        <div class="lang-prompt-type prompt-type" id="lgType">—</div>
+      </div>
+      <div class="lang-choices" id="lgChoices"></div>
+      <div class="lang-feedback" id="lgFeedback"></div>
+      <div class="lang-score" id="lgScore">Score: <strong>0</strong> / <strong>0</strong></div>
+      <div style="text-align:center; margin-top:14px">
+        <button class="sim-btn" id="lgNext" style="display:none">Next Word →</button>
+        <button class="sim-btn secondary" id="lgRestart">🔄 New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SONGS -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--green-light), var(--green));">
+      <span class="sec-icon">🎵</span>
+      <div>
+        <h2>Classroom Songs to Practice Together</h2>
+        <p>From the Baswewe Songbook — Nay-ah-shing Schools &nbsp;·&nbsp; <a href="https://www.miinojibwe.org/songs/" target="_blank" style="color:#fff">Download at miinojibwe.org/songs</a></p>
+      </div>
+    </div>
+    <div style="padding: 24px;">
+      <div class="song-block">
+        <h4>🎵 Boozhoo — Track 25 (Hello)</h4>
+        <div class="lyrics">Boozhoo, boozhoo, aaniish na ezhiyaayin?<br>Boozhoo, boozhoo, aaniish na ezhiyaayin?</div>
+        <div class="translation">Hello, hello — how are you doing? &nbsp;·&nbsp; Great opening song for any class period</div>
+      </div>
+      <div class="song-block">
+        <h4>🎵 Awenen Giin — Track 4 (Who Are You?)</h4>
+        <div class="lyrics">Awenen giin? Awenen giin?<br>Awenen niin, awenen niin...</div>
+        <div class="translation">"Who are you? / I am..." — perfect for introductions and name-learning &nbsp;·&nbsp; Complements Miigizi's story above</div>
+      </div>
+      <div class="song-block">
+        <h4>🎵 Indizhinikaaz — Track 6 (My Name Is)</h4>
+        <div class="lyrics">Indizhinikaaz... [name]<br>Indizhinikaaz... [name]</div>
+        <div class="translation">"My name is..." — students fill in their own name &nbsp;·&nbsp; Connect to the "Language Card" art activity below</div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-soft)">Full songbook PDF at <a href="https://www.miinojibwe.org/songs/" target="_blank">MIIN Songs page</a>. All songs ©1998 Nay-ah-shing Schools.</p>
+    </div>
+  </div>
+
+  <!-- REVITALIZATION -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--blue), #0D3A6E);">
+      <span class="sec-icon">🌱</span>
+      <div>
+        <h2>Language Revitalization — Then &amp; Now</h2>
+        <p>These languages are alive, growing, and being reclaimed &nbsp;·&nbsp; Source: <a href="https://www.miinojibwe.org/" target="_blank" style="color:#fff">MIIN</a> &amp; <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a></p>
+      </div>
+    </div>
+    <div style="padding: 24px;">
+      <div class="revital-card">
+        <h4>🌿 MIIN — Midwest Indigenous Immersion Network</h4>
+        <p>MIIN supports Ojibwemowin immersion education across Minnesota. Their website (<a href="https://www.miinojibwe.org/" target="_blank">miinojibwe.org</a>) offers free curriculum for every grade — Birth through Adult. The free <strong>MIIN Ojibwe app</strong> delivers an Ojibwe Word of the Day on any phone or tablet.</p>
+        <p style="margin-top:8px">This work matters because Ojibwemowin is a language still being revitalized by living communities — not a historical artifact.</p>
+      </div>
+      <div class="revital-card">
+        <h4>🌻 Dakhota.org — Dakota Language &amp; Culture</h4>
+        <p>Dakhota.org offers the <em>Dakhóta Iá Wóhdaka Po!</em> ("Speak Dakota!") textbook series, the <strong>Wóeye Káǧapi Story Dice</strong> game, the <strong>Dakota Language Reader</strong>, and free keyboard tools for writing in Dakota.</p>
+        <p style="margin-top:8px">Their 2026 Dakota Language Calendar connects language learning to every month of the year. Their work is centered in Dakota communities' own language reclamation efforts.</p>
+      </div>
+      <div class="revital-card">
+        <h4>📚 GLIFWC INWE Storybooks — Free on MIIN</h4>
+        <p>The Great Lakes Indian Fish &amp; Wildlife Commission (GLIFWC) has published the <em>Nenda-gikendamang Ningo-biboonagak</em> storybook series — PDFs with accompanying activities and workbooks — free at the <a href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank">MIIN 3rd Grade page</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMORY GAME -->
+  <div class="game-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--green), #0D6A2D);">
+      <span class="sec-icon">🃏</span>
+      <div>
+        <h2>Greetings Memory Match</h2>
+        <p>Match Ojibwe and Dakota greetings to English &nbsp;·&nbsp; Sources: <a href="https://www.miinojibwe.org/" target="_blank" style="color:#fff">MIIN</a> &amp; <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a></p>
+      </div>
+    </div>
+    <div class="game-body" id="memoryGame">
+      <div class="game-grid"></div>
+      <div class="game-status">Matches: <strong>0 / 6</strong> &nbsp;|&nbsp; Moves: <strong>0</strong></div>
+      <div style="text-align:center; margin-top:14px">
+        <button class="sim-btn restart-btn" style="background:var(--gold)">🔄 Shuffle &amp; Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART ACTIVITY -->
+  <div class="art-activity">
+    <h3>🎨 Art Activity: My Language Card</h3>
+    <p>Students create a personal "language card" — a small decorated card that shows their name written out phonetically in Ojibwe or Dakota sounds, plus one word in each language that means something to them.</p>
+    <p><strong>Steps:</strong> (1) Choose a name from the Ojibwe or Dakota language or write your English name phonetically. (2) Decorate with patterns inspired by the Fond du Lac beadwork coloring book. (3) Write one Ojibwe word and one Dakota word you want to remember. (4) Share with the class — pronounce your card together.</p>
+    <p style="font-size:0.85rem; color:var(--text-soft)">Beadwork coloring book: free at <a href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank">Fond du Lac Ojibwemowin Learning Materials</a> via <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>.</p>
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="discussion-prompts">
+    <h3>💬 Discussion Questions</h3>
+    <ol>
+      <li>Winona says "some things only work in the right language." What do you think she means? Can you think of a word or phrase in any language that doesn't translate perfectly?</li>
+      <li>Miigizi's Nokomis says that when he says "boozhoo" instead of "hello," he is helping bring the language back. How can small choices matter in a big way?</li>
+      <li>Why is a language more than just words? What would be lost if a language disappeared?</li>
+      <li>MIIN and Dakhota.org are organizations working to keep languages alive. If you were going to keep something important alive for future kids — what would it be and how would you do it?</li>
+    </ol>
+  </div>
+
+  <!-- CONNECTED GAMES -->
+  <div class="connected-games">
+    <h3>🎮 Use These Games From Your Collection With This Unit</h3>
+    <div class="game-chips">
+      <span class="game-chip">🃏 Ojibwe Language Deck of Play Cards</span>
+      <span class="game-chip">🃏 Dakota Language Deck of Play Cards</span>
+      <span class="game-chip">🎲 Wóeye Káǧapi Story Dice (Dakhota.org)</span>
+      <span class="game-chip">🧩 Mii Gwech Memory Tiles — "thank you" vocab</span>
+      <span class="game-chip">🧩 Mii Gwech Expansion Pack Bundle</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:14px">Language Decks from <a href="https://www.nashke.com/" target="_blank">Nashke.com</a>. Story Dice from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>.</p>
+  </div>
+
+  <div class="source-banner" style="max-width:100%; margin: 0 0 36px">
+    <div class="source-banner-inner">
+      <h3>📚 Go Deeper — Learn From the Source</h3>
+      <div class="source-list">
+        <a class="source-pill" href="https://www.miinojibwe.org/ojibwe-language-resources/3rd-grade/" target="_blank"><span>🌿</span> MIIN 3rd Grade Ojibwe</a>
+        <a class="source-pill" href="https://www.miinojibwe.org/songs/" target="_blank"><span>🎵</span> MIIN Baswewe Songbook</a>
+        <a class="source-pill" href="https://dakhota.org/" target="_blank"><span>🌻</span> Dakhota.org</a>
+        <a class="source-pill" href="https://fdlband.org/culture/ojibwemowin/learning_materials.php" target="_blank"><span>📘</span> Fond du Lac Learning Materials</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px">
+    <a href="../unit4/index.html" class="print-btn" style="margin-right:12px">← Unit 4: Seasonal Life</a>
+    <a href="../unit6/index.html" class="print-btn">Unit 6: Treaties &amp; Place Names →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Unit 5: Language Keepers &nbsp;·&nbsp; Minnesota Tribal Nations — Grade 3</p>
+  <p class="footer-protocol">Sources: <a href="https://www.miinojibwe.org/" target="_blank">MIIN</a> &nbsp;·&nbsp; <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> &nbsp;·&nbsp; <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp; <a href="https://www.nashke.com/" target="_blank">Nashke</a></p>
+</footer>
+<script src="../js/main.js"></script>
+<script src="lang_game.js"></script>
+<script>
+  initStoryReader('storyReader');
+  initMemoryGame('memoryGame', [
+    { value: 'hello',   display: 'Boozhoo\n(Ojibwe Hello)' },
+    { value: 'hello',   display: 'Hello / Greetings' },
+    { value: 'thanks',  display: 'Miigwech\n(Ojibwe)' },
+    { value: 'thanks',  display: 'Thank You' },
+    { value: 'dthanks', display: 'Pidamayaye\n(Dakota)' },
+    { value: 'dthanks', display: 'Thank You\n(Dakota)' },
+    { value: 'who',     display: 'Awenen giin?\n(Ojibwe)' },
+    { value: 'who',     display: 'Who are you?' },
+    { value: 'water',   display: 'Mní\n(Dakota)' },
+    { value: 'water',   display: 'Water' },
+    { value: 'brave',   display: 'Čhaŋtéčhiŋza\n(Dakota)' },
+    { value: 'brave',   display: 'Strong-Hearted\n/ Brave' },
+  ]);
+</script>
+</body>
+</html>

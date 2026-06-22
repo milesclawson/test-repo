@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2: Dakota Homeland — MN Tribal Nations Grade 3</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lesson-hero { background: linear-gradient(135deg, #B03A2E, #6B1A10); }
+
+    /* Community cards */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      padding: 24px;
+    }
+    .community-card {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 2px solid var(--red-light);
+      padding: 18px;
+      text-align: center;
+    }
+    .community-card .cc-icon { font-size: 2.2rem; margin-bottom: 8px; }
+    .community-card h4 { color: var(--red); font-size: 1rem; margin-bottom: 6px; }
+    .community-card p { font-size: 0.82rem; color: var(--text-soft); }
+
+    /* Map simulation */
+    #dakotaMapCanvas {
+      display: block;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      touch-action: manipulation;
+      background: var(--blue-pale);
+    }
+    .map-tooltip-box {
+      background: #fff;
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 14px auto 0;
+      max-width: 560px;
+      font-size: 0.92rem;
+      display: none;
+    }
+    .map-tooltip-box h4 { color: var(--red); margin-bottom: 6px; }
+    .map-tooltip-box p { color: var(--text-soft); }
+
+    /* Place names table */
+    .place-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .place-table th {
+      background: var(--red);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+    .place-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-soft);
+    }
+    .place-table tr:nth-child(even) td { background: var(--red-pale); }
+    .place-table .place-dakota { color: var(--red); font-weight: bold; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">🌾 MN Tribal Nations — Grade 3</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../unit1/index.html">Unit 1</a>
+      <a href="../unit2/index.html" class="active">Unit 2</a>
+      <a href="../unit3/index.html">Unit 3</a>
+      <a href="../unit4/index.html">Unit 4</a>
+      <a href="../unit5/index.html">Unit 5</a>
+      <a href="../unit6/index.html">Unit 6</a>
+    </div>
+  </div>
+</nav>
+
+<div class="lesson-hero">
+  <h1>🌊 Dakota Homeland</h1>
+  <p class="lesson-subtitle">Mni Sota Makoce — Land Where the Waters Reflect the Skies</p>
+  <div class="lesson-meta">
+    <span class="tag tag-ss">Social Studies</span>
+    <span class="tag tag-ela">ELA</span>
+  </div>
+</div>
+
+<div class="lesson-body">
+
+  <div class="community-note" style="margin-bottom:32px">
+    <strong>⚠ Before You Teach This Unit:</strong> Preview with your Native community contacts. This unit draws directly from the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA Lower Sioux <em>Caŋṡayapi</em> curriculum</a> and <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> language materials. Character names are working placeholders pending community review.
+  </div>
+
+  <!-- STORY -->
+  <div class="story-reader" id="storyReader">
+    <div class="story-header">
+      <span class="story-icon">📖</span>
+      <div>
+        <h2>Where the Water Reflects the Sky</h2>
+        <p>A story with Winona &nbsp;·&nbsp; Tap words in <span style="color:#ffb3b3">red</span> to hear their meaning</p>
+      </div>
+    </div>
+    <div class="story-pages">
+
+      <div class="story-page active">
+        <p>Winona's favorite drive was south on the highway, past the cornfields, past the river bluffs, until her dad turned off toward <span class="dakota-word" data-tip="Šakpe Otonwe (SHAHK-pay oh-TON-way) — 'Six's Village,' the Dakota name for the Shakopee area. Named after Chief Shakopee (Šakpe), who led the Mdewakanton Dakota community. Today, the Shakopee Mdewakanton Sioux Community is one of four Dakota communities in Minnesota.">Šakpe Otonwe</span>.</p>
+        <p>"<span class="dakota-word" data-tip="Mni Sota Makoce (mni-SOH-tah mah-KOH-chay) — the Dakota name for Minnesota, meaning 'land where the waters reflect the skies' or 'land of sky-tinted waters.' This is the original Dakota name for the homeland.">Mni Sota Makoce</span>," her grandmother said from the back seat. "That's what Dakota people call this place. Not Minnesota — <em>Mni Sota Makoce</em>. Our name. Our land."</p>
+        <p>Winona pressed her face to the window. The river was wide and silver in the morning light. The water was reflecting the sky — just like the name said.</p>
+      </div>
+
+      <div class="story-page">
+        <p>At her grandmother's house, Winona's <span class="dakota-word" data-tip="Uŋčí (oon-CHEE) — grandmother in Dakota. From Dakhota.org language materials.">Uŋčí</span> was already cooking. The whole house smelled like soup and frybread.</p>
+        <p>"<span class="dakota-word" data-tip="Táku eháŋni yaúŋ he? (TAH-koo ay-HAHN-nee yah-OON hay) — 'What have you been doing?' A common Dakota greeting between family members. From Dakhota.org.">Táku eháŋni yaúŋ he?</span>" her Uŋčí called. What have you been doing?</p>
+        <p>"School," Winona said. "We're learning about Dakota people. I told my teacher — we're not in the past. We're right here."</p>
+        <p>Her Uŋčí smiled. "You tell them right."</p>
+      </div>
+
+      <div class="story-page">
+        <p>After lunch, Winona's dad spread a big map on the kitchen table. It showed Minnesota — but labeled with Dakota words.</p>
+        <p>"<span class="dakota-word" data-tip="Bdote (bdoh-TAY) — the place where two rivers come together. In Dakota understanding, Bdote — at the confluence of the Minnesota and Mississippi rivers — is the center of the Dakota world, the place of creation. Today this sacred site is near Fort Snelling / Mendota.">Bdote</span>," her dad said, pointing to where two rivers met. "The center of the Dakota world. Where we come from. It's still there — right in the middle of the Twin Cities."</p>
+        <p>"People drive past it every day," Winona said quietly.</p>
+        <p>"They do. But we know what it is." He smiled. "And now you do too."</p>
+      </div>
+
+      <div class="story-page">
+        <p>That evening, Winona's cousin showed her the tribal community center — a big, beautiful building with a garden outside.</p>
+        <p>"The tribe built this," her cousin said proudly. "We have our own school, our own clinic, our own fire department. We make our own decisions."</p>
+        <p>Winona thought about what her teacher had said about the past — about hard times, about land taken away. But standing here, she felt something different. She felt <span class="dakota-word" data-tip="Wóčhaŋtognake (woh-CHAHN-toh-gnah-kay) — generosity, open-heartedness, community care. One of the core Dakota values. From Dakhota.org language materials.">wóčhaŋtognake</span> — the generous, open heart of a community that takes care of its own.</p>
+        <p>Dakota people were not just history. They were here. Building. Growing. Thriving.</p>
+      </div>
+
+    </div>
+    <div class="story-nav">
+      <button class="prev-btn" disabled>← Previous</button>
+      <span class="story-progress">Page 1 of 4</span>
+      <button class="next-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="source-citation">
+    <strong>📚 Story Sources</strong>
+    Dakota vocabulary from <a href="https://dakhota.org/" target="_blank">Dakhota.org — Dakhóta Iá Wóhdaka Po! Level 1 textbook</a>. Cultural and historical context from the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA Lower Sioux <em>Caŋṡayapi: Ehaŋna k'a Dehan</em> curriculum</a>. Bdote information from MDE IEFA resources.
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="vocab-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--red), #6B1A10);">
+      <span class="sec-icon">🗣️</span>
+      <div>
+        <h2>Dakota Words to Know</h2>
+        <p>All Dakota words sourced from <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a> — Dakhóta Iá Wóhdaka Po! curriculum</p>
+      </div>
+    </div>
+    <div class="vocab-grid">
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Mni Sota Makoce</span>
+        <span class="word-english">Minnesota / Land Where the Waters Reflect the Skies</span>
+        <span class="word-audio">mni-SOH-tah mah-KOH-chay</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Bdote</span>
+        <span class="word-english">Where Two Rivers Meet / Place of Creation</span>
+        <span class="word-audio">bdoh-TAY</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Uŋčí</span>
+        <span class="word-english">Grandmother</span>
+        <span class="word-audio">oon-CHEE</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Tunkášila</span>
+        <span class="word-english">Grandfather</span>
+        <span class="word-audio">toon-KAH-shee-lah</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Čhaŋtéčhiŋza</span>
+        <span class="word-english">Brave / Strong-Hearted</span>
+        <span class="word-audio">chahn-TAY-cheen-zah</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Wóčhaŋtognake</span>
+        <span class="word-english">Generosity / Open-Heartedness</span>
+        <span class="word-audio">woh-CHAHN-toh-gnah-kay</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Mní</span>
+        <span class="word-english">Water</span>
+        <span class="word-audio">mnee</span>
+      </div>
+      <div class="vocab-card" onclick="this.classList.toggle('flipped-card')">
+        <span class="word-dakota">Pidamayaye</span>
+        <span class="word-english">Thank You</span>
+        <span class="word-audio">pee-DAH-mah-yah-yeh</span>
+      </div>
+    </div>
+    <p style="padding: 0 24px 20px; font-size:0.82rem; color:var(--text-soft); font-family:Arial,sans-serif">
+      💡 <strong>Teacher tip:</strong> Pair with the <strong>Dakota Language Deck of Play Cards</strong> and <strong>Wóeye Káǧapi Story Dice</strong> from your Nashke collection, and the <a href="https://dakhota.org/" target="_blank">Dakhota.org Dakota Language Keyboard</a> (free download) for student writing practice.
+    </p>
+  </div>
+
+  <!-- MAP SIMULATION -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--red), #6B1A10);">
+      <span class="sec-icon">🗺️</span>
+      <div>
+        <h2>Dakota Communities Today</h2>
+        <p>Tap each community to learn about them &nbsp;·&nbsp; Source: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE Indigenous Education for All</a></p>
+      </div>
+    </div>
+    <div class="sim-canvas-wrap">
+      <p class="sim-intro">Minnesota has <strong>four Dakota communities</strong> today, all in the southern part of the state. Tap each dot on the map to learn about that community.</p>
+      <canvas id="dakotaMapCanvas" width="680" height="440"></canvas>
+      <div class="map-tooltip-box" id="mapInfo">
+        <h4 id="mapTitle"></h4>
+        <p id="mapDesc"></p>
+      </div>
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Map Sources</strong>
+      Community information from <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE Indigenous Education for All</a> and the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">Lower Sioux <em>Caŋṡayapi: Ehaŋna k'a Dehan</em> curriculum</a>. Dakota language names from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>.
+    </div>
+  </div>
+
+  <!-- PLACE NAMES -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--blue), #0D3A6E);">
+      <span class="sec-icon">📍</span>
+      <div>
+        <h2>Dakota Place Names in Minnesota</h2>
+        <p>These names were here first — and still are &nbsp;·&nbsp; Source: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE IEFA</a> &amp; <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a></p>
+      </div>
+    </div>
+    <div style="padding: 24px; overflow-x: auto;">
+      <table class="place-table">
+        <thead>
+          <tr>
+            <th>Place You Know</th>
+            <th>Dakota Name</th>
+            <th>What It Means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minnesota</td>
+            <td class="place-dakota">Mni Sota Makoce</td>
+            <td>Land where the waters reflect the skies</td>
+          </tr>
+          <tr>
+            <td>Mississippi River</td>
+            <td class="place-dakota">Wakpá Tháŋka</td>
+            <td>The Great River</td>
+          </tr>
+          <tr>
+            <td>Minnesota River</td>
+            <td class="place-dakota">Mní Sóta Wakpá</td>
+            <td>Sky-Tinted Water River</td>
+          </tr>
+          <tr>
+            <td>Minneapolis / Fort Snelling area</td>
+            <td class="place-dakota">Bdote</td>
+            <td>Where two rivers meet — center of the Dakota world</td>
+          </tr>
+          <tr>
+            <td>Minnehaha Falls</td>
+            <td class="place-dakota">Mni Haha</td>
+            <td>Laughing / curling water</td>
+          </tr>
+          <tr>
+            <td>Lake Minnetonka</td>
+            <td class="place-dakota">Mní Tháŋka</td>
+            <td>Big Water</td>
+          </tr>
+          <tr>
+            <td>Shakopee</td>
+            <td class="place-dakota">Šakpe Otonwe</td>
+            <td>Six's Village (named after Chief Šakpe)</td>
+          </tr>
+          <tr>
+            <td>Mankato</td>
+            <td class="place-dakota">Makhóčhe Mní Sóta</td>
+            <td>Blue Earth (bluish-green clay earth)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Place Name Sources</strong>
+      Dakota place names from <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> and the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA Lower Sioux <em>Caŋṡayapi</em> curriculum</a>. Extended place name resources in <a href="https://fdlband.org/culture/ojibwemowin/roads___buildings.php" target="_blank">Fond du Lac Ojibwemowin Roads &amp; Buildings</a> (via MDE IEFA).
+    </div>
+  </div>
+
+  <!-- THEN & NOW -->
+  <h2 style="color:var(--red); font-size:1.25rem; margin-bottom:16px">Then &amp; Now: Dakota People in Minnesota</h2>
+  <div class="then-now">
+    <div class="then-box">
+      <h3>🌊 Then — Thousands of Years</h3>
+      <p>Dakota peoples have lived in Mni Sota Makoce since time immemorial. The land, rivers, and lakes all carry Dakota names. Bdote — where the Minnesota and Mississippi rivers meet — is the center of the Dakota world.</p>
+      <p style="margin-top:10px">Dakota communities lived, hunted, gathered, farmed, and built relationships across the region. Their knowledge of this land is deep and old.</p>
+    </div>
+    <div class="now-box">
+      <h3>🏛️ Now — Four Communities, Strong and Growing</h3>
+      <p>Today there are four federally recognized Dakota communities in Minnesota: <strong>Lower Sioux, Upper Sioux, Prairie Island,</strong> and <strong>Shakopee Mdewakanton</strong>. Each runs its own government, schools, health programs, and cultural initiatives.</p>
+      <p style="margin-top:10px">Shakopee Mdewakanton runs one of the most successful tribal economic programs in the country — funding language revitalization, education, and community services.</p>
+    </div>
+  </div>
+  <div class="source-citation">
+    <strong>📚 Then &amp; Now Sources</strong>
+    <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA — Lower Sioux <em>Caŋṡayapi: Ehaŋna k'a Dehan (Past and Present)</em> curriculum</a>. Teachers: download the full PDF from the MDE IEFA page for in-depth historical and contemporary content created by the Lower Sioux Indian Community itself.
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="discussion-prompts">
+    <h3>💬 Discussion Questions</h3>
+    <ol>
+      <li>Winona tells her teacher: "We're not in the past. We're right here." What do you think she means? Why is it important to say that?</li>
+      <li>Bdote is described as the center of the Dakota world. What place feels like the center of your world? What makes somewhere feel important like that?</li>
+      <li>Minnesota's name comes from Dakota words. Can you find other places near your school or home that have Dakota or Ojibwe names?</li>
+      <li>Winona feels <em>wóčhaŋtognake</em> — the warmth of a community that takes care of its own. What does that feel like? What makes a community strong?</li>
+    </ol>
+  </div>
+
+  <!-- CONNECTED GAMES -->
+  <div class="connected-games">
+    <h3>🎮 Use These Games From Your Collection With This Unit</h3>
+    <div class="game-chips">
+      <span class="game-chip">🃏 Dakota Language Deck — vocabulary practice</span>
+      <span class="game-chip">🎲 Wóeye Káǧapi Story Dice — sentence building</span>
+      <span class="game-chip">🐦 Zitkápidaŋ Bird Card Game — Dakota nature words</span>
+      <span class="game-chip">🧩 Mii Gwech Memory Tiles — matching</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:14px">Games from <a href="https://www.nashke.com/" target="_blank">Nashke.com</a>. Story Dice also available at <a href="https://dakhota.org/" target="_blank">Dakhota.org</a>.</p>
+  </div>
+
+  <!-- MEMORY GAME -->
+  <div class="game-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--red), #6B1A10);">
+      <span class="sec-icon">🃏</span>
+      <div>
+        <h2>Dakota Place Name Match</h2>
+        <p>Match Dakota names to their meanings &nbsp;·&nbsp; Words from <a href="https://dakhota.org/" target="_blank" style="color:#fff">Dakhota.org</a></p>
+      </div>
+    </div>
+    <div class="game-body" id="memoryGame">
+      <div class="game-grid"></div>
+      <div class="game-status">Matches: <strong>0 / 6</strong> &nbsp;|&nbsp; Moves: <strong>0</strong></div>
+      <div style="text-align:center; margin-top:14px">
+        <button class="sim-btn restart-btn" style="background:var(--red)">🔄 Shuffle &amp; Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE LINKS -->
+  <div class="source-banner" style="max-width:100%; margin: 0 0 36px">
+    <div class="source-banner-inner">
+      <h3>📚 Go Deeper — Learn From the Source</h3>
+      <div class="source-list">
+        <a class="source-pill" href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" rel="noopener"><span>🏫</span> MDE IEFA — Caŋṡayapi Curriculum</a>
+        <a class="source-pill" href="https://dakhota.org/" target="_blank" rel="noopener"><span>🌻</span> Dakhota.org — Dakota Language</a>
+        <a class="source-pill" href="https://www.nashke.com/products/p/zitkapidan-bird-card-game" target="_blank" rel="noopener"><span>🐦</span> Zitkápidaŋ Bird Card Game</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px">
+    <a href="../unit1/index.html" class="print-btn" style="margin-right:12px">← Unit 1: Wild Rice</a>
+    <a href="../unit3/index.html" class="print-btn">Unit 3: Sovereignty →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>Unit 2: Dakota Homeland &nbsp;·&nbsp; Minnesota Tribal Nations — Grade 3</p>
+  <p class="footer-protocol">Sources: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp; <a href="https://dakhota.org/" target="_blank">Dakhota.org</a> &nbsp;·&nbsp; <a href="https://www.nashke.com/" target="_blank">Nashke</a></p>
+</footer>
+<script src="../js/main.js"></script>
+<script src="dakota_map.js"></script>
+<script>
+  initStoryReader('storyReader');
+  initMemoryGame('memoryGame', [
+    { value: 'mn',      display: 'Mni Sota Makoce\n(Minnesota)' },
+    { value: 'mn',      display: 'Land of Sky-\nTinted Waters' },
+    { value: 'bdote',   display: 'Bdote\n(Sacred Place)' },
+    { value: 'bdote',   display: 'Where Two\nRivers Meet' },
+    { value: 'mni',     display: 'Mní\n(Water)' },
+    { value: 'mni',     display: 'Water' },
+    { value: 'falls',   display: 'Mni Haha\n(Minnehaha)' },
+    { value: 'falls',   display: 'Laughing Water' },
+    { value: 'big',     display: 'Mní Tháŋka\n(Minnetonka)' },
+    { value: 'big',     display: 'Big Water' },
+    { value: 'thanks',  display: 'Pidamayaye' },
+    { value: 'thanks',  display: 'Thank You' },
+  ]);
+</script>
+</body>
+</html>

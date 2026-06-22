@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3: Sovereignty — MN Tribal Nations Grade 3</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lesson-hero { background: linear-gradient(135deg, #1B5FA8, #0D3A6E); }
+    /* 11 Nations grid */
+    .nations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      padding: 24px;
+    }
+    .nation-card {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .nation-card:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+    .nation-card.ojibwe { border-color: var(--green); }
+    .nation-card.dakota  { border-color: var(--red); }
+    .nation-card.ojibwe h4 { color: var(--green); }
+    .nation-card.dakota  h4 { color: var(--red); }
+    .nation-card p { font-size: 0.78rem; color: var(--text-soft); margin-top: 4px; }
+    /* Council sim */
+    .council-area {
+      padding: 24px;
+    }
+    .council-scenario {
+      background: var(--blue-pale);
+      border: 2px solid var(--blue-light);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+    }
+    .council-scenario h4 { color: var(--blue); margin-bottom: 8px; font-size: 1rem; }
+    .council-scenario p { font-size: 0.92rem; color: var(--text-soft); }
+    .council-choices { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+    .choice-btn {
+      background: #fff;
+      border: 2px solid var(--blue-light);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.92rem;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .choice-btn:hover { border-color: var(--blue); background: var(--blue-pale); }
+    .choice-btn.selected { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .council-result {
+      background: var(--green-pale);
+      border: 2px solid var(--green);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.92rem;
+      display: none;
+    }
+    .council-result.show { display: block; }
+    .council-result h4 { color: var(--green); margin-bottom: 8px; }
+    .council-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+    }
+    .council-nav button {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+    .council-nav button:disabled { background: #ccc; cursor: default; }
+    .council-progress { font-size: 0.85rem; color: var(--text-soft); font-family: Arial, sans-serif; align-self: center; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">🌾 MN Tribal Nations — Grade 3</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../unit1/index.html">Unit 1</a>
+      <a href="../unit2/index.html">Unit 2</a>
+      <a href="../unit3/index.html" class="active">Unit 3</a>
+      <a href="../unit4/index.html">Unit 4</a>
+      <a href="../unit5/index.html">Unit 5</a>
+      <a href="../unit6/index.html">Unit 6</a>
+    </div>
+  </div>
+</nav>
+
+<div class="lesson-hero">
+  <h1>🏛️ Sovereignty &amp; Self-Governance</h1>
+  <p class="lesson-subtitle">Minnesota's 11 Tribal Nations — Governments, Rights &amp; Community Power</p>
+  <div class="lesson-meta">
+    <span class="tag tag-ss">Social Studies</span>
+    <span class="tag tag-ela">ELA</span>
+  </div>
+</div>
+
+<div class="lesson-body">
+
+  <div class="community-note" style="margin-bottom:32px">
+    <strong>⚠ Before You Teach This Unit:</strong> Preview with your Native community contacts. Sovereignty content draws from <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA — Tribal Relations Training &amp; IEFA Presentation</a> and the Lower Sioux <em>Caŋṡayapi</em> curriculum. Character dialogue is a working placeholder for community review.
+  </div>
+
+  <!-- STORY -->
+  <div class="story-reader" id="storyReader">
+    <div class="story-header">
+      <span class="story-icon">📖</span>
+      <div>
+        <h2>Our Own Nation</h2>
+        <p>A story with Miigizi and Winona</p>
+      </div>
+    </div>
+    <div class="story-pages">
+
+      <div class="story-page active">
+        <p>One morning, Miigizi's teacher asked the class: "What is a government?"</p>
+        <p>"It's the people who make rules," said one student.</p>
+        <p>"It's who you vote for," said another.</p>
+        <p>Miigizi raised his hand. "My nation has its own government," he said. "White Earth has its own president — we call him the Tribal Chairman. And its own laws. And its own court."</p>
+        <p>His teacher nodded. "That's called <span class="ojibwe-word" data-tip="Sovereignty (sov-er-en-tee) — the right of a nation to govern itself. Minnesota's 11 tribal nations are sovereign — they are not part of the state government. Their right to self-govern is protected by treaties and the US Constitution. Source: MDE IEFA Tribal Relations Training.">sovereignty</span>," she said. "Tribal nations in Minnesota have their own governments. They always have."</p>
+      </div>
+
+      <div class="story-page">
+        <p>At lunch, Miigizi told Winona what happened.</p>
+        <p>"My dad says sovereignty means we take care of ourselves," Winona said. "Shakopee has its own fire department, its own school, its own clinic. If someone in our community needs help — we help them."</p>
+        <p>"It's like being a country," Miigizi said.</p>
+        <p>"Kind of," Winona said. "A country inside a country. With our own flag. Our own laws. Our own people making decisions for our people."</p>
+        <p>She paused. "And our own language. That's important too."</p>
+      </div>
+
+      <div class="story-page">
+        <p>After school, Miigizi's dad took him to a community meeting at the <span class="ojibwe-word" data-tip="White Earth Nation — one of seven federally recognized Ojibwe (Anishinaabe) bands in Minnesota. The White Earth Band passed the historic Rights of Manoomin law in 2021 and runs its own government, schools, health system, and cultural programs.">White Earth</span> tribal offices in Minneapolis.</p>
+        <p>Adults sat in a circle, talking about a new community garden. One person suggested a location. Another asked about water access. A grandmother spoke about traditional foods they could grow. Everyone listened.</p>
+        <p>"Why does everyone get to talk?" Miigizi whispered.</p>
+        <p>"That's how we make decisions," his dad whispered back. "Not one person — the community together. That's been our way for a long time."</p>
+      </div>
+
+      <div class="story-page">
+        <p>On the drive home, Miigizi looked out the window at the city lights.</p>
+        <p>"There are eleven tribal nations in Minnesota," his dad said. "Some people don't know that. They think Native people are only in history books."</p>
+        <p>"We're not history," Miigizi said. He had heard Winona say that.</p>
+        <p>"No," his dad said. "We are governments. We are schools. We are language programs and health clinics and fire departments and environmental teams. We are present."</p>
+        <p>He turned on the radio. A song in <span class="ojibwe-word" data-tip="Ojibwemowin (oh-JIB-way-moh-win) — the Ojibwe language. Still spoken, still being taught, still alive. MIIN (miinojibwe.org) provides language resources for every grade level.">Ojibwemowin</span> came on. Miigizi smiled.</p>
+      </div>
+
+    </div>
+    <div class="story-nav">
+      <button class="prev-btn" disabled>← Previous</button>
+      <span class="story-progress">Page 1 of 4</span>
+      <button class="next-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="source-citation">
+    <strong>📚 Story Sources</strong>
+    Sovereignty framing from <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA — Tribal Relations Training IEFA Presentation and FAQ document</a>. Contemporary examples from MDE's <em>Indigenous Education for All Responsibility Matrix</em> and the <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">Lower Sioux <em>Caŋṡayapi</em> curriculum</a>. Language reference from <a href="https://www.miinojibwe.org/" target="_blank">MIIN Ojibwemowin resources</a>.
+  </div>
+
+  <!-- 11 NATIONS -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--blue), #0D3A6E);">
+      <span class="sec-icon">🏛️</span>
+      <div>
+        <h2>Minnesota's 11 Tribal Nations</h2>
+        <p>All federally recognized &nbsp;·&nbsp; All sovereign governments &nbsp;·&nbsp; Source: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" style="color:#fff">MDE IEFA</a></p>
+      </div>
+    </div>
+    <div class="nations-grid">
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>White Earth Nation</h4>
+        <p>Anishinaabe · NW Minnesota · Passed Rights of Manoomin 2021</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Red Lake Band</h4>
+        <p>Anishinaabe · N Minnesota · One of only two "closed" reservations — protects Red Lake</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Leech Lake Band</h4>
+        <p>Anishinaabe · Central MN · Stewards of Leech Lake, one of MN's largest lakes</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Mille Lacs Band</h4>
+        <p>Anishinaabe · Central MN · Known for treaty rights cases protecting fishing &amp; gathering</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Fond du Lac Band</h4>
+        <p>Anishinaabe · NE Minnesota · Runs strong language &amp; environmental programs</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Bois Forte Band</h4>
+        <p>Anishinaabe · N Minnesota · Remote homeland near Boundary Waters</p>
+      </div>
+      <div class="nation-card ojibwe">
+        <div style="font-size:1.8rem">🌿</div>
+        <h4>Grand Portage Band</h4>
+        <p>Anishinaabe · NE tip of MN · Gateway to Great Lakes, rich cultural heritage</p>
+      </div>
+      <div class="nation-card dakota">
+        <div style="font-size:1.8rem">🌻</div>
+        <h4>Lower Sioux</h4>
+        <p>Dakota · Morton, MN · Created the Caŋṡayapi curriculum with MDE</p>
+      </div>
+      <div class="nation-card dakota">
+        <div style="font-size:1.8rem">🌻</div>
+        <h4>Upper Sioux</h4>
+        <p>Dakota · Granite Falls, MN · Pejúhutazizi — Yellow Medicine community</p>
+      </div>
+      <div class="nation-card dakota">
+        <div style="font-size:1.8rem">🌻</div>
+        <h4>Prairie Island</h4>
+        <p>Dakota · Red Wing, MN · Island community in the Mississippi River</p>
+      </div>
+      <div class="nation-card dakota">
+        <div style="font-size:1.8rem">🌻</div>
+        <h4>Shakopee Mdewakanton</h4>
+        <p>Dakota · Prior Lake, MN · Funds education &amp; language programs statewide</p>
+      </div>
+    </div>
+    <p style="padding: 0 24px 20px; font-size:0.82rem; color:var(--text-soft); font-family:Arial,sans-serif">
+      <span style="color:var(--green)">●</span> Green = Anishinaabe/Ojibwe bands &nbsp;&nbsp; <span style="color:var(--red)">●</span> Red = Dakota communities &nbsp;·&nbsp; Source: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE Indigenous Education for All</a>
+    </p>
+  </div>
+
+  <!-- COUNCIL SIMULATION -->
+  <div class="sim-section">
+    <div class="section-header" style="background: linear-gradient(135deg, var(--gold), var(--earth));">
+      <span class="sec-icon">🪑</span>
+      <div>
+        <h2>Tribal Council Simulation</h2>
+        <p>You are a member of the community. Help make a decision together.</p>
+      </div>
+    </div>
+    <div class="council-area" id="councilSim">
+      <!-- filled by JS -->
+    </div>
+    <div class="source-citation" style="margin: 0 24px 24px;">
+      <strong>📚 Simulation Background</strong>
+      Community decision-making practices described here reflect general principles of tribal governance documented in <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA's Tribal Relations Training materials</a>. Specific governance structures vary by nation and should not be generalized. Teachers: use this simulation as a starting point, then invite a tribal government representative to speak to the class.
+    </div>
+  </div>
+
+  <!-- THEN & NOW -->
+  <h2 style="color:var(--blue); font-size:1.25rem; margin-bottom:16px">Then &amp; Now: Tribal Sovereignty</h2>
+  <div class="then-now">
+    <div class="then-box">
+      <h3>📜 Always Sovereign</h3>
+      <p>Tribal nations governed themselves long before European contact. They had their own laws, leaders, trade networks, and ways of making decisions. Sovereignty is not something they were given — it is something they always had.</p>
+      <p style="margin-top:10px">Treaties recognized this sovereignty by treating tribal nations as governments equal to the US government at the negotiating table.</p>
+    </div>
+    <div class="now-box">
+      <h3>🏛️ Sovereign Today</h3>
+      <p>Today, Minnesota's 11 tribal nations run their own schools, health clinics, courts, environmental departments, fire departments, and cultural programs. They pass their own laws — like the Rights of Manoomin.</p>
+      <p style="margin-top:10px">Sovereignty means the power to take care of your own people, in your own way, on your own land.</p>
+    </div>
+  </div>
+  <div class="source-citation">
+    <strong>📚 Sources</strong>
+    <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA — Tribal Relations Training IEFA Presentation (2024)</a> &nbsp;·&nbsp;
+    <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE — Lower Sioux Caŋṡayapi curriculum</a> &nbsp;·&nbsp;
+    Minnesota Statutes, section 120B.021, subdivision 5
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="discussion-prompts">
+    <h3>💬 Discussion Questions</h3>
+    <ol>
+      <li>Miigizi says a tribal nation is "like a country inside a country." What does that mean? Can you explain it in your own words?</li>
+      <li>At the community meeting, everyone got to speak before a decision was made. How is that similar to or different from how decisions are made at your school?</li>
+      <li>There are 11 tribal nations in Minnesota. Did you know that before today? Why might it be important to know?</li>
+      <li>Sovereignty means taking care of your own people. What do you think communities need to do to take care of each other?</li>
+    </ol>
+  </div>
+
+  <!-- CONNECTED GAMES -->
+  <div class="connected-games">
+    <h3>🎮 Use These Games From Your Collection With This Unit</h3>
+    <div class="game-chips">
+      <span class="game-chip">🏠 Giiwen — "going home" / community connection</span>
+      <span class="game-chip">🃏 Cards for Decolonization — teacher background &amp; older students</span>
+      <span class="game-chip">🃏 Ojibwe Language Deck — nation vocabulary</span>
+      <span class="game-chip">🃏 Dakota Language Deck — nation vocabulary</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-soft); margin-top:14px">Games from <a href="https://www.nashke.com/" target="_blank">Nashke.com</a>. Note: <em>Cards for Decolonization</em> is best used as teacher professional development or with older grades — preview before use with 3rd grade.</p>
+  </div>
+
+  <!-- STANDARDS -->
+  <div class="standards-accordion">
+    <button class="standards-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.querySelector('.arrow').textContent = this.nextElementSibling.classList.contains('open') ? '▲' : '▼'">
+      📋 Minnesota Standards Addressed in This Unit <span class="arrow">▼</span>
+    </button>
+    <div class="standards-body">
+      <ul>
+        <li><strong>MN Statute 120B.021, Subd. 5</strong> — Required instruction on history, government, and culture of American Indian tribes and nations in Minnesota. (<a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a>)</li>
+        <li><strong>Social Studies 3.4.1.2</strong> — Describe how different groups in the community have worked together to accomplish common goals.</li>
+        <li><strong>Social Studies — Civic Knowledge</strong> — Students understand that governments make and enforce laws, provide services, and protect the rights of people.</li>
+        <li><strong>ELA 3.SL.1</strong> — Engage effectively in collaborative discussions with diverse partners on grade 3 topics.</li>
+        <li><strong>ELA 3.RI.3</strong> — Describe the relationship between a series of historical events using language that pertains to cause/effect.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="source-banner" style="max-width:100%; margin: 24px 0 36px">
+    <div class="source-banner-inner">
+      <h3>📚 Go Deeper — Learn From the Source</h3>
+      <div class="source-list">
+        <a class="source-pill" href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank" rel="noopener"><span>🏫</span> MDE IEFA — All Resources</a>
+        <a class="source-pill" href="https://www.miinojibwe.org/" target="_blank" rel="noopener"><span>🌿</span> MIIN Ojibwe Resources</a>
+        <a class="source-pill" href="https://dakhota.org/" target="_blank" rel="noopener"><span>🌻</span> Dakhota.org</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px">
+    <a href="../unit2/index.html" class="print-btn" style="margin-right:12px">← Unit 2: Dakota Homeland</a>
+    <a href="../unit4/index.html" class="print-btn">Unit 4: Seasonal Life →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Unit 3: Sovereignty &amp; Self-Governance &nbsp;·&nbsp; Minnesota Tribal Nations — Grade 3</p>
+  <p class="footer-protocol">Sources: <a href="https://education.mn.gov/MDE/dse/indian/all/" target="_blank">MDE IEFA</a> &nbsp;·&nbsp; <a href="https://www.miinojibwe.org/" target="_blank">MIIN</a> &nbsp;·&nbsp; <a href="https://dakhota.org/" target="_blank">Dakhota.org</a></p>
+</footer>
+<script src="../js/main.js"></script>
+<script src="council.js"></script>
+<script>initStoryReader('storyReader');</script>
+</body>
+</html>

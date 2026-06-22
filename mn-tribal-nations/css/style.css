@@ -1,0 +1,640 @@
+/* ============================================
+   Minnesota Tribal Nations — 3rd Grade Suite
+   Color palette inspired by natural Minnesota:
+   wild rice gold, lake blue, forest green, earth red
+   ============================================ */
+
+:root {
+  --gold: #D4820A;
+  --gold-light: #F5C842;
+  --gold-pale: #FDF3D0;
+  --blue: #1B5FA8;
+  --blue-light: #4A90C8;
+  --blue-pale: #E8F2FB;
+  --green: #2D6A2D;
+  --green-light: #5A9E5A;
+  --green-pale: #EAF4EA;
+  --red: #B03A2E;
+  --red-light: #E05A4A;
+  --red-pale: #FDEEEC;
+  --earth: #6B4226;
+  --cream: #FBF7F0;
+  --text: #1A1A1A;
+  --text-soft: #444;
+  --border: #D9C8A8;
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---- NAV ---- */
+nav {
+  background: var(--green);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.nav-logo {
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.2s;
+  font-family: 'Arial', sans-serif;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.2); }
+.nav-links a.active { background: var(--gold); color: #fff; }
+
+/* ---- HERO ---- */
+.hero {
+  background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+  color: #fff;
+  padding: 60px 20px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: var(--cream);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  opacity: 0.92;
+  max-width: 640px;
+  margin: 0 auto 24px;
+}
+.hero-sub {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* ---- CHARACTERS ---- */
+.characters-section {
+  max-width: 900px;
+  margin: 50px auto 20px;
+  padding: 0 20px;
+  text-align: center;
+}
+.characters-section h2 {
+  font-size: 1.6rem;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.characters-section .intro-text {
+  color: var(--text-soft);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+.character-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.character-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+  flex: 1;
+  min-width: 260px;
+  max-width: 360px;
+  border-top: 6px solid var(--gold);
+  text-align: left;
+}
+.character-card.dakota { border-top-color: var(--red); }
+.character-card .char-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.character-card .char-pronoun {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+  font-family: Arial, sans-serif;
+}
+.character-card p { font-size: 0.95rem; color: var(--text-soft); }
+.char-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.community-note {
+  background: var(--gold-pale);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 32px;
+  font-size: 0.88rem;
+  color: var(--earth);
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+.community-note strong { color: var(--red); }
+
+/* ---- UNIT GRID ---- */
+.units-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+.units-section h2 {
+  font-size: 1.6rem;
+  color: var(--green);
+  text-align: center;
+  margin-bottom: 28px;
+}
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.unit-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+}
+.unit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+.unit-card-header {
+  padding: 20px 22px 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.unit-card-header .unit-icon { font-size: 2.4rem; }
+.unit-card-header h3 { font-size: 1.1rem; line-height: 1.3; }
+.unit-card-header .unit-num { font-size: 0.8rem; opacity: 0.8; margin-bottom: 2px; font-family: Arial, sans-serif; }
+.unit-card-body { padding: 16px 22px 20px; }
+.unit-card-body p { font-size: 0.9rem; color: var(--text-soft); margin-bottom: 10px; }
+.unit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+.tag-ss { background: var(--blue-pale); color: var(--blue); }
+.tag-ela { background: var(--gold-pale); color: var(--earth); }
+.tag-sci { background: var(--green-pale); color: var(--green); }
+.tag-art { background: var(--red-pale); color: var(--red); }
+.tag-pilot { background: var(--gold); color: #fff; }
+
+.u1 .unit-card-header { background: linear-gradient(135deg, var(--green), var(--blue)); }
+.u2 .unit-card-header { background: linear-gradient(135deg, var(--red), #8B2500); }
+.u3 .unit-card-header { background: linear-gradient(135deg, var(--blue), #0D3A6E); }
+.u4 .unit-card-header { background: linear-gradient(135deg, var(--green-light), var(--green)); }
+.u5 .unit-card-header { background: linear-gradient(135deg, var(--gold), #A05C00); }
+.u6 .unit-card-header { background: linear-gradient(135deg, var(--earth), #3A1800); }
+
+/* ---- SOURCE BANNER ---- */
+.source-banner {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+.source-banner-inner {
+  background: var(--blue-pale);
+  border: 2px solid var(--blue-light);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+.source-banner-inner h3 {
+  color: var(--blue);
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+.source-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.source-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1.5px solid var(--blue-light);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.source-pill:hover { background: var(--blue); color: #fff; }
+.source-pill span { font-size: 1.1rem; }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--green);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+}
+footer a { color: var(--gold-light); }
+footer .footer-protocol {
+  max-width: 700px;
+  margin: 12px auto 0;
+  font-style: italic;
+  opacity: 0.8;
+  font-size: 0.82rem;
+}
+
+/* ---- LESSON PAGE ---- */
+.lesson-hero {
+  padding: 48px 20px 40px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.lesson-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 8px; }
+.lesson-hero .lesson-subtitle { font-size: 1.05rem; opacity: 0.9; }
+.lesson-hero .lesson-meta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.lesson-hero .lesson-meta .tag { font-size: 0.82rem; }
+
+.lesson-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ---- STORY READER ---- */
+.story-reader {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.story-header {
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.story-header .story-icon { font-size: 2rem; }
+.story-header h2 { font-size: 1.25rem; margin-bottom: 2px; }
+.story-header p { font-size: 0.85rem; opacity: 0.85; }
+.story-pages { padding: 28px; }
+.story-page { display: none; }
+.story-page.active { display: block; }
+.story-page p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.story-page .ojibwe-word {
+  color: var(--green);
+  font-weight: bold;
+  cursor: help;
+  border-bottom: 2px dotted var(--green);
+}
+.story-page .dakota-word {
+  color: var(--red);
+  font-weight: bold;
+  cursor: help;
+  border-bottom: 2px dotted var(--red);
+}
+.story-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+.story-nav button {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background 0.2s;
+}
+.story-nav button:hover { background: var(--green-light); }
+.story-nav button:disabled { background: #ccc; cursor: default; }
+.story-progress { font-size: 0.88rem; color: var(--text-soft); font-family: Arial, sans-serif; }
+
+/* ---- WORD TOOLTIP ---- */
+.tooltip {
+  position: fixed;
+  background: var(--text);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 260px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  display: none;
+}
+
+/* ---- VOCAB SECTION ---- */
+.vocab-section {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.section-header {
+  padding: 18px 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-header .sec-icon { font-size: 1.6rem; }
+.section-header h2 { font-size: 1.15rem; }
+.section-header p { font-size: 0.82rem; opacity: 0.88; margin-top: 2px; }
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  padding: 24px;
+}
+.vocab-card {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-align: center;
+}
+.vocab-card:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+.vocab-card .word-ojibwe { font-size: 1.1rem; font-weight: bold; color: var(--green); display: block; }
+.vocab-card .word-dakota { font-size: 0.95rem; font-weight: bold; color: var(--red); display: block; margin-top: 2px; }
+.vocab-card .word-english { font-size: 0.85rem; color: var(--text-soft); display: block; margin-top: 6px; font-family: Arial, sans-serif; }
+.vocab-card .word-audio { margin-top: 8px; font-size: 0.8rem; color: var(--blue); font-family: Arial, sans-serif; }
+
+/* ---- SIMULATION ---- */
+.sim-section {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.sim-canvas-wrap {
+  padding: 20px 24px 24px;
+}
+.sim-intro {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+#riceCanvas {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.sim-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.sim-btn {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.sim-btn:hover { background: var(--earth); }
+.sim-btn.secondary { background: var(--blue); }
+.sim-btn.secondary:hover { background: #0D3A6E; }
+.sim-score {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-soft);
+  font-family: Arial, sans-serif;
+  margin-top: 12px;
+}
+.sim-score strong { color: var(--green); font-size: 1.2rem; }
+
+/* ---- GAME SECTION ---- */
+.game-section {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.game-body { padding: 24px; }
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+.memory-card {
+  aspect-ratio: 1;
+  background: var(--green);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: transform 0.2s, background 0.2s;
+  font-family: Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.memory-card.flipped {
+  background: var(--gold-pale);
+  color: var(--text);
+  border: 2px solid var(--gold);
+  transform: scale(1.05);
+}
+.memory-card.matched {
+  background: var(--green-pale);
+  color: var(--text);
+  border: 2px solid var(--green);
+  cursor: default;
+}
+.game-status {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.game-status strong { color: var(--green); font-size: 1.1rem; }
+
+/* ---- SOURCE CITATION ---- */
+.source-citation {
+  background: var(--blue-pale);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin: 24px 0;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+  color: var(--text-soft);
+}
+.source-citation strong { color: var(--blue); display: block; margin-bottom: 4px; }
+.source-citation a { color: var(--blue); }
+
+/* ---- THEN & NOW ---- */
+.then-now {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.then-box, .now-box {
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.then-box { background: var(--gold-pale); border: 2px solid var(--gold); }
+.now-box { background: var(--green-pale); border: 2px solid var(--green); }
+.then-box h3 { color: var(--earth); font-size: 1rem; margin-bottom: 10px; }
+.now-box h3 { color: var(--green); font-size: 1rem; margin-bottom: 10px; }
+.then-now p { font-size: 0.92rem; color: var(--text-soft); }
+@media (max-width: 540px) {
+  .then-now { grid-template-columns: 1fr; }
+}
+
+/* ---- DISCUSSION ---- */
+.discussion-prompts {
+  background: var(--red-pale);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-bottom: 36px;
+}
+.discussion-prompts h3 { color: var(--red); font-size: 1.1rem; margin-bottom: 14px; }
+.discussion-prompts ol { padding-left: 22px; }
+.discussion-prompts li { margin-bottom: 10px; font-size: 0.95rem; color: var(--text-soft); }
+
+/* ---- CONNECTED GAMES ---- */
+.connected-games {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px 26px;
+  margin-bottom: 36px;
+}
+.connected-games h3 { color: var(--earth); font-size: 1.1rem; margin-bottom: 14px; }
+.game-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.game-chip {
+  background: var(--gold-pale);
+  border: 1.5px solid var(--gold);
+  border-radius: 30px;
+  padding: 7px 16px;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+  color: var(--earth);
+  font-weight: bold;
+}
+
+/* ---- PRINT-FRIENDLY ---- */
+.print-btn {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-bottom: 36px;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 640px) {
+  .nav-links { gap: 4px; }
+  .nav-links a { font-size: 0.75rem; padding: 5px 8px; }
+  .unit-grid { grid-template-columns: 1fr; }
+  .game-grid { grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+  body { font-size: 16px; }
+}
