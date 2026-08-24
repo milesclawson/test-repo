@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — The Strawberry Patch</title>
+<meta name="description" content="Strawberry shortcake, cheesecake, waffle bowls, and more — the full Strawberry Patch menu.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🍓 Family-owned since 1979</span>
+    <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow us on Facebook</a>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="The Strawberry Patch logo">
+      <span class="brand-text">The Strawberry Patch</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html" class="active">Menu</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="food-truck.html">Food Truck</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" style="padding:44px 0">
+  <div class="wrap">
+    <span class="eyebrow">Fresh Every Day</span>
+    <h1>Our Menu</h1>
+    <p class="lead">Strawberries, cheesecake, and all the fair-food classics.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+
+    <div class="menu-section">
+      <h3>🍓 Strawberry Treats</h3>
+      <div class="menu-item">
+        <div>
+          <div class="name">Strawberry Shortcake</div>
+          <div class="desc">Fresh strawberries and whipped cream on shortcake</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="name">Strawberry Cheesecake</div>
+          <div class="desc">Creamy cheesecake topped with fresh strawberries</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="name">Chocolate-Dipped Cheesecake on-a-Stick</div>
+          <div class="desc">Cheesecake, chocolate-dipped, served on a stick</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="name">Strawberry Donut Delight</div>
+          <div class="desc">Glazed donut halves with fresh berries and whipped cream</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3>🧇 Waffle Bowls</h3>
+      <div class="menu-item">
+        <div>
+          <div class="name">Strawberries &amp; Cream</div>
+          <div class="desc">Served in a waffle bowl</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="name">Strawberries &amp; Hot Fudge</div>
+          <div class="desc">Served in a waffle bowl</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3>🥤 Beverages</h3>
+      <div class="menu-item"><div class="name">Bottled Water</div></div>
+      <div class="menu-item"><div class="name">Coca-Cola, Diet Coke, Coke Zero</div></div>
+      <div class="menu-item"><div class="name">Sprite</div></div>
+      <div class="menu-item"><div class="name">Fanta Strawberry</div></div>
+      <div class="menu-item"><div class="name">Barq's Root Beer</div></div>
+      <div class="menu-item"><div class="name">Mello Yello</div></div>
+      <div class="menu-item"><div class="name">Minute Maid Lemonade</div></div>
+      <div class="menu-item"><div class="name">Fairlife Milk</div></div>
+      <div class="menu-item"><div class="name">Dunkin' Iced Coffee</div></div>
+    </div>
+
+    <div class="price-note">💲 Prices are set annually and posted at the booth / food truck window — we keep this page focused on what's on the menu.</div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>The Strawberry Patch</h5>
+        <p style="font-size:14px;max-width:280px">Family-owned since 1979. Liggett St, Falcon Heights, MN — in front of the horse barn at the Minnesota State Fair.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explore</h5>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit Us</a>
+        <a href="food-truck.html">Food Truck</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot-links">
+        <h5>Connect</h5>
+        <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener">MN State Fair Listing</a>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="year"></span> The Strawberry Patch. Family-owned since 1979.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

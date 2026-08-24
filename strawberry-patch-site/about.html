@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — The Strawberry Patch</title>
+<meta name="description" content="Family-owned since 1979 — the story behind The Strawberry Patch at the Minnesota State Fair.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🍓 Family-owned since 1979</span>
+    <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow us on Facebook</a>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="The Strawberry Patch logo">
+      <span class="brand-text">The Strawberry Patch</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="food-truck.html">Food Truck</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" style="padding:44px 0">
+  <div class="wrap">
+    <span class="eyebrow">Our Story</span>
+    <h1>Family-Owned Since 1979</h1>
+    <p class="lead">A Minnesota State Fair tradition, now growing beyond the fairgrounds.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap" style="max-width:760px">
+    <p style="margin-bottom:18px">The Strawberry Patch started as a family-owned booth at the Minnesota State Fair back in 1979, serving up fresh strawberry shortcake and cheesecake in front of the horse barn — and that's still exactly where you'll find us today.</p>
+    <p style="margin-bottom:18px">The business is family-run by three equal owners — Shannon, Sean, and Molly — and is proudly majority female-owned. What started as a single 12-day fair booth has grown to include a food truck, now bringing the same recipes to smaller fairs, festivals, and private events around the Twin Cities.</p>
+    <p>Everything we serve is made fresh, the recipes haven't changed much in decades, and neither has the reason we do it: it's a family tradition worth showing up for, one fair season after another.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🍓</div>
+        <h3>Est. 1979</h3>
+        <p>Over four decades of serving fresh strawberry desserts at the Minnesota State Fair.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👪</div>
+        <h3>Family-Run</h3>
+        <p>Owned and operated by three equal family members — Shannon, Sean, and Molly.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💜</div>
+        <h3>Women-Owned</h3>
+        <p>Proudly majority female-owned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <div class="icon">🚚</div>
+      <div>
+        <h4>Where to find us next</h4>
+        <p>You'll always find us at the Minnesota State Fair in front of the horse barn — and now our food truck is available for smaller fairs, festivals, and private events too.</p>
+        <a class="btn btn-coral" href="food-truck.html" style="margin-top:14px;">Book the Food Truck &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>The Strawberry Patch</h5>
+        <p style="font-size:14px;max-width:280px">Family-owned since 1979. Liggett St, Falcon Heights, MN — in front of the horse barn at the Minnesota State Fair.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explore</h5>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit Us</a>
+        <a href="food-truck.html">Food Truck</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot-links">
+        <h5>Connect</h5>
+        <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener">MN State Fair Listing</a>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="year"></span> The Strawberry Patch. Family-owned since 1979.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

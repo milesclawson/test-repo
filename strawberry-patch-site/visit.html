@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit Us — The Strawberry Patch</title>
+<meta name="description" content="Find The Strawberry Patch in front of the horse barn at the Minnesota State Fair. Location, dates, and hours.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🍓 Family-owned since 1979</span>
+    <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow us on Facebook</a>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="The Strawberry Patch logo">
+      <span class="brand-text">The Strawberry Patch</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="visit.html" class="active">Visit Us</a>
+      <a href="food-truck.html">Food Truck</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" style="padding:44px 0">
+  <div class="wrap">
+    <span class="eyebrow">Minnesota State Fair</span>
+    <h1>Visit Us at the Fair</h1>
+    <p class="lead">In front of the horse barn, every year the fair runs.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <ul class="info-list">
+      <li><span class="label">Location</span><span>Liggett St, Falcon Heights, MN 55108 — in front of the horse barn</span></li>
+      <li><span class="label">Fair Dates</span><span>The Minnesota State Fair runs late August through Labor Day each year — exact dates are confirmed annually via the <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">official MN State Fair listing</a>.</span></li>
+      <li><span class="label">Hours</span><span>Booth hours follow standard MN State Fair hours — check our <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">Facebook page</a> for day-of updates.</span></li>
+      <li><span class="label">Category</span><span>Dessert Shop</span></li>
+    </ul>
+
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn btn-coral" href="https://www.google.com/maps/search/?api=1&query=Liggett+St+Falcon+Heights+MN+55108+horse+barn+MN+State+Fair" target="_blank" rel="noopener">Get Directions</a>
+      <a class="btn btn-fb" href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow on Facebook</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="callout">
+      <div class="icon">🚚</div>
+      <div>
+        <h4>Can't make it to the Fair?</h4>
+        <p>Our food truck now travels to smaller fairs, festivals, and private events around the Twin Cities — outside of the 12-day State Fair run.</p>
+        <a class="btn btn-coral" href="food-truck.html" style="margin-top:14px;">See Food Truck Details &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>The Strawberry Patch</h5>
+        <p style="font-size:14px;max-width:280px">Family-owned since 1979. Liggett St, Falcon Heights, MN — in front of the horse barn at the Minnesota State Fair.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explore</h5>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit Us</a>
+        <a href="food-truck.html">Food Truck</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot-links">
+        <h5>Connect</h5>
+        <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener">MN State Fair Listing</a>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="year"></span> The Strawberry Patch. Family-owned since 1979.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

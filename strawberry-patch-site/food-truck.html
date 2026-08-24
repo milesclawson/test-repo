@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book the Food Truck — The Strawberry Patch</title>
+<meta name="description" content="Book The Strawberry Patch food truck for your fair, festival, school event, or private function.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🍓 Family-owned since 1979</span>
+    <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow us on Facebook</a>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="The Strawberry Patch logo">
+      <span class="brand-text">The Strawberry Patch</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="food-truck.html" class="active">Food Truck</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" style="padding:44px 0">
+  <div class="wrap">
+    <span class="eyebrow">New for 2026</span>
+    <h1>Book Our Food Truck</h1>
+    <p class="lead">Beyond the State Fair, we now bring our fresh strawberry desserts to smaller fairs, festivals, school events, weddings, and private functions.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🎪</div>
+        <h3>Fairs &amp; Festivals</h3>
+        <p>Community fairs, church festivals, and neighborhood events.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏫</div>
+        <h3>School &amp; Community Events</h3>
+        <p>Fundraisers, carnivals, and end-of-year celebrations.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎉</div>
+        <h3>Private Functions</h3>
+        <p>Weddings, corporate events, and private parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Request a Booking</span>
+      <h2>Tell us about your event</h2>
+      <p>Fill out the details below — it'll open a pre-filled email you can send us, or message us directly on Facebook.</p>
+    </div>
+
+    <form class="form-card" id="booking-form">
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="event-date">Event Date</label>
+          <input type="date" id="event-date">
+        </div>
+        <div class="form-row">
+          <label for="guests">Estimated Attendance</label>
+          <input type="text" id="guests" placeholder="e.g. 200–300 people">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="event-type">Event Type &amp; Location</label>
+        <input type="text" id="event-type" placeholder="e.g. School fall festival, Falcon Heights MN">
+      </div>
+      <div class="form-row">
+        <label for="message">Additional Details</label>
+        <textarea id="message" placeholder="Tell us more about your event, expected hours, power/space available, etc."></textarea>
+      </div>
+      <button type="submit" class="btn btn-coral" style="width:100%">Send Booking Request</button>
+      <p class="form-note">This opens your email app with the details filled in — nothing is sent automatically. Prefer Facebook? <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">Message us there instead</a>.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>The Strawberry Patch</h5>
+        <p style="font-size:14px;max-width:280px">Family-owned since 1979. Liggett St, Falcon Heights, MN — in front of the horse barn at the Minnesota State Fair.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explore</h5>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit Us</a>
+        <a href="food-truck.html">Food Truck</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot-links">
+        <h5>Connect</h5>
+        <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener">MN State Fair Listing</a>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="year"></span> The Strawberry Patch. Family-owned since 1979.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// NOTE: No public booking email is on file yet — replace BOOKING_EMAIL below
+// with the real address the owners want inquiries sent to.
+const BOOKING_EMAIL = "REPLACE_WITH_BOOKING_EMAIL@example.com";
+
+document.getElementById('booking-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+  const date = document.getElementById('event-date').value;
+  const guests = document.getElementById('guests').value;
+  const type = document.getElementById('event-type').value;
+  const message = document.getElementById('message').value;
+
+  const subject = `Food Truck Booking Request — ${name || 'New Inquiry'}`;
+  const body =
+`Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Event Date: ${date}
+Estimated Attendance: ${guests}
+Event Type & Location: ${type}
+
+Details:
+${message}`;
+
+  window.location.href = `mailto:${BOOKING_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+</script>
+</body>
+</html>

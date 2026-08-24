@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — The Strawberry Patch</title>
+<meta name="description" content="Photos from The Strawberry Patch booth and food truck.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🍓 Family-owned since 1979</span>
+    <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Follow us on Facebook</a>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="The Strawberry Patch logo">
+      <span class="brand-text">The Strawberry Patch</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="food-truck.html">Food Truck</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero" style="padding:44px 0">
+  <div class="wrap">
+    <span class="eyebrow">Photos</span>
+    <h1>Gallery</h1>
+    <p class="lead">A look at the booth, the food truck, and the fair.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <!--
+      HOW TO ADD PHOTOS:
+      1. Drop image files into the assets/gallery/ folder (create it if it doesn't exist).
+      2. Replace a .gallery-placeholder <div> below with:
+         <div class="gallery-item"><img src="assets/gallery/your-photo.jpg" alt="Describe the photo"></div>
+      3. See the Facebook page (linked in the footer) for source photos of the booth, food truck, and menu items.
+    -->
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/logo.png" alt="The Strawberry Patch logo" style="object-fit:contain;padding:30px;background:var(--cream)">
+      </div>
+      <div class="gallery-item gallery-placeholder">
+        <span class="icon">🍓</span>
+        <span>Booth photo coming soon</span>
+      </div>
+      <div class="gallery-item gallery-placeholder">
+        <span class="icon">🚚</span>
+        <span>Food truck photo coming soon</span>
+      </div>
+      <div class="gallery-item gallery-placeholder">
+        <span class="icon">🍰</span>
+        <span>Menu photo coming soon</span>
+      </div>
+      <div class="gallery-item gallery-placeholder">
+        <span class="icon">👪</span>
+        <span>Team photo coming soon</span>
+      </div>
+      <div class="gallery-item gallery-placeholder">
+        <span class="icon">🎪</span>
+        <span>Fair day photo coming soon</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn btn-fb" href="https://www.facebook.com/StrwbrryPatch/photos" target="_blank" rel="noopener">More Photos on Facebook</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>The Strawberry Patch</h5>
+        <p style="font-size:14px;max-width:280px">Family-owned since 1979. Liggett St, Falcon Heights, MN — in front of the horse barn at the Minnesota State Fair.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explore</h5>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit Us</a>
+        <a href="food-truck.html">Food Truck</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot-links">
+        <h5>Connect</h5>
+        <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.mnstatefair.org/my-fair/?page=43" target="_blank" rel="noopener">MN State Fair Listing</a>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="year"></span> The Strawberry Patch. Family-owned since 1979.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
