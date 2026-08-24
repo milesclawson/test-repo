@@ -72,7 +72,11 @@
     <div class="section-head">
       <span class="kicker">Request a Booking</span>
       <h2>Tell us about your event</h2>
-      <p>Fill out the details below — it'll open a pre-filled email you can send us, or message us directly on Facebook.</p>
+      <p>For the fastest response right now, message us on Facebook. We're setting up direct email booking soon — the form below will start working automatically once it's ready.</p>
+    </div>
+
+    <div style="text-align:center;margin-bottom:32px">
+      <a class="btn btn-fb" href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener">Message Us on Facebook</a>
     </div>
 
     <form class="form-card" id="booking-form">
@@ -109,7 +113,7 @@
         <textarea id="message" placeholder="Tell us more about your event, expected hours, power/space available, etc."></textarea>
       </div>
       <button type="submit" class="btn btn-coral" style="width:100%">Send Booking Request</button>
-      <p class="form-note">This opens your email app with the details filled in — nothing is sent automatically. Prefer Facebook? <a href="https://www.facebook.com/StrwbrryPatch/" target="_blank" rel="noopener" style="color:var(--red);font-weight:600">Message us there instead</a>.</p>
+      <p class="form-note" id="form-note">Email booking isn't set up yet — for now, please use the "Message Us on Facebook" button above instead.</p>
     </form>
   </div>
 </section>
@@ -144,12 +148,18 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// NOTE: No public booking email is on file yet — replace BOOKING_EMAIL below
-// with the real address the owners want inquiries sent to.
-const BOOKING_EMAIL = "REPLACE_WITH_BOOKING_EMAIL@example.com";
+// No public booking email is on file yet. Once you have one, set it below —
+// the form will start emailing bookings automatically, no other changes needed.
+const BOOKING_EMAIL = ""; // e.g. "bookings@thestrawberrypatchmn.com"
 
 document.getElementById('booking-form').addEventListener('submit', function (e) {
   e.preventDefault();
+
+  if (!BOOKING_EMAIL) {
+    window.open('https://www.facebook.com/StrwbrryPatch/', '_blank', 'noopener');
+    return;
+  }
+
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
   const email = document.getElementById('email').value;
