@@ -13,6 +13,7 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 from content import UNITS, SCHOOL_NAME, COURSE_TITLE, GRADE
+from readings import READINGS
 
 os.makedirs("output", exist_ok=True)
 
@@ -643,6 +644,67 @@ def _render_docx_activity(doc, act, uc):
         add_ruled_lines(doc, act["lines"])
 
 
+def add_reading_page(doc, unit, lesson):
+    """Add the informational reading passage + comprehension questions for a lesson."""
+    label = lesson["lesson_label"]
+    reading = READINGS.get(label)
+    if not reading:
+        return
+
+    uc = color_from_tuple(unit["color"])
+
+    # Header bar
+    add_heading_bar(doc,
+        f"Lesson {label}  ·  Reading: {reading['title']}",
+        color=uc, size=11)
+
+    # Source + audio note
+    if reading.get("source"):
+        src_p = doc.add_paragraph(f"Source: {reading['source']}")
+        src_p.runs[0].italic = True
+        src_p.runs[0].font.size = Pt(9)
+        src_p.runs[0].font.color.rgb = RGBColor(0x66, 0x66, 0x66)
+
+    audio_p = doc.add_paragraph(f"■ Listen: reading_EN_{label}.m4a")
+    audio_p.runs[0].font.size = Pt(9)
+    audio_p.runs[0].bold = True
+
+    annotation_p = doc.add_paragraph(
+        "As you read: use your annotation symbols "
+        "( * = important  ·  ? = question  ·  ! = surprising  ·  → = connection  ·  circle = vocab )")
+    annotation_p.runs[0].italic = True
+    annotation_p.runs[0].font.size = Pt(9)
+
+    doc.add_paragraph("")
+
+    # Reading paragraphs
+    for para_text in reading["text"]:
+        p = doc.add_paragraph(para_text)
+        p.runs[0].font.size = Pt(10)
+        p.paragraph_format.space_after = Pt(6)
+
+    doc.add_paragraph("")
+
+    # Comprehension questions header
+    q_hdr = doc.add_table(rows=1, cols=1)
+    q_hdr.style = "Table Grid"
+    set_cell_bg(q_hdr.rows[0].cells[0], LIGHT_BLUE)
+    qh_run = q_hdr.rows[0].cells[0].paragraphs[0].add_run(
+        "Reading Comprehension Questions")
+    qh_run.bold = True
+    qh_run.font.size = Pt(10)
+
+    doc.add_paragraph("Answer each question in complete sentences. Use evidence from the reading.").runs[0].font.size = Pt(9)
+
+    for i, q in enumerate(reading["questions"], 1):
+        q_p = doc.add_paragraph()
+        q_p.add_run(f"{i}.  ").bold = True
+        q_p.add_run(q).font.size = Pt(10)
+        add_ruled_lines(doc, 3)
+
+    doc.add_page_break()
+
+
 def add_exit_ticket(doc, unit, lesson):
     uc = color_from_tuple(unit["color"])
     et = lesson["exit_ticket"]
@@ -737,6 +799,7 @@ def build():
         for lesson in unit["lessons"]:
             add_cornell_page(doc, unit, lesson)
             add_lesson_content(doc, unit, lesson)
+            add_reading_page(doc, unit, lesson)
             add_exit_ticket(doc, unit, lesson)
         add_test_page(doc, unit, is_pretest=False)
 
