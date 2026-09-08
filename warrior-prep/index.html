@@ -117,7 +117,7 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
   <div class="stats-bar">
     <div class="stat"><div class="sv">20</div><div class="sl">Total lessons</div></div>
     <div class="stat"><div class="sv">5</div><div class="sl">Course units</div></div>
-    <div class="stat"><div class="sv">5</div><div class="sl">Simulations</div></div>
+    <div class="stat"><div class="sv">7</div><div class="sl">Simulations</div></div>
     <div class="stat"><div class="sv">80</div><div class="sl">Audio files (EN+ES)</div></div>
   </div>
 
@@ -171,6 +171,9 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
     <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-ef').scrollIntoView({behavior:'smooth'}),100)">
       <div class="uc-icon">🧠</div><div class="uc-title">EF Brain Challenge</div><div class="uc-count">Unit 1 · Test your working memory & focus</div>
     </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-eisenhower').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">🗂️</div><div class="uc-title">Eisenhower Matrix Sort</div><div class="uc-count">Unit 1 · Sort tasks by urgent vs. important</div>
+    </a>
     <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-career').scrollIntoView({behavior:'smooth'}),100)">
       <div class="uc-icon">💼</div><div class="uc-title">Career Cluster Explorer</div><div class="uc-count">Unit 2 · Match your interests to career fields</div>
     </a>
@@ -183,6 +186,9 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
     <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-gpa').scrollIntoView({behavior:'smooth'}),100)">
       <div class="uc-icon">🎓</div><div class="uc-title">GPA Calculator</div><div class="uc-count">Unit 5 · See how grades affect weighted GPA</div>
     </a>
+    <a class="unit-card" href="#" onclick="show('sims');setTimeout(()=>document.getElementById('sim-sleep').scrollIntoView({behavior:'smooth'}),100)">
+      <div class="uc-icon">😴</div><div class="uc-title">Sleep Debt Simulator</div><div class="uc-count">Unit 4 · See sleep's effect on memory & focus</div>
+    </a>
   </div>
 </div>
 
@@ -194,7 +200,7 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
     <thead><tr><th>#</th><th>Lesson title</th><th>Key concepts</th><th>YouTube focus</th><th>Features</th></tr></thead>
     <tbody>
       <tr><td class="lesson-num">1.1</td><td><strong>What Is Executive Function?</strong></td><td>Prefrontal cortex, working memory, inhibitory control, cognitive flexibility</td><td>Harvard — Brain's Air Traffic Control System (2 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
-      <tr><td class="lesson-num">1.2</td><td><strong>Prioritization & Planning</strong></td><td>Eisenhower Matrix, urgent vs. important, weekly planning</td><td>Sprouts — The Eisenhower Matrix (4 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">1.2</td><td><strong>Prioritization & Planning</strong></td><td>Eisenhower Matrix, urgent vs. important, weekly planning</td><td>Sprouts — The Eisenhower Matrix (4 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
       <tr><td class="lesson-num">1.3</td><td><strong>Focus & Managing Distraction</strong></td><td>Multitasking myth, deep work, phone-free zones, Pomodoro</td><td>National Geographic — Multitasking Is a Myth (3 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
       <tr><td class="lesson-num">1.4</td><td><strong>Grit & Self-Control</strong></td><td>Angela Duckworth's grit framework, delayed gratification, marshmallow test</td><td>TED — Grit: Power of Passion & Perseverance (6 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
     </tbody>
@@ -241,7 +247,7 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
       <tr><td class="lesson-num">4.1</td><td><strong>High School 101</strong></td><td>How HS is different, GPA basics, Warrior Seminar, first-week tips</td><td>College Board — High School 101 (5 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
       <tr><td class="lesson-num">4.2</td><td><strong>Building Your Schedule</strong></td><td>Course selection, electives, balancing rigor and free time, alternates</td><td>School Counseling Videos — How to Build a HS Schedule (6 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
       <tr><td class="lesson-num">4.3</td><td><strong>Extracurriculars & Identity</strong></td><td>Research on involvement, time management as student-athlete, finding your thing</td><td>College Prep Academy — Why Join a Club or Sport (5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
-      <tr><td class="lesson-num">4.4</td><td><strong>Sleep as Performance</strong></td><td>Matt Walker's research, memory consolidation, sleep deprivation effects, habits</td><td>TED — Sleep Is Your Superpower (Matt Walker, 5 min)</td><td><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
+      <tr><td class="lesson-num">4.4</td><td><strong>Sleep as Performance</strong></td><td>Matt Walker's research, memory consolidation, sleep deprivation effects, habits</td><td>TED — Sleep Is Your Superpower (Matt Walker, 5 min)</td><td><span class="lesson-tag tag-sim">Simulation</span><span class="lesson-tag tag-story">Story</span><span class="lesson-tag tag-reading">Reading</span><span class="lesson-tag tag-video">Video</span><span class="lesson-tag tag-audio">Audio EN+ES</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -293,11 +299,16 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
 
 <!-- SIMULATIONS -->
 <div id="page-sims" class="page">
-  <div class="page-hero"><div class="page-hero-icon">🎮</div><div><h1>Interactive Simulations</h1><p>Five hands-on simulations — one per unit. Project on the board or let students explore on their own device.</p></div></div>
+  <div class="page-hero"><div class="page-hero-icon">🎮</div><div><h1>Interactive Simulations</h1><p>Seven hands-on simulations across all five units. Project on the board or let students explore on their own device.</p></div></div>
 
   <div class="sim-card" id="sim-ef">
     <div class="sim-header-bar"><span class="sh-icon">🧠</span><div><div class="sh-title">EF Brain Challenge</div><div class="sh-sub">Unit 1 · Executive Function — test working memory, inhibitory control, and cognitive flexibility</div></div></div>
     <div id="ef-mount"></div>
+  </div>
+
+  <div class="sim-card" id="sim-eisenhower">
+    <div class="sim-header-bar"><span class="sh-icon">🗂️</span><div><div class="sh-title">Eisenhower Matrix Sort</div><div class="sh-sub">Unit 1 · Prioritization & Planning — sort tasks into urgent/important quadrants</div></div></div>
+    <div id="eisenhower-mount"></div>
   </div>
 
   <div class="sim-card" id="sim-career">
@@ -319,6 +330,11 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
     <div class="sim-header-bar"><span class="sh-icon">🎓</span><div><div class="sh-title">GPA Calculator</div><div class="sh-sub">Unit 5 · HS Transition — enter your grades and course types to see weighted vs. unweighted GPA</div></div></div>
     <div id="gpa-mount"></div>
   </div>
+
+  <div class="sim-card" id="sim-sleep">
+    <div class="sim-header-bar"><span class="sh-icon">😴</span><div><div class="sh-title">Sleep Debt Simulator</div><div class="sh-sub">Unit 4 · Sleep as Performance — see how a week of short nights affects memory, focus, and mood</div></div></div>
+    <div id="sleep-mount"></div>
+  </div>
 </div>
 
 <!-- TEACHER RESOURCES -->
@@ -327,6 +343,14 @@ h2.section-h::after{content:'';flex:1;height:1px;background:var(--border)}
 
   <h2 class="section-h">Downloadable materials</h2>
   <div class="card">
+    <div class="resource-row">
+      <div class="resource-icon">📋</div>
+      <div style="flex:1">
+        <div class="resource-title">Course Syllabus <span class="resource-badge">Student &amp; family copy</span></div>
+        <div class="resource-desc">Course overview, all 20 lesson readings, grade breakdown, late work policy, and classroom expectations.</div>
+        <a href="https://milesclawson.github.io/test-repo/downloads/warrior_prep_syllabus.docx" download style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;background:var(--red);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">⬇ Download DOCX</a>
+      </div>
+    </div>
     <div class="resource-row">
       <div class="resource-icon">📊</div>
       <div style="flex:1">
@@ -409,7 +433,7 @@ function show(pageId){
 }
 
 let simsLoaded=false;
-function loadSims(){simsLoaded=true;buildEFSim();buildCareerSim();buildStudySim();buildScheduleSim();buildGPASim();}
+function loadSims(){simsLoaded=true;buildEFSim();buildEisenhowerSim();buildCareerSim();buildStudySim();buildScheduleSim();buildGPASim();buildSleepSim();}
 
 function mountSim(mountId,html){
   const mount=document.getElementById(mountId);
@@ -526,6 +550,107 @@ function startFlex(){
   waitingAnswer=true;
 }
 function handleFlex(ok,ans,chosen){if(!waitingAnswer)return;waitingAnswer=false;if(ok){score++;round++;document.getElementById('score-num').textContent=score;document.getElementById('round-num').textContent=round;document.getElementById('result-box').className='result-box ok';document.getElementById('result-box').textContent='✓ Correct! The rule changes next round — stay sharp.';}else{document.getElementById('result-box').className='result-box bad';document.getElementById('result-box').textContent='✗ Wrong. The answer was '+ans+'. Score: '+score+'. Watch out — the rule changes!';}setTimeout(startGame,1400);}
+<\/script>`);}
+
+// ── EISENHOWER MATRIX SORT ──────────────────────────────────────────
+function buildEisenhowerSim(){mountSim('eisenhower-mount',`
+<style>
+.eis-tasks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;min-height:40px}
+.eis-task{padding:8px 14px;border-radius:8px;border:1px solid #e0e0e0;background:#f9f9f9;font-size:13px;cursor:pointer;font-weight:500;color:#1a1a1a;transition:all .15s}
+.eis-task:hover{border-color:#c41230;background:#fdecea}
+.eis-task.selected{border:2px solid #c41230;background:#fdecea;color:#8B0000}
+.eis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+.eis-quad{border-radius:10px;padding:12px;min-height:120px;border:2px dashed #ddd;cursor:pointer;transition:all .15s}
+.eis-quad:hover{border-color:#c41230}
+.eis-quad-title{font-size:12px;font-weight:700;margin-bottom:2px}
+.eis-quad-sub{font-size:11px;color:#666;margin-bottom:8px}
+.eis-placed{display:block;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:600;margin:3px 0 0}
+.eis-placed.ok{background:#eaf3de;color:#173404}
+.eis-placed.bad{background:#fcebeb;color:#791f1f}
+.eis-score-row{font-size:13px;color:#666;margin-bottom:.75rem}
+.eis-feedback{border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.6;margin-top:.5rem;min-height:20px}
+</style>
+<div style="padding-top:4px">
+<div style="font-size:13px;color:#666;margin-bottom:10px">Click a task below, then click the quadrant where it belongs. Sort all 8 using the Eisenhower Matrix.</div>
+<div class="eis-score-row" id="eis-score">0 of 8 sorted · 0 correct</div>
+<div class="eis-tasks" id="eis-tasks"></div>
+<div class="eis-grid" id="eis-grid"></div>
+<div class="eis-feedback" id="eis-feedback"></div>
+<button onclick="eisReset()" style="font-size:13px;margin-top:8px">Reset</button>
+</div>
+<script>
+const EIS_TASKS=[
+ {id:1,text:"Math test tomorrow and you don't understand fractions yet",q:'do',why:'Urgent AND important — it affects your grade and there is no time left. Do this first.'},
+ {id:2,text:'Field trip permission slip due today',q:'do',why:'Urgent AND important — miss today\\'s deadline and you miss the trip. Do this first.'},
+ {id:3,text:'Start studying for a big test that is 2 weeks away',q:'schedule',why:'Important but not urgent yet — schedule time for it now so it never becomes an emergency.'},
+ {id:4,text:'Ask your teacher for help before you fall behind',q:'schedule',why:'Important but not urgent — the earlier you schedule this conversation, the less it costs you later.'},
+ {id:5,text:'A friend is texting you right now about lunch plans',q:'delegate',why:'Feels urgent because your phone is buzzing, but is not that important — handle it quickly, do not let it interrupt real work.'},
+ {id:6,text:'A classmate asks you to pass a note during the lecture',q:'delegate',why:'Urgent-feeling social pressure, but low importance — a quick low-effort task, not worth stopping real work for.'},
+ {id:7,text:'Scrolling social media between classes',q:'delete',why:'Not urgent, not important — this is where most of the day quietly disappears. Limit it on purpose.'},
+ {id:8,text:'Reorganizing your backpack for the fifth time this week',q:'delete',why:'Not urgent, not important — a comfortable way to feel busy without doing the things that matter.'},
+];
+const EIS_QUADS=[
+ {id:'do',title:'🔴 Do First',sub:'Urgent + Important',color:'#c41230',bg:'#fdecea'},
+ {id:'schedule',title:'🔵 Schedule',sub:'Important, Not Urgent',color:'#1A376A',bg:'#e8edf8'},
+ {id:'delegate',title:'🟡 Quick / Delegate',sub:'Urgent, Not Important',color:'#B8860B',bg:'#fff8e1'},
+ {id:'delete',title:'⚪ Eliminate / Later',sub:'Not Urgent, Not Important',color:'#5F5E5A',bg:'#f4f4f4'},
+];
+let eisSel=null,eisPlaced={};
+function eisBuildTasks(){const w=document.getElementById('eis-tasks');w.innerHTML='';EIS_TASKS.forEach(t=>{if(eisPlaced[t.id])return;const b=document.createElement('div');b.className='eis-task'+(eisSel===t.id?' selected':'');b.textContent=t.text;b.onclick=()=>{eisSel=eisSel===t.id?null:t.id;eisBuildTasks();};w.appendChild(b);});}
+function eisBuildGrid(){const g=document.getElementById('eis-grid');g.innerHTML='';EIS_QUADS.forEach(q=>{const d=document.createElement('div');d.className='eis-quad';d.style.background=q.bg;d.style.borderColor=q.color+'55';d.innerHTML='<div class="eis-quad-title" style="color:'+q.color+'">'+q.title+'</div><div class="eis-quad-sub">'+q.sub+'</div>';const placedHere=Object.entries(eisPlaced).filter(([id,info])=>info.q===q.id);placedHere.forEach(([id,info])=>{const t=EIS_TASKS.find(x=>x.id==id);const chip=document.createElement('div');chip.className='eis-placed '+(info.ok?'ok':'bad');chip.textContent=(info.ok?'✓ ':'✗ ')+t.text;d.appendChild(chip);});d.onclick=()=>{if(!eisSel)return;const t=EIS_TASKS.find(x=>x.id===eisSel);const ok=t.q===q.id;eisPlaced[t.id]={q:q.id,ok:ok};document.getElementById('eis-feedback').style.background=ok?'#eaf3de':'#fcebeb';document.getElementById('eis-feedback').style.color=ok?'#173404':'#791f1f';document.getElementById('eis-feedback').innerHTML=(ok?'<strong>✓ Correct.</strong> ':'<strong>Not quite — it actually belongs in a different quadrant.</strong> ')+t.why;eisSel=null;eisBuildTasks();eisBuildGrid();eisUpdateScore();};g.appendChild(d);});}
+function eisUpdateScore(){const placedCount=Object.keys(eisPlaced).length;const correct=Object.values(eisPlaced).filter(p=>p.ok).length;document.getElementById('eis-score').textContent=placedCount+' of 8 sorted · '+correct+' correct';if(placedCount===8){document.getElementById('eis-feedback').innerHTML+=(correct===8?'<br><br><strong>🎉 Perfect sort! You have the Eisenhower Matrix down.</strong>':'<br><br><strong>Done — '+correct+'/8 correct. Reset to try sorting them all correctly.</strong>');}}
+function eisReset(){eisPlaced={};eisSel=null;document.getElementById('eis-feedback').innerHTML='';eisBuildTasks();eisBuildGrid();eisUpdateScore();}
+eisBuildTasks();eisBuildGrid();eisUpdateScore();
+<\/script>`);}
+
+// ── SLEEP DEBT SIMULATOR ────────────────────────────────────────────
+function buildSleepSim(){mountSim('sleep-mount',`
+<style>
+.sleep-days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:1rem}
+.sleep-day{background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;padding:10px;text-align:center}
+.sleep-day .sd-label{font-size:11px;font-weight:700;color:#666;margin-bottom:6px;text-transform:uppercase}
+.sleep-day .sd-val{font-size:20px;font-weight:700;color:#1a1a1a;margin:4px 0}
+.sleep-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:1.25rem 0}
+.sleep-stat{background:#f5f5f5;border-radius:10px;padding:14px}
+.sleep-stat .ss-label{font-size:12px;font-weight:600;color:#666;margin-bottom:6px;display:flex;justify-content:space-between}
+.sleep-bar-bg{height:10px;border-radius:99px;background:#e0e0e0;overflow:hidden}
+.sleep-bar-fill{height:100%;border-radius:99px;transition:width .3s}
+.sleep-debt-box{border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.6;margin-bottom:1rem}
+</style>
+<div style="padding-top:4px">
+<div style="font-size:13px;color:#666;margin-bottom:10px">Drag each slider to how many hours you would realistically sleep Mon–Fri, then see what sleep debt does to your brain by Friday. Teens need 8–10 hours a night.</div>
+<div class="sleep-days" id="sleep-days"></div>
+<div class="sleep-debt-box" id="sleep-debt-box"></div>
+<div class="sleep-stats" id="sleep-stats"></div>
+</div>
+<script>
+const SLEEP_DAYS=['Mon','Tue','Wed','Thu','Fri'];
+const SLEEP_TARGET=9;
+let sleepHours=[7,6,7,6,6];
+function sleepBuildDays(){const w=document.getElementById('sleep-days');w.innerHTML='';SLEEP_DAYS.forEach((d,i)=>{const el=document.createElement('div');el.className='sleep-day';el.innerHTML='<div class="sd-label">'+d+'</div><div class="sd-val" id="sd-val-'+i+'">'+sleepHours[i]+'h</div><input type="range" min="4" max="10" step="0.5" value="'+sleepHours[i]+'" id="sd-range-'+i+'">';w.appendChild(el);document.getElementById('sd-range-'+i).addEventListener('input',e=>{sleepHours[i]=parseFloat(e.target.value);document.getElementById('sd-val-'+i).textContent=sleepHours[i]+'h';sleepUpdate();});});}
+function sleepUpdate(){
+  const totalDebt=sleepHours.reduce((sum,h)=>sum+Math.max(0,SLEEP_TARGET-h),0);
+  const debtBox=document.getElementById('sleep-debt-box');
+  let debtLevel,debtMsg,debtColor,debtBg;
+  if(totalDebt<=2){debtLevel='Minimal debt';debtColor='#173404';debtBg='#eaf3de';debtMsg='You are close to fully rested. Your brain has the hours it needs to consolidate memories and repair itself overnight.';}
+  else if(totalDebt<=8){debtLevel='Building debt';debtColor='#412402';debtBg='#faeeda';debtMsg='You are accumulating real sleep debt. Research shows this level already reduces memory consolidation and reaction time — even if you feel "used to it."';}
+  else{debtLevel='Significant debt';debtColor='#791f1f';debtBg='#fcebeb';debtMsg='This level of weekly sleep debt is linked to effects similar to being legally impaired — slower reaction time, worse mood regulation, and weaker memory formation. Naps and weekend "catch-up" sleep do not fully reverse it.';}
+  debtBox.style.background=debtBg;debtBox.style.color=debtColor;
+  debtBox.innerHTML='<strong>By Friday: '+totalDebt.toFixed(1)+' hours of sleep debt — '+debtLevel+'</strong><br>'+debtMsg;
+  const memoryPct=Math.max(15,Math.min(100,Math.round(100-(totalDebt*7))));
+  const reactionPct=Math.max(15,Math.min(100,Math.round(100-(totalDebt*8))));
+  const moodPct=Math.max(15,Math.min(100,Math.round(100-(totalDebt*9))));
+  const focusPct=Math.max(15,Math.min(100,Math.round(100-(totalDebt*7.5))));
+  const stats=[
+    {label:'Memory consolidation',pct:memoryPct,color:'#7F77DD'},
+    {label:'Reaction time',pct:reactionPct,color:'#378ADD'},
+    {label:'Mood regulation',pct:moodPct,color:'#D4537E'},
+    {label:'Focus / attention',pct:focusPct,color:'#3B6D11'},
+  ];
+  const sw=document.getElementById('sleep-stats');sw.innerHTML='';
+  stats.forEach(s=>{const el=document.createElement('div');el.className='sleep-stat';el.innerHTML='<div class="ss-label"><span>'+s.label+'</span><span>'+s.pct+'%</span></div><div class="sleep-bar-bg"><div class="sleep-bar-fill" style="width:'+s.pct+'%;background:'+s.color+'"></div></div>';sw.appendChild(el);});
+}
+sleepBuildDays();sleepUpdate();
 <\/script>`);}
 
 // ── CAREER EXPLORER ─────────────────────────────────────────────────
