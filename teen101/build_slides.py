@@ -158,7 +158,11 @@ def video_slide(prs, label, lesson):
     yt = YOUTUBE.get(label)
     slide = blank_slide(prs)
     add_bg(slide, "FFFFFF")
-    header_bar(slide, label, "Video: " + (yt["title"] if yt else ""))
+    if yt and yt.get("alt_watch_for"):
+        header_title = f"Videos (2): {yt['title']} + {yt['alt_title']}"
+    else:
+        header_title = "Video: " + (yt["title"] if yt else "")
+    header_bar(slide, label, header_title)
     if not yt:
         footer(slide)
         return
@@ -176,17 +180,37 @@ def video_slide(prs, label, lesson):
               "Click to search this video on YouTube ↗", size=11, italic=True,
               color="666666", align=PP_ALIGN.CENTER, hyperlink=video_url, underline=True)
 
-    add_text(slide, Inches(6.5), Inches(1.6), Inches(6.3), Inches(0.4),
-              "Watch for:", size=16, bold=True, color=RED_DK)
-    add_text(slide, Inches(6.5), Inches(2.05), Inches(6.3), Inches(2.0),
-              yt["watch_for"], size=15, color="333333")
+    alt_watch_for = yt.get("alt_watch_for", "")
 
-    add_rect(slide, Inches(6.5), Inches(4.3), Inches(6.3), Inches(1.3), "FFF8E1", hyperlink=alt_url)
-    add_text(slide, Inches(6.7), Inches(4.4), Inches(5.9), Inches(0.3),
-              "Backup video (click to search):", size=11, bold=True, color="B8860B")
-    add_text(slide, Inches(6.7), Inches(4.7), Inches(5.9), Inches(0.8),
-              f"{yt['alt_title']} — {yt['alt_channel']}", size=12, color="444444",
-              hyperlink=alt_url, underline=True)
+    if alt_watch_for:
+        # This lesson needs two videos to cover its full set of objectives -- both are
+        # required viewing, not primary + fallback. See the comment in
+        # teen101_youtube_links.py for which lessons this applies to and why.
+        add_text(slide, Inches(6.5), Inches(1.6), Inches(6.3), Inches(0.35),
+                  "Video 1 -- watch for:", size=13, bold=True, color=RED_DK)
+        add_text(slide, Inches(6.5), Inches(1.95), Inches(6.3), Inches(1.5),
+                  yt["watch_for"], size=12, color="333333")
+
+        add_rect(slide, Inches(6.5), Inches(3.55), Inches(6.3), Inches(2.05), "FFF8E1", hyperlink=alt_url)
+        add_text(slide, Inches(6.7), Inches(3.65), Inches(5.9), Inches(0.3),
+                  "Video 2 (also required):", size=11, bold=True, color="B8860B")
+        add_text(slide, Inches(6.7), Inches(3.95), Inches(5.9), Inches(0.4),
+                  f"{yt['alt_title']} — {yt['alt_channel']}", size=12, bold=True, color="444444",
+                  hyperlink=alt_url, underline=True)
+        add_text(slide, Inches(6.7), Inches(4.35), Inches(5.9), Inches(1.2),
+                  alt_watch_for, size=11, color="444444")
+    else:
+        add_text(slide, Inches(6.5), Inches(1.6), Inches(6.3), Inches(0.4),
+                  "Watch for:", size=16, bold=True, color=RED_DK)
+        add_text(slide, Inches(6.5), Inches(2.05), Inches(6.3), Inches(2.0),
+                  yt["watch_for"], size=15, color="333333")
+
+        add_rect(slide, Inches(6.5), Inches(4.3), Inches(6.3), Inches(1.3), "FFF8E1", hyperlink=alt_url)
+        add_text(slide, Inches(6.7), Inches(4.4), Inches(5.9), Inches(0.3),
+                  "Backup video (click to search):", size=11, bold=True, color="B8860B")
+        add_text(slide, Inches(6.7), Inches(4.7), Inches(5.9), Inches(0.8),
+                  f"{yt['alt_title']} — {yt['alt_channel']}", size=12, color="444444",
+                  hyperlink=alt_url, underline=True)
     footer(slide)
 
 

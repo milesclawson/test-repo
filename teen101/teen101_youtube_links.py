@@ -23,9 +23,13 @@ YOUTUBE = {
         "duration": "4 min",
         "watch_for": "Notice the knotting technique at the start and end — this is what keeps the button from falling off again.",
         "url": "https://www.youtube.com/results?search_query=how+to+sew+on+a+button+tutorial+beginners",
-        "alt_title": "Basic Hand Sewing for Beginners",
-        "alt_channel": "Professor Pincushion",
-        "alt_url": "https://www.youtube.com/results?search_query=basic+hand+sewing+for+beginners+step+by+step",
+        # This lesson covers TWO distinct skills (sewing a button + patching a hole with a
+        # running stitch). The primary video only covers buttons, so alt is a REQUIRED second
+        # clip, not a fallback — see alt_watch_for and build_slides.py's video_slide().
+        "alt_title": "How to Fix Holes in Clothes with Needle and Thread",
+        "alt_channel": "Twonu",
+        "alt_url": "https://www.youtube.com/results?search_query=how+to+patch+a+hole+in+fabric+running+stitch+tutorial",
+        "alt_watch_for": "Notice the simple in-and-out running stitch they use to close the hole — that's the same stitch from today's vocabulary, just used for a patch instead of a button.",
     },
     "1.3": {
         "title": "How to Wash Dishes Properly",
@@ -353,9 +357,13 @@ YOUTUBE = {
         "duration": "4 min",
         "watch_for": "Pay attention to the specific temperature range of the danger zone — this is the range where bacteria double every 20 minutes.",
         "url": "https://www.youtube.com/results?search_query=food+safety+temperature+danger+zone+explained",
-        "alt_title": "How to Prevent Food Poisoning at Home",
-        "alt_channel": "CDC",
-        "alt_url": "https://www.youtube.com/results?search_query=how+to+prevent+food+poisoning+at+home+food+safety",
+        # This lesson covers TWO distinct concepts (temperature danger zone/2-hour rule +
+        # cross-contamination). The primary video is temperature-only, so alt is a REQUIRED
+        # second clip, not a fallback — see alt_watch_for and build_slides.py's video_slide().
+        "alt_title": "How Does Cross-Contamination Happen?",
+        "alt_channel": "USDA Food Safety",
+        "alt_url": "https://www.youtube.com/results?search_query=cross+contamination+food+safety+kitchen+explained",
+        "alt_watch_for": "Watch for how germs move from raw meat to other food WITHOUT any direct contact — through hands, cutting boards, or countertops. That's the part of food safety that has nothing to do with temperature.",
     },
     "6.2": {
         "title": "Basic Knife Skills for Beginners",
