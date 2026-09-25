@@ -13,9 +13,14 @@ YOUTUBE = {
         "duration": "5 min",
         "watch_for": "Pay attention to how they sort clothes by color and fabric type — what happens if you skip that step?",
         "url": "https://www.youtube.com/results?search_query=how+to+do+laundry+step+by+step+beginners",
+        # This lesson covers THREE skills (sort by color, read care-label symbols, choose
+        # wash cycle/temp). The primary video is sorting-focused and general "how to do
+        # laundry" videos don't reliably show label symbols, so alt is a REQUIRED second
+        # clip, not a fallback — see alt_watch_for and build_slides.py's video_slide().
         "alt_title": "Laundry Care Label Symbols Explained",
         "alt_channel": "Clean My Space",
         "alt_url": "https://www.youtube.com/results?search_query=laundry+care+label+symbols+explained",
+        "alt_watch_for": "Notice the little icons for bleach, dry, and iron settings — these are the exact symbols from today's vocabulary, and you'll see them on every piece of clothing you own.",
     },
     "1.2": {
         "title": "How to Sew on a Button",
@@ -305,9 +310,14 @@ YOUTUBE = {
         "duration": "7 min",
         "watch_for": "Notice the huge leap in language and social skills between ages 2 and 4 — it explains why toddlers act the way they do.",
         "url": "https://www.youtube.com/results?search_query=child+development+ages+0+to+5+milestones+explained",
-        "alt_title": "How Toddlers Learn Through Play",
-        "alt_channel": "Zero to Three",
-        "alt_url": "https://www.youtube.com/results?search_query=how+toddlers+learn+through+play+child+development",
+        # This lesson covers THREE skills (milestones, age-appropriate play, safe sleep).
+        # The primary video is milestones-only and general child-development videos don't
+        # cover safe sleep (a distinct SIDS-prevention safety topic), so alt is a REQUIRED
+        # second clip, not a fallback — see alt_watch_for and build_slides.py's video_slide().
+        "alt_title": "Infant Safe Sleep Practices — A Quick Guide for Caregivers",
+        "alt_channel": "UC Davis Health",
+        "alt_url": "https://www.youtube.com/results?search_query=infant+safe+sleep+guidelines+back+to+sleep+crib",
+        "alt_watch_for": "Watch for the specific rules: back to sleep, a firm mattress, and nothing else in the crib — no pillows, blankets, or stuffed animals. These rules are non-negotiable, not just a suggestion.",
     },
     "5.5": {
         "title": "Middle Childhood Development Ages 6 to 10 — Psychology",
@@ -335,9 +345,16 @@ YOUTUBE = {
         "duration": "7 min",
         "watch_for": "Focus on the steps for treating cuts and burns — the order of the steps matters more than people realize, and doing them wrong can make things worse.",
         "url": "https://www.youtube.com/results?search_query=first+aid+basics+every+teen+should+know+red+cross",
-        "alt_title": "How to Treat Cuts and Burns at Home",
-        "alt_channel": "Howcast",
-        "alt_url": "https://www.youtube.com/results?search_query=how+to+treat+cuts+and+burns+at+home+first+aid",
+        # This lesson covers THREE areas (cuts/burns, sprains, allergic reactions/epi-pen).
+        # The primary video is cuts-and-burns only (the old alt duplicated that same topic),
+        # and neither sprains/RICE nor the epi-pen response were modeled by any video, so alt
+        # now covers sprains as a REQUIRED second clip — see alt_watch_for and
+        # build_slides.py's video_slide(). Allergic reactions/epi-pen are covered in depth by
+        # the story and reading, which is why only one of the two remaining gaps gets a video.
+        "alt_title": "Using the RICE Method for Sprains",
+        "alt_channel": "St. Charles Center for Orthopedics & Neurosurgery",
+        "alt_url": "https://www.youtube.com/results?search_query=how+to+treat+a+sprain+RICE+method+first+aid",
+        "alt_watch_for": "Watch for the four steps in order — Rest, Ice, Compression, Elevation — and notice that RICE manages swelling and pain, it doesn't replace seeing a doctor for a bad sprain.",
     },
     "5.8": {
         "title": "Hands-Only CPR Tutorial",
