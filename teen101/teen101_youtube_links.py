@@ -94,9 +94,15 @@ YOUTUBE = {
         "duration": "6 min",
         "watch_for": "Notice the depth and spacing rules for seeds — planting too deep or too shallow are the most common beginner mistakes.",
         "url": "https://www.youtube.com/results?search_query=how+to+plant+seeds+indoors+step+by+step+beginners",
+        # This lesson covers THREE skills (depth/spacing, direct-sow vs. starts, transplant
+        # shock). The primary video is indoor-starting only and transplant shock/hardening
+        # off is never shown, so alt is a REQUIRED second clip, not a fallback — see
+        # alt_watch_for and build_slides.py's video_slide(). (Direct-sowing itself is
+        # dramatized in this lesson's discussion story, so it doesn't need its own video.)
         "alt_title": "Transplanting Seedlings Guide",
         "alt_channel": "Gardener Scott",
         "alt_url": "https://www.youtube.com/results?search_query=transplanting+seedlings+guide+beginners+garden",
+        "alt_watch_for": "Watch for the 'hardening off' step specifically — gradually getting seedlings used to outdoor conditions over a week or two. Skipping it is the #1 reason healthy indoor seedlings die within days of being moved outside.",
     },
     "2.5": {
         "title": "Identifying Common Garden Pests — Organic Solutions",
@@ -124,9 +130,15 @@ YOUTUBE = {
         "duration": "6 min",
         "watch_for": "Notice the visual and texture cues for each vegetable — harvesting too early or too late changes the taste completely.",
         "url": "https://www.youtube.com/results?search_query=when+and+how+to+harvest+vegetables+garden+guide",
-        "alt_title": "Vegetable Harvest Guide for Beginners",
-        "alt_channel": "Epic Gardening",
-        "alt_url": "https://www.youtube.com/results?search_query=vegetable+harvest+guide+beginners+when+to+pick",
+        # This lesson covers THREE skills (ripeness cues, harvest technique, storage/curing).
+        # The primary video and old alt were both harvest-timing videos covering the same
+        # ground, so storage/curing was never shown. Replaced alt with a storage-focused
+        # video as a REQUIRED second clip — see alt_watch_for and build_slides.py's
+        # video_slide().
+        "alt_title": "Storing Garden Potatoes for Winter — Harvest, Cure & Store",
+        "alt_channel": "Growfully with Jenna",
+        "alt_url": "https://www.youtube.com/results?search_query=how+to+store+and+cure+vegetables+after+harvest",
+        "alt_watch_for": "Notice that curing isn't the same as storing — it's a drying-out step BEFORE storage that toughens the skin so vegetables like squash and potatoes last months instead of days.",
     },
     "2.8": {
         "title": "How to Build a Raised Garden Bed — DIY",
@@ -146,9 +158,14 @@ YOUTUBE = {
         "duration": "7 min",
         "watch_for": "Try to spot every psychological trick they name — then think about the last ad that actually made you want something.",
         "url": "https://www.youtube.com/results?search_query=how+advertising+manipulates+you+marketing+tricks+explained",
-        "alt_title": "How Social Media Ads Target Teens",
-        "alt_channel": "Vox",
-        "alt_url": "https://www.youtube.com/results?search_query=how+social+media+ads+target+teenagers+explained",
+        # This lesson covers THREE ideas (tactics, emotional vs. rational buying, brand
+        # loyalty). The primary video is about manipulative tactics broadly and doesn't
+        # focus on WHY people stay loyal to one brand specifically, so alt is a REQUIRED
+        # second clip — see alt_watch_for and build_slides.py's video_slide().
+        "alt_title": "Why Are We Loyal to Certain Brands?",
+        "alt_channel": "SciShow Psych",
+        "alt_url": "https://www.youtube.com/results?search_query=why+we+love+brands+psychology+of+brand+loyalty",
+        "alt_watch_for": "Listen for the psychological reasons people keep buying the same brand even when a cheaper option is identical — it's not really about the product anymore at that point.",
     },
     "3.2": {
         "title": "Needs vs Wants — Personal Finance for Teens",
@@ -156,9 +173,15 @@ YOUTUBE = {
         "duration": "5 min",
         "watch_for": "Think about something you recently bought — was it a need or a want, and does it actually matter which one it was?",
         "url": "https://www.youtube.com/results?search_query=needs+vs+wants+personal+finance+for+teens",
-        "alt_title": "Maslow's Hierarchy of Needs Explained Simply",
-        "alt_channel": "Sprouts",
-        "alt_url": "https://www.youtube.com/results?search_query=maslow+hierarchy+of+needs+explained+simply+animation",
+        # This lesson covers THREE ideas (needs/wants/Maslow, opportunity cost, impulse-
+        # buying triggers + a resist strategy). The old alt (Maslow's hierarchy) duplicates
+        # what the primary video already covers, and impulse buying specifically was never
+        # shown, so alt is now a REQUIRED second clip — see alt_watch_for and
+        # build_slides.py's video_slide().
+        "alt_title": "Impulse Buying: Why You Buy Stuff You Don't Need",
+        "alt_channel": "SciShow Psych",
+        "alt_url": "https://www.youtube.com/results?search_query=impulse+buying+why+it+happens+how+to+stop+it",
+        "alt_watch_for": "Watch for what triggers an impulse buy in the moment — and then think of one strategy from the video you could actually use next time you feel that pull.",
     },
     "3.3": {
         "title": "50/30/20 Budget Rule Explained for Beginners",
@@ -186,9 +209,14 @@ YOUTUBE = {
         "duration": "7 min",
         "watch_for": "Watch how the Eisenhower Matrix sorts tasks into four boxes — think about what quadrant most of your daily activities fall into.",
         "url": "https://www.youtube.com/results?search_query=time+management+for+students+eisenhower+matrix",
+        # This lesson covers THREE skills (priority matrix, scheduling, procrastination).
+        # The primary video is matrix-focused, and general time-management videos don't
+        # reliably dig into WHY people procrastinate, so alt is a REQUIRED second clip —
+        # see alt_watch_for and build_slides.py's video_slide().
         "alt_title": "How to Stop Procrastinating — Teen Edition",
         "alt_channel": "Mike and Matty",
         "alt_url": "https://www.youtube.com/results?search_query=how+to+stop+procrastinating+for+teens+students",
+        "alt_watch_for": "Notice that procrastination usually isn't about laziness — watch for the real reason they give, and the one specific strategy they recommend to actually start a task that feels overwhelming.",
     },
     "3.6": {
         "title": "How to Write a Resume With No Experience — Teens",
@@ -408,9 +436,14 @@ YOUTUBE = {
         "duration": "5 min",
         "watch_for": "Watch how they explain air circulation — understanding why you shouldn't overcrowd the basket will save you from soggy fries every time.",
         "url": "https://www.youtube.com/results?search_query=air+fryer+basics+for+beginners+how+it+works",
-        "alt_title": "Best Things to Cook in an Air Fryer for Beginners",
-        "alt_channel": "The Stay At Home Chef",
-        "alt_url": "https://www.youtube.com/results?search_query=best+things+to+cook+in+an+air+fryer+beginners",
+        # This lesson covers THREE skills (how it works, temp/timing, cleanup). The old alt
+        # was more recipe ideas, not cleaning, so basket cleanup was never shown. Replaced
+        # with a cleaning-focused video as a REQUIRED second clip — see alt_watch_for and
+        # build_slides.py's video_slide().
+        "alt_title": "How to Clean Your Air Fryer",
+        "alt_channel": "Allrecipes",
+        "alt_url": "https://www.youtube.com/results?search_query=how+to+clean+an+air+fryer+basket+after+use",
+        "alt_watch_for": "Notice they let the basket cool and soak before scrubbing, instead of attacking baked-on grease right away — that one step is what keeps the non-stick coating from getting scratched up.",
     },
     "6.5": {
         "title": "Instant Pot for Beginners — Getting Started Guide",
@@ -438,8 +471,13 @@ YOUTUBE = {
         "duration": "6 min",
         "watch_for": "Watch how they modify recipes by swapping ingredients — once you understand why each ingredient is there, you can make it your own.",
         "url": "https://www.youtube.com/results?search_query=easy+no+bake+snacks+for+beginners+teens+cooking",
-        "alt_title": "Healthy No-Bake Energy Balls Recipe Tutorial",
-        "alt_channel": "Minimalist Baker",
-        "alt_url": "https://www.youtube.com/results?search_query=healthy+no+bake+energy+balls+recipe+tutorial+beginners",
+        # This lesson covers THREE skills (ratios/binders, why no-bake works without heat,
+        # safe storage). The old alt was another recipe video duplicating the primary, so
+        # storage was never shown. Replaced with a storage-focused video as a REQUIRED
+        # second clip — see alt_watch_for and build_slides.py's video_slide().
+        "alt_title": "Storing Meal Prep and Keeping It Fresh",
+        "alt_channel": "Various food-safety channels",
+        "alt_url": "https://www.youtube.com/results?search_query=how+long+do+homemade+snacks+last+fridge+storage+tips",
+        "alt_watch_for": "Notice that a homemade no-bake snack doesn't last as long as a store-bought one — no preservatives means it needs to be refrigerated and used within a matter of days, not weeks.",
     },
 }
