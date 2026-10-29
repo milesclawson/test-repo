@@ -1,0 +1,50 @@
+
+:root{--bg:#ffffff;--text:#1a1a1a;--muted:#4a4a4a;--primary:#1b5e3a;--primary-ink:#ffffff;
+--link:#0b4f8a;--panel:#f2f7f3;--border:#6b7f72;--accent-bg:#fff4e0;--accent-ink:#5c3200;--focus:#b35900}
+@media (prefers-color-scheme:dark){:root{--bg:#121512;--text:#f2f2f2;--muted:#cfd6d1;--primary:#8fd3a7;
+--primary-ink:#0c1f14;--link:#9cc9f5;--panel:#1c241f;--border:#8aa293;--accent-bg:#2c2111;--accent-ink:#ffd9a3;--focus:#ffb454}}
+*{box-sizing:border-box}
+html{font-size:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:1.125rem/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+a{color:var(--link);text-decoration:underline}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--primary);color:var(--primary-ink);padding:.75rem 1rem;z-index:10}
+.skip:focus{left:0}
+header.site{background:var(--primary);color:var(--primary-ink);padding:1rem 1.25rem}
+header.site a{color:var(--primary-ink)}
+header.site .name{font-size:1.4rem;font-weight:700;margin:0}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.langbar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.5rem}
+.langbar button{font:inherit;padding:.4rem .9rem;border:2px solid var(--primary-ink);background:transparent;color:var(--primary-ink);border-radius:.4rem;cursor:pointer}
+.langbar button[aria-pressed=true]{background:var(--primary-ink);color:var(--primary)}
+nav.units ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+nav.units{background:var(--panel);border-bottom:1px solid var(--border);padding:.75rem 0}
+nav.units a{display:inline-block;padding:.35rem .75rem;border:1px solid var(--border);border-radius:.4rem}
+main{padding:1.5rem 0 3rem}
+main,td,th,li,p,h1,h2,h3,h4{overflow-wrap:break-word}
+.bi>span,.bi>div{min-width:0}
+h1{font-size:2rem;line-height:1.25;margin:.5rem 0 1rem}
+h2{font-size:1.6rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:3px solid var(--primary)}
+h3{font-size:1.25rem;margin:1.5rem 0 .5rem}
+section.lesson{margin-bottom:2rem}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:.5rem;padding:1rem 1.25rem;margin:1rem 0}
+.note{background:var(--accent-bg);color:var(--accent-ink);border:2px solid var(--accent-ink);border-radius:.5rem;padding:.75rem 1rem;margin:1rem 0}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+caption{text-align:left;font-weight:700;padding:.25rem 0}
+th,td{border:1px solid var(--border);padding:.5rem .75rem;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+body[data-lang=en] [lang=es]{display:none}
+body[data-lang=es] [lang=en]{display:none}
+.bi>span,.bi>div{display:block}
+body[data-lang=both] .bi{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+body[data-lang=both] .bi>[lang=es]{border-left:3px solid var(--border);padding-left:1rem}
+body[data-lang=both] table .bi,body[data-lang=both] li .bi,body[data-lang=both] dd .bi,body[data-lang=both] dt .bi,body[data-lang=both] nav .bi,body[data-lang=both] .langbar .bi,body[data-lang=both] h3 .bi{display:block}
+body[data-lang=both] table .bi>[lang=es],body[data-lang=both] li .bi>[lang=es],body[data-lang=both] dd .bi>[lang=es],body[data-lang=both] dt .bi>[lang=es],body[data-lang=both] nav .bi>[lang=es],body[data-lang=both] .langbar .bi>[lang=es],body[data-lang=both] h3 .bi>[lang=es]{border-left:0;padding-left:0;border-top:1px dashed var(--border);margin-top:.25rem;padding-top:.25rem}
+@media (max-width:48rem){body[data-lang=both] .bi{grid-template-columns:1fr;gap:.25rem}
+body[data-lang=both] .bi>[lang=es]{border-left:0;padding-left:0;border-top:1px dashed var(--border);padding-top:.25rem}}
+.checkpoint{font-weight:700}
+.reviewnote{font-size:.95rem;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:1.5rem 0;color:var(--muted)}
+@media print{.skip,.langbar,nav.units,.noprint{display:none}body{font-size:12pt}}
+@media (max-width:48rem){th,td{padding:.4rem .45rem;font-size:1rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

@@ -1,0 +1,95 @@
+mc
+Which tool should you use to measure flour?
+*A dry measuring cup, leveled off
+A liquid measuring cup
+A coffee mug
+Any bowl
+Points: 1
+
+mc
+How should you read a liquid measuring cup?
+By shaking it
+*On a flat counter, at eye level, reading the bottom of the curve
+From above, holding it in the air
+By tasting it
+Points: 1
+
+mc
+How many teaspoons are in 1 tablespoon?
+2
+*3
+4
+6
+Points: 1
+
+mc
+How many tablespoons are in 1 cup?
+8
+12
+*16
+24
+Points: 1
+
+mc
+How many cups are in 1 pint?
+1
+*2
+4
+8
+Points: 1
+
+mc
+How many ounces are in 1 pound?
+8
+12
+*16
+32
+Points: 1
+
+mc
+What is half of 3/4 cup?
+1/4 cup
+*3/8 cup
+1/2 cup
+2/3 cup
+Points: 1
+
+mc
+A recipe serves 4. You need 12 servings. What is the conversion factor?
+2
+*3
+4
+8
+Points: 1
+
+mc
+A recipe uses 1 1/2 cups of flour for 4 servings. How much flour for 8 servings?
+2 cups
+2 1/2 cups
+*3 cups
+4 cups
+Points: 1
+
+mc
+A recipe for 8 uses 2 teaspoons of salt. How much salt for 4 servings?
+4 teaspoons
+*1 teaspoon
+1/4 teaspoon
+2 teaspoons
+Points: 1
+
+mc
+Which of these does NOT scale directly when you change a recipe?
+Cups of milk
+Teaspoons of baking powder
+*Cooking time and pan size
+Cups of flour
+Points: 1
+
+mc
+Cost per serving equals:
+*Total cost divided by number of servings
+Number of servings divided by total cost
+Total cost minus number of servings
+Total cost times number of servings
+Points: 1
