@@ -58,7 +58,7 @@ YOUTUBE = {
         "title": "16 Career Clusters",
         "channel": "Career and Technical Education",
         "duration": "5 min",
-        "watch_for": "Which of the 16 career clusters do you hear described in a way you hadn't considered?",
+        "watch_for": "Which of the 16 clusters sounds most interesting to you — and which one surprised you?",
         "url": "https://www.youtube.com/watch?v=nra5WPhDCQU",
         "alt_title": "How to Choose a Career (That You'll Actually Love)",
         "alt_channel": "Big Think",
