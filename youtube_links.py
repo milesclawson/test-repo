@@ -194,7 +194,7 @@ YOUTUBE = {
         "title": "How to Have a Successful Transition from Middle School to High School",
         "channel": "School Counseling",
         "duration": "5 min",
-        "watch_for": "What is the 'ninth grade cliff' and what are the warning signs?",
+        "watch_for": "What is one specific warning sign they mention that freshman year students struggle with?",
         "url": "https://www.youtube.com/watch?v=Cr-30fABZT0",
         "alt_title": "What Is BARR? Building Assets, Reducing Risks",
         "alt_channel": "BARR Center",
